@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1789347872437,
+      "tag": "0000_parched_venom",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1789348783450,
+      "tag": "0001_lush_thunderbird",
+      "breakpoints": true
+    }
+  ]
+}
