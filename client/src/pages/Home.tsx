@@ -646,7 +646,7 @@ function SafeImage({ src, fallbackSrc = images.villa, alt, ...props }: ImgHTMLAt
   const { className, onLoad, ...imageProps } = props;
   useEffect(() => setCurrentSrc(resolveImageSource(src)), [src]);
   useEffect(() => setIsLoaded(false), [currentSrc]);
-  return <img {...imageProps} className={`${className ?? ""} image-loading${isLoaded ? " image-loaded" : ""}`} src={currentSrc} alt={alt} onLoad={(event) => { setIsLoaded(true); onLoad?.(event); }} onError={() => {
+  return <img {...imageProps} loading={imageProps.loading ?? "lazy"} decoding={imageProps.decoding ?? "async"} className={`${className ?? ""} image-loading${isLoaded ? " image-loaded" : ""}`} src={currentSrc} alt={alt} onLoad={(event) => { setIsLoaded(true); onLoad?.(event); }} onError={() => {
     const next = resolveImageSource(fallbackSrc);
     if (currentSrc !== next) setCurrentSrc(next);
     setIsLoaded(true);
@@ -823,8 +823,13 @@ function Header() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
     };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [open]);
 
   return (
@@ -848,7 +853,7 @@ function Header() {
       </div>
       <div id="mobile-navigation" className={`mobile-nav ${open ? "mobile-nav-open" : ""}`} role="dialog" aria-label="Mobile navigation" aria-hidden={!open}>
         {navItems.map(([label, href], index) => (
-          <Link key={href} href={href} className="mobile-link" style={{ transitionDelay: `${index * 45}ms` }}>
+          <Link key={href} href={href} className="mobile-link" onClick={() => setOpen(false)} style={{ transitionDelay: `${index * 45}ms` }}>
             <span>0{index + 1}</span>{label}<ArrowUpRight size={20} />
           </Link>
         ))}
@@ -1119,7 +1124,7 @@ export function Home() {
             <div className="hero-actions"><Link href="/contact" className="button button-light">Discuss Your Project <MoveRight size={17} /></Link><Link href="/projects" className="button button-outline-light">View selected work <ArrowUpRight size={17} /></Link></div>
           </div>
         </div>
-        <div className="hero-image hero-image-interactive" ref={heroImageRef}><SafeImage src={companyImages.jewelleryWide} alt="LUK FOOK Jewellery commercial interior by LUXH Works" /><div className="hero-image-caption"><span>BUILT WORK / LUK FOOK JEWELLERY</span><span>PHNOM PENH</span></div></div>
+        <div className="hero-image hero-image-interactive" ref={heroImageRef}><SafeImage src={companyImages.jewelleryWide} alt="LUK FOOK Jewellery commercial interior by LUXH Works" loading="eager" fetchPriority="high" sizes="(max-width: 760px) 100vw, 43vw" /><div className="hero-image-caption"><span>BUILT WORK / LUK FOOK JEWELLERY</span><span>PHNOM PENH</span></div></div>
         <div className="hero-footer-strip"><span>SINCE 2019</span><span>CAMBODIA • THAILAND</span><span>DESIGN TO AFTERCARE</span></div>
         <a href="#intro" className="hero-scroll">Scroll to explore <ArrowDownRight size={16} /></a>
       </section>
