@@ -1309,7 +1309,7 @@ export function ProjectDetailPage() {
   const projectIndex = Math.max(0, portfolioProjects.findIndex((item) => item.slug === project.slug));
   const previousProject = portfolioProjects[(projectIndex - 1 + portfolioProjects.length) % portfolioProjects.length];
   const nextProject = portfolioProjects[(projectIndex + 1) % portfolioProjects.length];
-  const touchStartX = useRef<number | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
   const related = portfolioProjects.filter((item) => item.slug !== project.slug).slice(0, 2);
   const [shareStatus, setShareStatus] = useState("");
   const shareUrl = typeof window !== "undefined" ? window.location.href : `/projects/${project.slug}`;
@@ -1332,12 +1332,18 @@ export function ProjectDetailPage() {
       if (event.key === "ArrowLeft") { event.preventDefault(); navigateToProject(previousProject.slug); }
       if (event.key === "ArrowRight") { event.preventDefault(); navigateToProject(nextProject.slug); }
     };
-    const onTouchStart = (event: TouchEvent) => { touchStartX.current = event.changedTouches[0]?.clientX ?? null; };
+    const onTouchStart = (event: TouchEvent) => {
+      const touch = event.changedTouches[0];
+      touchStart.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+    };
     const onTouchEnd = (event: TouchEvent) => {
-      if (touchStartX.current === null) return;
-      const distance = (event.changedTouches[0]?.clientX ?? 0) - touchStartX.current;
-      touchStartX.current = null;
-      if (Math.abs(distance) >= 60) navigateToProject(distance > 0 ? previousProject.slug : nextProject.slug);
+      if (touchStart.current === null) return;
+      const touch = event.changedTouches[0];
+      const deltaX = (touch?.clientX ?? touchStart.current.x) - touchStart.current.x;
+      const deltaY = (touch?.clientY ?? touchStart.current.y) - touchStart.current.y;
+      touchStart.current = null;
+      const isHorizontalSwipe = Math.abs(deltaX) >= 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25;
+      if (isHorizontalSwipe) navigateToProject(deltaX > 0 ? previousProject.slug : nextProject.slug);
     };
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("touchstart", onTouchStart, { passive: true });
