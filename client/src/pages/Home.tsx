@@ -722,9 +722,9 @@ const serviceSlug = (title: string) => title.toLowerCase().replace(/&/g, "and").
 
 const navItems = [
   ["Home", "/"],
+  ["About", "/about"],
   ["Projects", "/projects"],
   ["Services", "/services"],
-  ["About", "/about"],
   ["Contact", "/contact"],
 ] as const;
 
@@ -806,6 +806,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
 function Header() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
+  const headerItems = navItems.map(([label, href]) => [label, label === "About" && location === "/" ? "#about" : href] as const);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const isHomeTop = location === "/" && !scrolled;
@@ -839,7 +840,7 @@ function Header() {
           <span className="brand-wordmark" style={{ fontFamily: "MOMCAKE", fontSize: "40px" }}>LUXHWORK</span>
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
-          {navItems.map(([label, href]) => (
+          {headerItems.map(([label, href]) => (
             <Link key={href} href={href} className={location === href ? "nav-active" : ""}>{label}</Link>
           ))}
         </nav>
@@ -852,7 +853,7 @@ function Header() {
         </button>
       </div>
       <div id="mobile-navigation" className={`mobile-nav ${open ? "mobile-nav-open" : ""}`} role="dialog" aria-label="Mobile navigation" aria-hidden={!open}>
-        {navItems.map(([label, href], index) => (
+        {headerItems.map(([label, href], index) => (
           <Link key={href} href={href} className="mobile-link" onClick={() => setOpen(false)} style={{ transitionDelay: `${index * 45}ms` }}>
             <span>0{index + 1}</span>{label}<ArrowUpRight size={20} />
           </Link>
@@ -1174,12 +1175,28 @@ export function Home() {
       </section>
 
       <GallerySection />
-
+      <AboutInline />
       <CTA id="enquiry-band" />
     </PageShell>
   );
 }
 
+function AboutInline() {
+  return (
+    <section className="home-about" id="about">
+      <section className="page-hero page-hero-about home-about-hero">
+        <p className="eyebrow">ABOUT LUXHWORK / PHNOM PENH / SINCE 2019</p>
+        <h2>Local execution.<br /><em>Regional ambition.</em></h2>
+        <p className="page-hero-copy">A commercial interior consultancy and fit-out company serving businesses in Cambodia and the region.</p>
+      </section>
+      <section className="about-story home-about-story">
+        <div className="about-image"><SafeImage src={companyImages.bar} alt="LUXHWORK commercial interior project" /><span>About LUXHWORK / Phnom Penh</span></div>
+        <div className="about-copy"><SectionLabel number="01">About LUXHWORK</SectionLabel><h2>Commercial interiors<br /><em>with fewer surprises.</em></h2><p>We connect considered design with planning, MEP coordination, construction knowledge and hands-on follow-through — helping clients reach opening day with clearer decisions.</p><Link href="/about" className="text-link">View the full About page <ArrowUpRight size={16} /></Link></div>
+      </section>
+      <section className="about-stats home-about-stats"><SectionLabel number="02">At a glance</SectionLabel><div className="about-stats-grid"><div><strong>2019</strong><span>Founded</span></div><div><strong>05</strong><span>Core services</span></div><div><strong>02</strong><span>Countries</span></div></div></section>
+    </section>
+  );
+}
 function CTA({ id }: { id?: string } = {}) {
   return <section className="cta" id={id}><p>Have a project in mind?</p><h2>Let's create<br /><em>something great.</em></h2><Link href="/contact" className="button button-light">Start a conversation <ArrowUpRight size={17} /></Link><div className="cta-mark">LW</div></section>;
 }

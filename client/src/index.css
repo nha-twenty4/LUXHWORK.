@@ -667,3 +667,17 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
   .admin-header { padding:17px 20px; align-items:flex-start; }.admin-header-actions { gap:8px; }.admin-user { display:none; }.admin-logout { padding:8px; font-size:0; }.admin-logout svg { width:16px; }
   .admin-content { padding:60px 20px 80px; }.admin-intro { display:block; margin-bottom:45px; }.admin-intro .text-link { margin-top:28px; }.admin-grid { display:block; }.admin-panel { padding:20px; margin-bottom:14px; }.admin-panel-heading h2 { font-size:26px; }.admin-form-grid { display:block; }.admin-project-row { align-items:flex-start; }.admin-project-row strong { max-width:210px; }.admin-tabs { overflow:auto; }.admin-tab { white-space:nowrap; padding:13px 12px; }
 }
+
+/* Inline About chapter reached by scrolling from the Home page. */
+.home-about { scroll-margin-top:81px; background:var(--paper); }
+.home-about-hero { min-height:500px; }
+.home-about-hero h2 { font-size:clamp(56px,7.5vw,112px); line-height:.88; margin:76px 0 0; }
+.home-about-story { padding-top:105px; padding-bottom:105px; }
+.home-about-stats { padding-top:0; padding-bottom:110px; }
+@media (max-width:900px) {
+  .home-about { scroll-margin-top:67px; }
+  .home-about-hero { min-height:490px; padding-top:125px; }
+  .home-about-hero h2 { font-size:clamp(52px,13vw,82px); margin-top:58px; }
+  .home-about-story { padding-top:78px; padding-bottom:78px; }
+  .home-about-stats { padding-bottom:82px; }
+}
