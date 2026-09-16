@@ -1005,7 +1005,7 @@ export function Home() {
 
   useEffect(() => {
     if (window.location.hash !== "#projects") return;
-    const scrollToProjects = () => document.getElementById("projects")?.scrollIntoView({ block: "start" });
+    const scrollToProjects = () => document.getElementById("projects")?.scrollIntoView({ behavior: "auto", block: "start" });
     const frame = window.requestAnimationFrame(scrollToProjects);
     return () => window.cancelAnimationFrame(frame);
   }, []);
