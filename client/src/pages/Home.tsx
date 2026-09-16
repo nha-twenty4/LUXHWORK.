@@ -770,12 +770,14 @@ export function PageShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const previousRestoration = window.history.scrollRestoration;
     window.history.scrollRestoration = "manual";
+    return () => { window.history.scrollRestoration = previousRestoration; };
+  }, []);
+  useEffect(() => {
     const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     resetScroll();
     const frame = window.requestAnimationFrame(resetScroll);
     return () => {
       window.cancelAnimationFrame(frame);
-      window.history.scrollRestoration = previousRestoration;
     };
   }, [location]);
   useEffect(() => {
@@ -1317,7 +1319,6 @@ export function ProjectDetailPage() {
   };
   const navigateToProject = (targetSlug: string) => {
     navigate(`/projects/${targetSlug}`);
-    window.setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 40);
   };
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
