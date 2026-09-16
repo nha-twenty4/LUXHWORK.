@@ -768,6 +768,9 @@ function ProjectInquiryForm({ projectTitle }: { projectTitle: string }) {
 export function PageShell({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location]);
+  useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const buttons = Array.from(document.querySelectorAll<HTMLElement>(".button"));
     const cleanups = buttons.map((button) => {
