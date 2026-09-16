@@ -775,12 +775,15 @@ export function PageShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const savedProjectScroll = location === "/projects" ? sessionStorage.getItem("luxh-project-scroll") : null;
     const targetScroll = savedProjectScroll ? Number(savedProjectScroll) : 0;
-    if (savedProjectScroll) sessionStorage.removeItem("luxh-project-scroll");
     const restoreScroll = () => window.scrollTo({ top: Number.isFinite(targetScroll) ? targetScroll : 0, left: 0, behavior: "auto" });
     restoreScroll();
     const frame = window.requestAnimationFrame(() => window.requestAnimationFrame(restoreScroll));
+    const delayedRestore = window.setTimeout(restoreScroll, savedProjectScroll ? 180 : 0);
+    const clearSavedPosition = savedProjectScroll ? window.setTimeout(() => sessionStorage.removeItem("luxh-project-scroll"), 600) : undefined;
     return () => {
       window.cancelAnimationFrame(frame);
+      window.clearTimeout(delayedRestore);
+      if (clearSavedPosition) window.clearTimeout(clearSavedPosition);
     };
   }, [location]);
   useEffect(() => {
