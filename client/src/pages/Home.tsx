@@ -975,120 +975,28 @@ function ProjectCard({ project, featured = false, preset = "auto" }: { project: 
 }
 
 function GallerySection() {
-  const { projects: portfolioProjects } = usePortfolioProjects();
-  const discovery = useProjectDiscoveryState();
-  const { query, filter, sort, year } = discovery;
-  const [preset, setPreset] = useColorPreset();
-  const [lightbox, setLightbox] = useState<Project | null>(null);
-  const [lightboxDirection, setLightboxDirection] = useState<"next" | "prev">("next");
-  const [swipeProgress, setSwipeProgress] = useState(0);
-  const touchStart = useRef<{ x: number; y: number } | null>(null);
-  const filters = ["All", "Architecture", "Interior", "3D Visualization", "Graphic Design", "Branding"];
-  const filtered = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
-    return portfolioProjects.filter((project) => {
-      const matchesFilter = filter === "All" || project.category === filter;
-      const searchable = `${project.title} ${project.category} ${project.location} ${project.client}`.toLowerCase();
-      return matchesFilter && (year === "All" || project.year === year) && (!normalizedQuery || searchable.includes(normalizedQuery));
-    }).sort((a, b) => sort === "newest" ? Number(b.year) - Number(a.year) : sort === "oldest" ? Number(a.year) - Number(b.year) : sort === "location" ? a.location.localeCompare(b.location) : sort === "client" ? a.client.localeCompare(b.client) : a.size.localeCompare(b.size));
-  }, [filter, portfolioProjects, query, sort, year]);
-  const counts = useMemo(() => Object.fromEntries(filters.map((item) => [item, item === "All" ? portfolioProjects.length : portfolioProjects.filter((project) => project.category === item).length])), [filters, portfolioProjects]);
-  const years = useMemo(() => Array.from(new Set(portfolioProjects.map((project) => project.year))).sort((a, b) => Number(b) - Number(a)), [portfolioProjects]);
-  const lightboxIndex = lightbox ? filtered.findIndex((project) => project.slug === lightbox.slug) : -1;
-  const showPrevious = () => { setLightboxDirection("prev"); setLightbox(filtered[(lightboxIndex - 1 + filtered.length) % filtered.length]); };
-  const showNext = () => { setLightboxDirection("next"); setLightbox(filtered[(lightboxIndex + 1) % filtered.length]); };
-  const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLElement;
-    if (target.closest("button, a")) return;
-    const touch = event.changedTouches[0];
-    touchStart.current = { x: touch.clientX, y: touch.clientY };
-    setSwipeProgress(0);
-  };
-  const onTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
-    if (!touchStart.current || filtered.length < 2) return;
-    const touch = event.changedTouches[0];
-    const distance = Math.min(90, Math.abs(touch.clientX - touchStart.current.x));
-    setSwipeProgress(Math.round((distance / 90) * 100));
-  };
-  const onTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
-    if (!touchStart.current || filtered.length < 2) return;
-    const touch = event.changedTouches[0];
-    const deltaX = touch.clientX - touchStart.current.x;
-    const deltaY = touch.clientY - touchStart.current.y;
-    touchStart.current = null;
-    setSwipeProgress(0);
-    if (Math.abs(deltaX) < 45 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
-    if (deltaX < 0) showNext();
-    else showPrevious();
-  };
-
-  useEffect(() => {
-    const nodes = document.querySelectorAll<HTMLElement>(".gallery-tile");
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("gallery-tile-visible")),
-      { threshold: 0.12 },
-    );
-    nodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
-  }, [filter, query]);
-
-  useEffect(() => {
-    if (!lightbox || filtered.length < 2) return;
-    const adjacent = [filtered[(lightboxIndex + 1) % filtered.length], filtered[(lightboxIndex - 1 + filtered.length) % filtered.length]];
-    adjacent.forEach((project) => { const image = new Image(); image.decoding = "async"; image.src = project.image; });
-  }, [lightbox, filtered, lightboxIndex]);
-
-  useEffect(() => {
-    if (!lightbox) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setLightbox(null);
-      if (event.key === "ArrowLeft" && filtered.length > 1) showPrevious();
-      if (event.key === "ArrowRight" && filtered.length > 1) showNext();
-    };
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [lightbox, filtered, lightboxIndex]);
+  const { projects } = usePortfolioProjects();
+  const [preset] = useColorPreset();
 
   return (
-    <>
-      <section className="visual-gallery" id="projects">
-        <div className="visual-gallery-head">
-          <SectionLabel number="02">Selected work / Built projects</SectionLabel>
-        </div>
-        <SearchFilterControls query={query} onQueryChange={discovery.setQuery} filter={filter} onFilterChange={discovery.setFilter} sort={sort} onSortChange={discovery.setSort} year={year} onYearChange={discovery.setYear} filters={filters} counts={counts} years={years} />
-        <ColorPresetControls preset={preset} onChange={setPreset} />
-        <div className="gallery-grid" key={`gallery-${filter}-${query}-${sort}-${year}`}>
-          {filtered.map((project) => (
-            <div key={project.slug} className={`gallery-tile gallery-tile-${project.size}`}>
-              <button type="button" className="gallery-image-button" onClick={() => setLightbox(project)} aria-label={`Open ${project.title} image`}><SafeImage src={project.image} alt={project.title} className={`theme-image ${imagePresetClass(project.category, preset)}`} /></button>
-              <div className="gallery-tile-overlay"><div><span>{project.title}</span><small>{project.category} · {project.year}</small></div><Link href={`/projects/${project.slug}`} className="gallery-project-link">View project <ArrowUpRight size={14} /></Link></div>
+    <section className="visual-gallery" id="projects">
+      <div className="visual-gallery-head">
+        <SectionLabel number="02">Selected work / Built projects</SectionLabel>
+      </div>
+      <div className="selected-work-grid">
+        {projects.map((project) => (
+          <article className="selected-work-card" key={project.slug}>
+            <Link href={`/projects/${project.slug}`} className="selected-work-image-link">
+              <SafeImage src={project.image} alt={project.title} className={`project-image theme-image ${imagePresetClass(project.category, preset)}`} />
+            </Link>
+            <div className="project-meta selected-work-meta">
+              <div><h3>{project.title}</h3><p>{project.category} · {project.year}</p></div>
+              <span className="project-label-tag">BUILT</span>
             </div>
-          ))}
-        </div>
-        <div className="gallery-image-rail" aria-label="More LUXH Works imagery">
-          {[images.moriDetail, images.warmDetail, images.duskDetail, images.coastal].map((image, index) => (
-            <div className="gallery-rail-image" key={`${image}-${index}`}><SafeImage src={image} alt="LUXH Works project detail" className="theme-image" /><span>0{index + 1} / material study</span></div>
-          ))}
-        </div>
-        {filtered.length === 0 && <p className="gallery-empty">More work in this discipline is on its way.</p>}
-      </section>
-      {lightbox && (
-        <div className="lightbox" role="dialog" aria-modal="true" aria-label={`${lightbox.title} preview`} onClick={() => setLightbox(null)} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-          <button type="button" className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close image preview"><X size={24} /></button>
-          {filtered.length > 1 && <><button type="button" className="lightbox-nav lightbox-prev" onClick={showPrevious} aria-label="Previous image"><ChevronLeft size={28} /></button><button type="button" className="lightbox-nav lightbox-next" onClick={showNext} aria-label="Next image"><ChevronRight size={28} /></button></>}
-          <div className="lightbox-frame" onClick={(event) => event.stopPropagation()}>
-            <div key={`${lightbox.slug}-${lightboxDirection}`} className={`lightbox-image-motion lightbox-image-motion-${lightboxDirection}`}><SafeImage src={lightbox.image} alt={lightbox.title} className={`theme-image ${imagePresetClass(lightbox.category, preset)}`} /></div>
-            <div className="lightbox-caption"><div><strong>{lightbox.title}</strong><span>{lightbox.category} · {lightbox.year}</span></div><Link href={`/projects/${lightbox.slug}`} onClick={() => setLightbox(null)}>View project <ArrowUpRight size={16} /></Link></div>
-          </div>
-          {filtered.length > 1 && <div className="swipe-progress-wrap" aria-label={`Image ${lightboxIndex + 1} of ${filtered.length}`}><span className="swipe-progress-label">{lightboxIndex + 1} / {filtered.length}</span><div className="swipe-progress"><span style={{ width: `${Math.min(100, ((lightboxIndex + 1) / filtered.length) * 100 + swipeProgress / filtered.length)}%` }} /></div></div>}
-          {filtered.length > 1 && <div className="swipe-hint"><span>←</span> Swipe to explore <span>→</span></div>}
-        </div>
-      )}
-    </>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
