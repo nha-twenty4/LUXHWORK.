@@ -811,6 +811,7 @@ function Header() {
   const [open, setOpen] = useState(false);
   const sectionIds: Record<string, string> = { Home: "hero", About: "about", Projects: "projects", Services: "services", Contact: "contact" };
   const headerItems = navItems.map(([label]) => [label, location === "/" ? `#${sectionIds[label]}` : `/#${sectionIds[label]}`] as const);
+  const [activeSection, setActiveSection] = useState(location === "/" ? "hero" : "");
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const isHomeTop = location === "/" && !scrolled;
@@ -821,6 +822,29 @@ function Header() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (location !== "/") {
+      setActiveSection("");
+      return;
+    }
+    const sectionEntries = Object.values(sectionIds).map((id) => [id, document.getElementById(id)] as const).filter((entry): entry is readonly [string, HTMLElement] => Boolean(entry[1]));
+    const updateActiveSection = () => {
+      const marker = window.scrollY + 120;
+      let current = "hero";
+      sectionEntries.forEach(([id, element]) => {
+        if (element.offsetTop <= marker) current = id;
+      });
+      setActiveSection(current);
+    };
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, [location]);
 
   useEffect(() => setOpen(false), [location]);
   useEffect(() => {
@@ -845,7 +869,7 @@ function Header() {
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
           {headerItems.map(([label, href]) => (
-            <a key={href} href={href} className={location === "/" && label === "Home" ? "nav-active" : ""}>{label}</a>
+            <a key={href} href={href} onClick={() => location === "/" && setActiveSection(sectionIds[label])} className={activeSection === sectionIds[label] ? "nav-active" : ""}>{label}</a>
           ))}
         </nav>
         <a className="nav-whatsapp" href="https://wa.me/85589900300" target="_blank" rel="noreferrer"><span aria-hidden="true" /> WhatsApp</a>
@@ -858,7 +882,7 @@ function Header() {
       </div>
       <div id="mobile-navigation" className={`mobile-nav ${open ? "mobile-nav-open" : ""}`} role="dialog" aria-label="Mobile navigation" aria-hidden={!open}>
         {headerItems.map(([label, href], index) => (
-          <a key={href} href={href} className="mobile-link" onClick={() => setOpen(false)} style={{ transitionDelay: `${index * 45}ms` }}>
+          <a key={href} href={href} className={`mobile-link${activeSection === sectionIds[label] ? " mobile-link-active" : ""}`} onClick={() => { setOpen(false); if (location === "/") setActiveSection(sectionIds[label]); }} style={{ transitionDelay: `${index * 45}ms` }}>
             <span>0{index + 1}</span>{label}<ArrowUpRight size={20} />
           </a>
         ))}
