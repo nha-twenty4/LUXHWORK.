@@ -845,7 +845,7 @@ function Header() {
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
           {headerItems.map(([label, href]) => (
-            <Link key={href} href={href} className={location === href ? "nav-active" : ""}>{label}</Link>
+            <a key={href} href={href} className={location === "/" && label === "Home" ? "nav-active" : ""}>{label}</a>
           ))}
         </nav>
         <a className="nav-whatsapp" href="https://wa.me/85589900300" target="_blank" rel="noreferrer"><span aria-hidden="true" /> WhatsApp</a>
@@ -858,9 +858,9 @@ function Header() {
       </div>
       <div id="mobile-navigation" className={`mobile-nav ${open ? "mobile-nav-open" : ""}`} role="dialog" aria-label="Mobile navigation" aria-hidden={!open}>
         {headerItems.map(([label, href], index) => (
-          <Link key={href} href={href} className="mobile-link" onClick={() => setOpen(false)} style={{ transitionDelay: `${index * 45}ms` }}>
+          <a key={href} href={href} className="mobile-link" onClick={() => setOpen(false)} style={{ transitionDelay: `${index * 45}ms` }}>
             <span>0{index + 1}</span>{label}<ArrowUpRight size={20} />
-          </Link>
+          </a>
         ))}
         <button type="button" className="mobile-theme-toggle" onClick={() => toggleTheme?.()}>
           {theme === "light" ? <Moon size={17} /> : <Sun size={17} />} {theme === "light" ? "Dark mode" : "Light mode"}
