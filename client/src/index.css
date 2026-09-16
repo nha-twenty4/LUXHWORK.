@@ -4,6 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html { scroll-padding-top:81px; scroll-behavior:smooth; }
 :root { --ink:#1e201e; --bone:#f2f0eb; --paper:#fbfaf7; --line:#d5d3cc; --muted:#6f716c; --brick:#c55037; --dark:#202521; --radius:0px; --background:#fbfaf7; --foreground:#1e201e; --primary:#202521; --primary-foreground:#fbfaf7; --border:#d5d3cc; --input:#d5d3cc; --ring:#c55037; }
 .dark { --ink:#f3f1eb; --bone:#292e2a; --paper:#1c211e; --line:#414841; --muted:#a6aaa2; --dark:#111512; --background:#1c211e; --foreground:#f3f1eb; --primary:#f3f1eb; --primary-foreground:#1c211e; --border:#414841; --input:#414841; }
 * { box-sizing:border-box; }
@@ -673,3 +674,4 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 /* Single-page navigation sections. */
 #hero, #about, #projects, #services, #contact { scroll-margin-top:81px; }
 @media (max-width:900px) { #hero, #about, #projects, #services, #contact { scroll-margin-top:67px; } }
+@media (max-width:900px) { html { scroll-padding-top:67px; } }
