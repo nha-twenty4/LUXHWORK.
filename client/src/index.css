@@ -139,16 +139,9 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 .project-card-reveal:nth-child(5) { transition-delay:.32s; }
 .project-card-reveal:nth-child(6) { transition-delay:.4s; }
 .project-card:nth-child(3) { grid-column:2; width:82%; justify-self:end; margin-top:64px; }
-.project-image-wrap { height:auto; aspect-ratio:1 / 1; overflow:hidden; position:relative; background:#d8d4ca; perspective:900px; transform-style:preserve-3d; transition:transform .45s cubic-bezier(.23,1,.32,1); }
+.project-image-wrap { height:auto; aspect-ratio:1 / 1; overflow:hidden; position:relative; background:#d8d4ca; }
 .project-card-featured .project-image-wrap { height:auto; aspect-ratio:1 / 1; }
 .project-image { width:100%; height:100%; display:block; object-fit:cover; transition:transform .65s cubic-bezier(.23,1,.32,1); }
-.project-card:hover .project-image { transform:scale(1.045); }
-.project-image-overlay { position:absolute; inset:0; opacity:0; background:rgba(32,37,33,.2); transition:opacity .3s; }
-.project-card:hover .project-image-overlay { opacity:1; }
-.project-view { position:absolute; display:flex; align-items:center; gap:7px; bottom:16px; left:16px; color:#fff; padding:9px 10px; font-size:11px; background:rgba(32,37,33,.77); backdrop-filter:blur(8px); transform:translateY(10px); opacity:0; transition:transform .3s,opacity .3s; }
-.project-card:hover .project-view { transform:translateY(0); opacity:1; }
-.hover-follow-label { position:absolute; z-index:2; display:flex; align-items:center; gap:7px; padding:10px 12px; pointer-events:none; color:var(--dark); background:#f8f6f0; font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; opacity:0; transform:translate(12px,12px) scale(.94); transition:opacity .2s,transform .25s cubic-bezier(.23,1,.32,1); }
-.project-card:hover .hover-follow-label { opacity:1; transform:translate(12px,12px) scale(1); }
 .project-meta { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:16px 2px 0; border-top:1px solid var(--line); }
 .project-meta h3 { font-size:clamp(16px,1.5vw,20px); letter-spacing:-.03em; margin:0 0 5px; font-weight:500; line-height:1.1; }
 .project-meta p { margin:0; color:var(--muted); font-size:11px; line-height:1.45; }.project-meta>span { flex:0 0 auto; margin:2px 0 0; color:var(--brick); font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.05em; text-transform:uppercase; }
@@ -202,7 +195,6 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 .dark .theme-image { filter:brightness(.86) contrast(1.06) saturate(.84); }
 .dark .gallery-tile:hover .theme-image { filter:brightness(.94) contrast(1.04) saturate(.96); }
 .dark .gallery-rail-image:hover .theme-image { filter:brightness(.94) contrast(1.04) saturate(1); }
-.dark .project-card:hover .theme-image { filter:brightness(.94) contrast(1.04) saturate(.96); }
 .dark .project-detail-image .theme-image,.dark .project-detail-gallery .theme-image { filter:brightness(.9) contrast(1.04) saturate(.88); }
 .image-preset-architecture { filter:saturate(.9) contrast(1.05) sepia(.04); }
 .image-preset-interior { filter:saturate(1.08) contrast(.98) sepia(.06); }
@@ -594,9 +586,6 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
   .privacy-copy h2 { font-size:47px; }
   .privacy-copy h3 { margin-top:34px; }
 }
-@media (min-width: 901px) and (prefers-reduced-motion:no-preference) {
-  .project-card:hover .project-image-wrap { transform:rotateX(1.4deg) rotateY(-1.4deg) translateZ(4px); }
-}
 @media (max-width: 900px) {
   .services-page-grid { display:block; background:none; border-top:0; }
   .services-page-card { min-height:340px; margin-bottom:12px; padding:22px 20px 25px; }
@@ -610,7 +599,6 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
   .hero-title-line>span { animation:none; opacity:1; transform:none; }
   .hero-image img,.project-card-reveal,.service-row-reveal,.services-page-card,.text-reveal>span,.project-detail-transition,.lightbox-image-motion,.button,.project-image-wrap,.gallery-tile img,.image-loading { animation:none; transition:none; opacity:1; transform:none; }
   .hero-image-interactive { cursor:default; }
-  .hover-follow-label { display:none; }
   .gallery-rail-image { animation: none; }
   .gallery-grid,.project-results-grid { animation: none; }
 }

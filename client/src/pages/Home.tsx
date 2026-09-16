@@ -909,7 +909,6 @@ function SectionLabel({ number, children, dark = false }: { number: string; chil
 function ProjectCard({ project, featured = false, preset = "auto" }: { project: Project; featured?: boolean; preset?: ColorPreset }) {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [pointer, setPointer] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const card = cardRef.current;
@@ -930,12 +929,8 @@ function ProjectCard({ project, featured = false, preset = "auto" }: { project: 
 
   return (
     <Link ref={cardRef} href={`/projects/${project.slug}`} className={`project-card project-card-reveal ${isVisible ? "project-card-visible" : ""} ${featured ? "project-card-featured" : ""}`}>
-      <div className="project-image-wrap" onPointerMove={(event) => { const bounds = event.currentTarget.getBoundingClientRect(); setPointer({ x: event.clientX - bounds.left, y: event.clientY - bounds.top }); }}>
+      <div className="project-image-wrap">
         <SafeImage src={project.image} alt={project.title} className={`project-image theme-image ${imagePresetClass(project.category, preset)}`} />
-        <div className="project-image-overlay" />
-        <span className="project-status-tag">BUILT</span>
-        <span className="project-view">View project <ArrowUpRight size={16} /></span>
-        <span className="hover-follow-label" style={{ left: pointer.x, top: pointer.y }}>{project.title} <ArrowUpRight size={14} /></span>
       </div>
       <div className="project-meta"><div><h3>{project.title}</h3><p>{project.note}</p></div><span className="project-label-tag">BUILT</span></div>
     </Link>
