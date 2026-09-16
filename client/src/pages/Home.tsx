@@ -1246,43 +1246,9 @@ export function AboutPage() {
 }
 
 export function ProjectsPage() {
-  const { projects: portfolioProjects } = usePortfolioProjects();
-  const discovery = useProjectDiscoveryState();
-  const { query, filter, sort, year } = discovery;
-  const [preset, setPreset] = useColorPreset();
-  const filters = ["All", "Architecture", "Interior", "3D Visualization", "Graphic Design", "Branding"];
-  const filtered = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
-    return portfolioProjects.filter((project) => {
-      const matchesFilter = filter === "All" || project.category === filter;
-      const searchable = `${project.title} ${project.category} ${project.location} ${project.client}`.toLowerCase();
-      return matchesFilter && (year === "All" || project.year === year) && (!normalizedQuery || searchable.includes(normalizedQuery));
-    }).sort((a, b) => sort === "newest" ? Number(b.year) - Number(a.year) : sort === "oldest" ? Number(a.year) - Number(b.year) : sort === "location" ? a.location.localeCompare(b.location) : sort === "client" ? a.client.localeCompare(b.client) : a.size.localeCompare(b.size));
-  }, [filter, portfolioProjects, query, sort, year]);
-  const counts = useMemo(() => Object.fromEntries(filters.map((item) => [item, item === "All" ? portfolioProjects.length : portfolioProjects.filter((project) => project.category === item).length])), [filters, portfolioProjects]);
-  const years = useMemo(() => Array.from(new Set(portfolioProjects.map((project) => project.year))).sort((a, b) => Number(b) - Number(a)), [portfolioProjects]);
-  const uniqueProjects = useMemo(() => {
-    const seenImages = new Set<string>();
-    return filtered.filter((project) => {
-      if (seenImages.has(project.image)) return false;
-      seenImages.add(project.image);
-      return true;
-    });
-  }, [filtered]);
-  const visibleProjects = uniqueProjects;
-  return (
-    <PageShell>
-      <section className="page-hero projects-hero"><p className="eyebrow">Portfolio / Selected work</p><h1>Ideas made<br /><em>visible.</em></h1><p className="page-hero-copy">A selection of spaces, images, and identities shaped with care.</p></section>
-      <section className="projects-section">
-        <SearchFilterControls query={query} onQueryChange={discovery.setQuery} filter={filter} onFilterChange={discovery.setFilter} sort={sort} onSortChange={discovery.setSort} year={year} onYearChange={discovery.setYear} filters={filters} counts={counts} years={years} />
-        <ColorPresetControls preset={preset} onChange={setPreset} />
-        <div className="projects-grid project-results-grid" key={`projects-${filter}-${query}-${sort}-${year}`}>{visibleProjects.map((project) => <ProjectCard key={project.slug} project={project} preset={preset} />)}</div>
-        {filtered.length > 0 && <p className="projects-limit-note">All selected projects with distinct imagery.</p>}
-        {filtered.length === 0 && <p className="empty">More work in this discipline is on its way.</p>}
-      </section>
-      <CTA />
-    </PageShell>
-  );
+  const [, navigate] = useLocation();
+  useEffect(() => { navigate("/#projects"); }, [navigate]);
+  return null;
 }
 
 export function ProjectDetailPage() {
@@ -1338,7 +1304,7 @@ export function ProjectDetailPage() {
   }, [nextProject.slug, previousProject.slug]);
   return (
     <PageShell>
-      <section className="project-detail-hero"><Link href="/projects" className="back-link"><ChevronLeft size={17} /> All projects</Link><p className="eyebrow">{project.category} / {project.year}</p><h1>{project.title}</h1><div className="project-detail-meta"><div><span>Location</span><p>{project.location}</p></div><div><span>Client</span><p>{project.client}</p></div><div><span>Scope</span><p>{project.note}</p></div><div><span>Year</span><p>{project.year}</p></div></div><p className="project-navigation-hint" aria-label="Project navigation instructions">← → Use arrow keys · Swipe to browse</p></section>
+      <section className="project-detail-hero"><Link href="/#projects" className="back-link"><ChevronLeft size={17} /> Selected work</Link><p className="eyebrow">{project.category} / {project.year}</p><h1>{project.title}</h1><div className="project-detail-meta"><div><span>Location</span><p>{project.location}</p></div><div><span>Client</span><p>{project.client}</p></div><div><span>Scope</span><p>{project.note}</p></div><div><span>Year</span><p>{project.year}</p></div></div><p className="project-navigation-hint" aria-label="Project navigation instructions">← → Use arrow keys · Swipe to browse</p></section>
       <section className="project-detail-image project-main-image"><ColorPresetControls preset={preset} onChange={setPreset} /><SafeImage src={project.image} alt={project.title} className={`theme-image ${imagePresetClass(project.category, preset)}`} /></section>
       <section className="project-narrative"><div><SectionLabel number="Project story">{isShHotel ? "Hospitality / Built work" : "A deliberate response"}</SectionLabel></div><div>{isShHotel ? <><p className="large-copy">A hospitality interior shaped for calm, practical guest experience.</p><p>SH Hotel is presented in the Company Profile preview as a Phnom Penh hospitality project. The design direction balances arrival, circulation and the everyday rhythm of the hotel, keeping the experience clear from first impression through continued operation.</p><p>Our role connects interior design thinking with fit-out coordination, material decisions and the practical controls needed to move from a considered proposal to a business-ready space.</p></> : <><p className="large-copy">{project.description}</p><p>Every project begins with a close reading of its context—the site, the brief, the people who will use it. We turn those findings into a clear design language, testing each decision against the experience it creates.</p><p>Here, a limited palette and a sequence of framed openings became the foundation for an atmosphere that is both composed and generous.</p></>}</div></section>
       <section className="project-detail-gallery">{project.gallery.map((image, index) => <figure key={`${image}-${index}`} className={index === 0 ? "project-detail-gallery-featured" : ""}><SafeImage src={image} alt={`${project.title} detail ${index + 1}`} className={`theme-image ${imagePresetClass(project.category, preset)}`} /><figcaption>{index === 0 ? "Material and proportion" : index === 1 ? "Atmosphere study" : "A considered frame"}</figcaption></figure>)}</section>
