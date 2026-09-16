@@ -773,17 +773,11 @@ export function PageShell({ children }: { children: React.ReactNode }) {
     return () => { window.history.scrollRestoration = previousRestoration; };
   }, []);
   useEffect(() => {
-    const savedProjectScroll = location === "/projects" ? sessionStorage.getItem("luxh-project-scroll") : null;
-    const targetScroll = savedProjectScroll ? Number(savedProjectScroll) : 0;
-    const restoreScroll = () => window.scrollTo({ top: Number.isFinite(targetScroll) ? targetScroll : 0, left: 0, behavior: "auto" });
+    const restoreScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     restoreScroll();
     const frame = window.requestAnimationFrame(() => window.requestAnimationFrame(restoreScroll));
-    const delayedRestore = window.setTimeout(restoreScroll, savedProjectScroll ? 180 : 0);
-    const clearSavedPosition = savedProjectScroll ? window.setTimeout(() => sessionStorage.removeItem("luxh-project-scroll"), 600) : undefined;
     return () => {
       window.cancelAnimationFrame(frame);
-      window.clearTimeout(delayedRestore);
-      if (clearSavedPosition) window.clearTimeout(clearSavedPosition);
     };
   }, [location]);
   useEffect(() => {
@@ -971,7 +965,7 @@ function ProjectCard({ project, featured = false, preset = "auto" }: { project: 
   }, []);
 
   return (
-    <Link ref={cardRef} href={`/projects/${project.slug}`} onClick={() => { if (window.location.pathname === "/projects") sessionStorage.setItem("luxh-project-scroll", String(window.scrollY)); }} className={`project-card project-card-reveal ${isVisible ? "project-card-visible" : ""} ${featured ? "project-card-featured" : ""}`}>
+    <Link ref={cardRef} href={`/projects/${project.slug}`} className={`project-card project-card-reveal ${isVisible ? "project-card-visible" : ""} ${featured ? "project-card-featured" : ""}`}>
       <div className="project-image-wrap">
         <SafeImage src={project.image} alt={project.title} className={`project-image theme-image ${imagePresetClass(project.category, preset)}`} />
       </div>
