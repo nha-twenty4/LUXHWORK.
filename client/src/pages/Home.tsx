@@ -773,9 +773,12 @@ export function PageShell({ children }: { children: React.ReactNode }) {
     return () => { window.history.scrollRestoration = previousRestoration; };
   }, []);
   useEffect(() => {
-    const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    resetScroll();
-    const frame = window.requestAnimationFrame(resetScroll);
+    const savedProjectScroll = location === "/projects" ? sessionStorage.getItem("luxh-project-scroll") : null;
+    const targetScroll = savedProjectScroll ? Number(savedProjectScroll) : 0;
+    if (savedProjectScroll) sessionStorage.removeItem("luxh-project-scroll");
+    const restoreScroll = () => window.scrollTo({ top: Number.isFinite(targetScroll) ? targetScroll : 0, left: 0, behavior: "auto" });
+    restoreScroll();
+    const frame = window.requestAnimationFrame(() => window.requestAnimationFrame(restoreScroll));
     return () => {
       window.cancelAnimationFrame(frame);
     };
@@ -965,7 +968,7 @@ function ProjectCard({ project, featured = false, preset = "auto" }: { project: 
   }, []);
 
   return (
-    <Link ref={cardRef} href={`/projects/${project.slug}`} className={`project-card project-card-reveal ${isVisible ? "project-card-visible" : ""} ${featured ? "project-card-featured" : ""}`}>
+    <Link ref={cardRef} href={`/projects/${project.slug}`} onClick={() => { if (window.location.pathname === "/projects") sessionStorage.setItem("luxh-project-scroll", String(window.scrollY)); }} className={`project-card project-card-reveal ${isVisible ? "project-card-visible" : ""} ${featured ? "project-card-featured" : ""}`}>
       <div className="project-image-wrap">
         <SafeImage src={project.image} alt={project.title} className={`project-image theme-image ${imagePresetClass(project.category, preset)}`} />
       </div>
