@@ -963,7 +963,7 @@ function ProjectCard({ project, featured = false, preset = "auto" }: { project: 
   }, []);
 
   return (
-    <Link ref={cardRef} href={`/projects/${project.slug}`} aria-label={`Open ${project.title} project details`} className={`project-card project-card-reveal ${isVisible ? "project-card-visible" : ""} ${featured ? "project-card-featured" : ""}`}>
+    <Link ref={cardRef} href={`/projects/${project.slug}`} className={`project-card project-card-reveal ${isVisible ? "project-card-visible" : ""} ${featured ? "project-card-featured" : ""}`}>
       <div className="project-image-wrap">
         <SafeImage src={project.image} alt={project.title} className={`project-image theme-image ${imagePresetClass(project.category, preset)}`} />
       </div>
