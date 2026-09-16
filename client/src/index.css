@@ -681,3 +681,7 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
   .home-about-story { padding-top:78px; padding-bottom:78px; }
   .home-about-stats { padding-bottom:82px; }
 }
+
+/* Single-page navigation sections. */
+#hero, #about, #projects, #services, #contact { scroll-margin-top:81px; }
+@media (max-width:900px) { #hero, #about, #projects, #services, #contact { scroll-margin-top:67px; } }

@@ -806,7 +806,8 @@ export function PageShell({ children }: { children: React.ReactNode }) {
 function Header() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
-  const headerItems = navItems.map(([label, href]) => [label, label === "About" && location === "/" ? "#about" : href] as const);
+  const sectionIds: Record<string, string> = { Home: "hero", About: "about", Projects: "projects", Services: "services", Contact: "contact" };
+  const headerItems = navItems.map(([label]) => [label, location === "/" ? `#${sectionIds[label]}` : `/#${sectionIds[label]}`] as const);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const isHomeTop = location === "/" && !scrolled;
@@ -1144,14 +1145,14 @@ export function Home() {
         </div>
       </section>
 
-      <section className="featured">
+      <section className="featured" id="projects">
         <SectionLabel number="02">Selected work / Built projects</SectionLabel>
         {/* Full Projects page continues to reveal work in batches with slice(0, 6). */}
         <div className="featured-head"><h2>Spaces shaped around<br /><em>business purpose.</em></h2><p className="featured-head-copy">From regional offices to jewellery, hospitality and F&amp;B, our work connects commercial goals with a disciplined delivery process.</p></div>
         <div className="featured-grid featured-grid-three">{["house-14", "the-hynd-hotel", "atelier-common"].slice(0, 3).map((slug, index) => { const project = portfolioProjects.find((item) => item.slug === slug); return project ? <ProjectCard key={project.slug} project={project} featured={index === 0} /> : null; })}</div><Link href="/projects" className="text-link featured-all-link">View all projects <ArrowUpRight size={16} /></Link>
       </section>
 
-      <section className="services-preview" id="capabilities">
+      <section className="services-preview" id="services">
         <SectionLabel number="03">What we do / Current services</SectionLabel>
         <div className="service-rows">
           {services.map((service) => <Link href={`/services/${serviceSlug(service.title)}`} className="service-row service-row-reveal" key={service.number}><span>{service.number}</span><h3 className="text-reveal"><span>{service.title}</span></h3><p>{service.items.join(" · ")}</p><ArrowUpRight size={20} /></Link>)}
@@ -1176,7 +1177,7 @@ export function Home() {
 
       <GallerySection />
       <AboutInline />
-      <CTA id="enquiry-band" />
+      <CTA id="contact" />
     </PageShell>
   );
 }
