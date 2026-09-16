@@ -1055,10 +1055,9 @@ function GallerySection() {
 
   return (
     <>
-      <section className="visual-gallery" id="gallery">
+      <section className="visual-gallery" id="projects">
         <div className="visual-gallery-head">
-          <SectionLabel number="05">Visual journal / Details in context</SectionLabel>
-          <Link href="/projects" className="text-link">Open the full gallery <ArrowUpRight size={16} /></Link>
+          <SectionLabel number="02">Selected work / Built projects</SectionLabel>
         </div>
         <SearchFilterControls query={query} onQueryChange={discovery.setQuery} filter={filter} onFilterChange={discovery.setFilter} sort={sort} onSortChange={discovery.setSort} year={year} onYearChange={discovery.setYear} filters={filters} counts={counts} years={years} />
         <ColorPresetControls preset={preset} onChange={setPreset} />
@@ -1094,7 +1093,6 @@ function GallerySection() {
 }
 
 export function Home() {
-  const { projects: portfolioProjects } = usePortfolioProjects();
   const heroImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -1178,12 +1176,7 @@ export function Home() {
       </section>
       <AboutInline />
 
-      <section className="featured" id="projects">
-        <SectionLabel number="02">Selected work / Built projects</SectionLabel>
-        {/* Full Projects page continues to reveal work in batches with slice(0, 6). */}
-        <div className="featured-head"><h2>Spaces shaped around<br /><em>business purpose.</em></h2><p className="featured-head-copy">From regional offices to jewellery, hospitality and F&amp;B, our work connects commercial goals with a disciplined delivery process.</p></div>
-        <div className="featured-grid featured-grid-three">{["house-14", "the-hynd-hotel", "atelier-common"].slice(0, 3).map((slug, index) => { const project = portfolioProjects.find((item) => item.slug === slug); return project ? <ProjectCard key={project.slug} project={project} featured={index === 0} /> : null; })}</div><Link href="/projects" className="text-link featured-all-link">View all projects <ArrowUpRight size={16} /></Link>
-      </section>
+      <GallerySection />
 
       <section className="services-preview" id="services">
         <SectionLabel number="03">What we do / Current services</SectionLabel>
@@ -1208,7 +1201,6 @@ export function Home() {
         </div>
       </section>
 
-      <GallerySection />
       <CTA id="contact" />
     </PageShell>
   );
