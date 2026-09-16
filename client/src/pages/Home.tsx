@@ -942,7 +942,7 @@ function SectionLabel({ number, children, dark = false }: { number: string; chil
 }
 
 function ProjectCard({ project, featured = false, preset = "auto" }: { project: Project; featured?: boolean; preset?: ColorPreset }) {
-  const cardRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLAnchorElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -963,12 +963,12 @@ function ProjectCard({ project, featured = false, preset = "auto" }: { project: 
   }, []);
 
   return (
-    <article ref={cardRef} className={`project-card project-card-reveal ${isVisible ? "project-card-visible" : ""} ${featured ? "project-card-featured" : ""}`}>
+    <Link ref={cardRef} href={`/projects/${project.slug}`} className={`project-card project-card-reveal ${isVisible ? "project-card-visible" : ""} ${featured ? "project-card-featured" : ""}`}>
       <div className="project-image-wrap">
         <SafeImage src={project.image} alt={project.title} className={`project-image theme-image ${imagePresetClass(project.category, preset)}`} />
       </div>
       <div className="project-meta"><div><h3>{project.title}</h3><p>{project.note}</p></div><span className="project-label-tag">BUILT</span></div>
-    </article>
+    </Link>
   );
 }
 
