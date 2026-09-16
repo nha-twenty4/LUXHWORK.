@@ -1144,6 +1144,7 @@ export function Home() {
           <div><span>04</span><strong>MEP COORDINATION</strong><p>Services planned with the interior</p></div>
         </div>
       </section>
+      <AboutInline />
 
       <section className="featured" id="projects">
         <SectionLabel number="02">Selected work / Built projects</SectionLabel>
@@ -1176,7 +1177,6 @@ export function Home() {
       </section>
 
       <GallerySection />
-      <AboutInline />
       <CTA id="contact" />
     </PageShell>
   );
