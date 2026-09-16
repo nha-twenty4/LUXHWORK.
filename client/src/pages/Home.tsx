@@ -1004,6 +1004,13 @@ export function Home() {
   const heroImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (window.location.hash !== "#projects") return;
+    const scrollToProjects = () => document.getElementById("projects")?.scrollIntoView({ block: "start" });
+    const frame = window.requestAnimationFrame(scrollToProjects);
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
     const heroImage = heroImageRef.current;
     const image = heroImage?.querySelector("img");
     if (!heroImage || !image || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
