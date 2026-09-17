@@ -1117,7 +1117,7 @@ function AboutInline() {
 
 function AboutVisualHero({ compact = false }: { compact?: boolean }) {
   return <section className={`about-visual-hero${compact ? " about-visual-hero-compact" : ""}`}>
-    <SafeImage src={companyImages.bar} alt="LUXHWORK commercial interior project" />
+    <SafeImage src="/about-image-upscaled.png" alt="LUXHWORK commercial interior project" />
     <div className="about-visual-heading"><p className="eyebrow eyebrow-light">PHNOM PENH / SINCE 2019</p><h1>Local execution,<br />regional standards,<br />since 2019.</h1></div>
     <div className="about-visual-card"><SectionLabel number="About LUXHWORK" /><h2>A commercial interior consultancy and fit-out company serving businesses in Cambodia and Thailand.</h2><p>Our team connects considered design with planning, MEP coordination, construction knowledge and hands-on follow-through — helping clients reach opening day with clearer decisions and fewer avoidable surprises.</p><div className="about-visual-stats"><div><strong>2019</strong><span>Founded</span></div><div><strong>05</strong><span>Core services</span></div><div><strong>02</strong><span>Countries</span></div></div></div>
   </section>;
