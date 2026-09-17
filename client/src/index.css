@@ -670,7 +670,6 @@ html.dark .contact-detail-block>p { color:#c0c6c0; }
 
 /* Inline About chapter reached by scrolling from the Home page. */
 .about-visual-hero { min-height:calc(100svh - 81px); position:relative; overflow:hidden; background:var(--dark); color:#f8f6f0; display:flex; align-items:center; padding:104px 3.2vw; }
-.about-visual-hero>img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.82; }
 .about-visual-hero:after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(32,37,33,.35),transparent 52%),linear-gradient(0deg,rgba(10,12,11,.25),transparent 58%); pointer-events:none; }
 .about-visual-heading { position:relative; z-index:1; align-self:flex-start; margin:50px auto 0 0; max-width:610px; }
 .about-visual-heading .eyebrow { color:var(--brick); font-weight:600; }
@@ -695,7 +694,6 @@ html.dark .about-visual-card .about-visual-stats { border-top-color:rgba(243,241
 .dark .expertise { background:var(--paper); color:var(--ink); }
 @media (max-width:900px) {
   .about-visual-hero { min-height:calc(100svh - 67px); display:block; padding:116px 20px 34px; }
-  .about-visual-hero>img { object-position:58% center; }
   .about-visual-hero:after { background:linear-gradient(180deg,rgba(10,12,11,.74),rgba(10,12,11,.28) 48%,rgba(10,12,11,.72)); }
   .about-visual-heading { margin:0; max-width:100%; }
   .about-visual-heading h1 { margin-top:23px; font-size:clamp(43px,11vw,66px); line-height:.98; }
