@@ -550,8 +550,6 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 @media (max-width: 900px) {
   .nav-whatsapp { display:none; }
   .mobile-whatsapp { display:inline-flex; align-items:center; gap:8px; width:max-content; margin-top:24px; padding:10px 12px; border:1px solid rgba(248,246,240,.24); border-radius:999px; color:#f8f6f0; font-family:'DM Mono',monospace; font-size:10px; text-transform:uppercase; }
-  .hero-actions { width:100%; }
-  .hero-actions .button { flex:1 1 auto; justify-content:center; }
   .featured-grid-three { display:block; }
   .featured-grid-three .project-card { margin-bottom:39px; }
   .contact-enquiry-form { margin-top:78px; padding:28px 20px 32px; }
