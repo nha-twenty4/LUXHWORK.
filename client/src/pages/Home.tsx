@@ -988,6 +988,7 @@ function GallerySection() {
     <section className="visual-gallery" id="projects">
       <div className="visual-gallery-head">
         <div className="selected-work-heading"><SectionLabel number="02">Selected work / Built projects</SectionLabel><h2>Spaces shaped around<br /><em>business purpose.</em></h2></div>
+        <p className="selected-work-intro">From regional offices to jewellery, hospitality and F&amp;B, our work connects commercial goals with a disciplined delivery process.</p>
       </div>
       <div className="selected-work-grid">
         {projects.map((project) => (
