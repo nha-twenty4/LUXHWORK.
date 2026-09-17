@@ -1004,9 +1004,9 @@ export function Home() {
   const heroImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (window.location.hash !== "#projects") return;
-    const scrollToProjects = () => document.getElementById("projects")?.scrollIntoView({ behavior: "auto", block: "start" });
-    const frame = window.requestAnimationFrame(scrollToProjects);
+    if (!["#projects", "#services"].includes(window.location.hash)) return;
+    const scrollToSection = () => document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ behavior: "auto", block: "start" });
+    const frame = window.requestAnimationFrame(scrollToSection);
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
@@ -1239,7 +1239,7 @@ export function ServiceDetailPage() {
   const copy = serviceDetailCopy[serviceSlug(service.title)] ?? serviceDetailCopy["fit-out-works"];
   const ServiceIcon = service.icon;
   const serviceImage = serviceReferenceImages[serviceSlug(service.title)] ?? serviceReferenceFallback;
-  return <PageShell><section className="service-detail"><div className="service-detail-image"><SafeImage src={serviceImage} fallbackSrc={serviceReferenceFallback} alt={`${service.title} — LUXHWORK service`} /></div><div className="service-detail-copy"><Link href="/services" className="back-link">← All capabilities</Link><p className="eyebrow eyebrow-light">{service.number} / {service.title}</p><h1>{copy.headline}</h1><p className="service-detail-body">{copy.body}</p><Link href="/contact" className="button button-service">Discuss your project <ArrowUpRight size={17} /></Link><div className="service-detail-tags">{copy.tags}</div><div className="service-detail-icon"><ServiceIcon size={34} strokeWidth={1.2} /></div></div></section><section className="service-detail-scope"><SectionLabel number="Scope / What we bring">{service.title}</SectionLabel><div className="service-detail-scope-grid">{service.items.map((item, index) => <div key={item}><span>0{index + 1}</span><h2>{item}</h2><p>Clear decisions, careful coordination and a practical route from brief to finished space.</p></div>)}</div></section><CTA id="enquiry-band" /></PageShell>;
+  return <PageShell><section className="service-detail"><div className="service-detail-image"><SafeImage src={serviceImage} fallbackSrc={serviceReferenceFallback} alt={`${service.title} — LUXHWORK service`} /></div><div className="service-detail-copy"><a href="/#services" className="back-link">← What we do / Current services</a><p className="eyebrow eyebrow-light">{service.number} / {service.title}</p><h1>{copy.headline}</h1><p className="service-detail-body">{copy.body}</p><Link href="/contact" className="button button-service">Discuss your project <ArrowUpRight size={17} /></Link><div className="service-detail-tags">{copy.tags}</div><div className="service-detail-icon"><ServiceIcon size={34} strokeWidth={1.2} /></div></div></section><section className="service-detail-scope"><SectionLabel number="Scope / What we bring">{service.title}</SectionLabel><div className="service-detail-scope-grid">{service.items.map((item, index) => <div key={item}><span>0{index + 1}</span><h2>{item}</h2><p>Clear decisions, careful coordination and a practical route from brief to finished space.</p></div>)}</div></section><CTA id="enquiry-band" /></PageShell>;
 }
 
 export function ServicesPage() {

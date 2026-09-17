@@ -12,7 +12,6 @@ import {
   Home,
   ProjectDetailPage,
   ProjectsPage,
-  ServicesPage,
   ServiceDetailPage,
 } from "./pages/Home";
 
@@ -24,7 +23,7 @@ function Router() {
       <Route path="/about" component={AboutPage} />
       <Route path="/projects" component={ProjectsPage} />
       <Route path="/projects/:slug" component={ProjectDetailPage} />
-      <Route path="/services" component={ServicesPage} />
+      <Route path="/services" component={Home} />
       <Route path="/services/:slug" component={ServiceDetailPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/privacy" component={PrivacyPage} />
