@@ -983,16 +983,42 @@ function ProjectCard({ project, featured = false, preset = "auto" }: { project: 
 function GallerySection() {
   const { projects } = usePortfolioProjects();
   const [preset] = useColorPreset();
+  const galleryRef = useRef<HTMLElement>(null);
+  const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const section = galleryRef.current;
+    if (!section) return;
+    const cards = Array.from(section.querySelectorAll<HTMLElement>('.selected-work-card'));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+      setVisibleCards(new Set(cards.map((card) => card.dataset.slug || '')));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      setVisibleCards((current) => {
+        const next = new Set(current);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) next.add((entry.target as HTMLElement).dataset.slug || '');
+        });
+        return next;
+      });
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8%' });
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, [projects.length]);
 
   return (
-    <section className="visual-gallery" id="projects">
+    <section ref={galleryRef} className="visual-gallery" id="projects">
       <div className="visual-gallery-head">
         <div className="selected-work-heading"><SectionLabel number="02">Selected work / Built projects</SectionLabel><h2>Spaces shaped around<br /><em>business purpose.</em></h2></div>
         <p className="selected-work-intro">From regional offices to jewellery, hospitality and F&amp;B, our work connects commercial goals with a disciplined delivery process.</p>
       </div>
       <div className="selected-work-grid">
         {projects.map((project) => (
-          <article className="selected-work-card" key={project.slug}>
+          <article data-slug={project.slug} className={`selected-work-card ${visibleCards.has(project.slug) ? 'selected-work-card-visible' : ''}`} key={project.slug}>
             <Link href={`/projects/${project.slug}`} className="selected-work-image-link">
               <SafeImage src={project.image} alt={project.title} className={`project-image theme-image ${imagePresetClass(project.category, preset)}`} />
             </Link>
