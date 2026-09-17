@@ -32,9 +32,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .brand:hover img,.brand:hover .brand-wordmark { opacity:.82; transform:translateY(-1px); }
 .desktop-nav { display:flex; align-items:center; gap:26px; margin-left:auto; }
 .desktop-nav a { color:inherit; font-size:15px; position:relative; opacity:.68; transition:opacity .2s,color .2s,transform .2s; }
-.desktop-nav a:after { content:''; position:absolute; left:0; bottom:-7px; width:0; height:2px; background:var(--brick); transition:width .22s; }
+.desktop-nav a:after { content:none; }
 .desktop-nav a:hover,.desktop-nav .nav-active { opacity:1; color:var(--brick); transform:translateY(-1px); }
-.desktop-nav a:hover:after,.desktop-nav .nav-active:after { width:100%; }
 .nav-whatsapp { display:inline-flex; align-items:center; gap:7px; padding:8px 12px; border:1px solid currentColor; border-radius:999px; font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.04em; text-transform:uppercase; transition:color .2s,background .2s,transform .2s; }
 .nav-whatsapp span,.mobile-whatsapp span { width:6px; height:6px; border-radius:50%; background:#54bd73; }
 .nav-whatsapp:hover { color:var(--brick); transform:translateY(-1px); }
