@@ -1007,6 +1007,7 @@ function GallerySection() {
 }
 
 export function Home() {
+  const heroRef = useRef<HTMLElement>(null);
   const heroImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -1016,6 +1017,20 @@ export function Home() {
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame = 0;
+    const updateScrollProgress = () => {
+      frame = 0;
+      const progress = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / Math.max(1, hero.offsetHeight * 0.72)));
+      hero.style.setProperty("--hero-scroll-progress", progress.toFixed(3));
+    };
+    const handleScroll = () => { if (!frame) frame = window.requestAnimationFrame(updateScrollProgress); };
+    updateScrollProgress();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => { window.removeEventListener("scroll", handleScroll); if (frame) window.cancelAnimationFrame(frame); };
+  }, []);
   useEffect(() => {
     const heroImage = heroImageRef.current;
     const image = heroImage?.querySelector("img");
@@ -1064,7 +1079,7 @@ export function Home() {
 
   return (
     <PageShell>
-      <section className="hero" id="hero">
+      <section className="hero" id="hero" ref={heroRef}>
         <div className="hero-noise" />
         <div className="hero-copy">
           <p className="eyebrow eyebrow-light">PHNOM PENH · CAMBODIA &amp; THAILAND · SINCE 2019</p>
