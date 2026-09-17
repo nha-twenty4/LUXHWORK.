@@ -1110,17 +1110,17 @@ export function Home() {
 function AboutInline() {
   return (
     <section className="home-about" id="about">
-      <section className="page-hero page-hero-about home-about-hero">
-        <p className="eyebrow">ABOUT LUXHWORK / PHNOM PENH / SINCE 2019</p>
-        <h2>Local execution.<br /><em>Regional ambition.</em></h2>
-        <p className="page-hero-copy">A commercial interior consultancy and fit-out company serving businesses in Cambodia and the region.</p>
-      </section>
-      <section className="about-story home-about-story">
-        <div className="about-image"><SafeImage src={companyImages.bar} alt="LUXHWORK commercial interior project" /><span>About LUXHWORK / Phnom Penh</span></div>
-        <div className="about-copy"><SectionLabel number="01">About LUXHWORK</SectionLabel><h2>Commercial interiors<br /><em>with fewer surprises.</em></h2><p>We connect considered design with planning, MEP coordination, construction knowledge and hands-on follow-through — helping clients reach opening day with clearer decisions.</p><div className="about-stats home-about-stats"><SectionLabel number="02">At a glance</SectionLabel><div className="about-stats-grid"><div><strong>2019</strong><span>Founded</span></div><div><strong>05</strong><span>Core services</span></div><div><strong>02</strong><span>Countries</span></div></div></div></div>
-      </section>
+      <AboutVisualHero compact />
     </section>
   );
+}
+
+function AboutVisualHero({ compact = false }: { compact?: boolean }) {
+  return <section className={`about-visual-hero${compact ? " about-visual-hero-compact" : ""}`}>
+    <SafeImage src={companyImages.bar} alt="LUXHWORK commercial interior project" />
+    <div className="about-visual-heading"><p className="eyebrow eyebrow-light">PHNOM PENH / SINCE 2019</p><h1>Local execution,<br />regional standards,<br />since 2019.</h1></div>
+    <div className="about-visual-card"><SectionLabel number="About LUXHWORK" /><h2>A commercial interior consultancy and fit-out company serving businesses in Cambodia and Thailand.</h2><p>Our team connects considered design with planning, MEP coordination, construction knowledge and hands-on follow-through — helping clients reach opening day with clearer decisions and fewer avoidable surprises.</p><div className="about-visual-stats"><div><strong>2019</strong><span>Founded</span></div><div><strong>05</strong><span>Core services</span></div><div><strong>02</strong><span>Countries</span></div></div></div>
+  </section>;
 }
 function CTA({ id }: { id?: string } = {}) {
   return <section className="cta" id={id}><p>Have a project in mind?</p><h2>Let's create<br /><em>something great.</em></h2><Link href="/contact" className="button button-light">Start a conversation <ArrowUpRight size={17} /></Link><div className="cta-mark">LW</div></section>;
@@ -1129,16 +1129,7 @@ function CTA({ id }: { id?: string } = {}) {
 export function AboutPage() {
   return (
     <PageShell>
-      <section className="page-hero page-hero-about">
-        <p className="eyebrow">PHNOM PENH / SINCE 2019</p>
-        <h1>Local execution.<br /><em>Singapore-led discipline.</em><br />Regional ambition.</h1>
-        <p className="page-hero-copy">A commercial interior consultancy and fit-out company serving businesses in Cambodia and the region.</p>
-      </section>
-      <section className="about-story">
-        <div className="about-image"><SafeImage src={companyImages.bar} alt="LUXHWORK commercial interior project" /><span>About LUXHWORK / Phnom Penh</span></div>
-        <div className="about-copy"><SectionLabel number="01">About LUXHWORK</SectionLabel><h2>Commercial interiors<br /><em>with fewer surprises.</em></h2><p>A commercial interior consultancy and fit-out company serving businesses in Cambodia and the region.</p><p>Our team connects considered design with planning, MEP coordination, construction knowledge and hands-on follow-through — helping clients reach opening day with clearer decisions and fewer avoidable surprises.</p><Link href="/contact" className="text-link">Discuss your project <ArrowUpRight size={16} /></Link></div>
-      </section>
-      <section className="about-stats"><SectionLabel number="02">At a glance</SectionLabel><div className="about-stats-grid"><div><strong>2019</strong><span>Founded</span></div><div><strong>05</strong><span>Core services</span></div><div><strong>02</strong><span>Countries</span></div></div></section>
+      <AboutVisualHero />
       <section className="expertise"><SectionLabel number="03">Skills / How we think and make</SectionLabel><div className="expertise-grid"><div><span>01</span><h3>Spatial thinking</h3><p>Architecture, interiors, material, proportion, light.</p></div><div><span>02</span><h3>Visual narrative</h3><p>Art direction, visualization, image making, storytelling.</p></div><div><span>03</span><h3>Identity systems</h3><p>Brand strategy, visual identity, editorial, digital.</p></div></div></section>
       <CTA />
     </PageShell>
