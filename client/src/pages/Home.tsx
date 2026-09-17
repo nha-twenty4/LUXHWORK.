@@ -1116,7 +1116,7 @@ export function Home() {
         </div>
       </section>
 
-      <CTA id="contact" />
+      <ContactContent />
     </PageShell>
   );
 }
@@ -1281,6 +1281,10 @@ export function ServicesPage() {
 }
 
 export function ContactPage() {
+  return <PageShell><ContactContent /></PageShell>;
+}
+
+function ContactContent() {
   const submitInquiry = trpc.contact.submit.useMutation();
   const [formError, setFormError] = useState("");
   const submitForm = async (event: FormEvent<HTMLFormElement>) => {
@@ -1315,12 +1319,12 @@ export function ContactPage() {
     }
   };
   return (
-    <PageShell>
-      <section className="contact-hero"><p className="eyebrow eyebrow-light">Contact / New projects and thoughtful conversations</p><h1>Let's work<br /><em>together.</em></h1><div className="contact-intro"><p>Tell us a little about what you are making. We usually reply within two working days.</p><a href="mailto:ADMIN@LUXHWORK.COM" className="button button-light">ADMIN@LUXHWORK.COM <ArrowUpRight size={17} /></a></div><div className="contact-mark">LW</div></section>
+    <>
+      <section className="contact-hero" id="contact"><p className="eyebrow eyebrow-light">Contact / New projects and thoughtful conversations</p><h1>Let's work<br /><em>together.</em></h1><div className="contact-intro"><p>Tell us a little about what you are making. We usually reply within two working days.</p><a href="mailto:ADMIN@LUXHWORK.COM" className="button button-light">ADMIN@LUXHWORK.COM <ArrowUpRight size={17} /></a></div><div className="contact-mark">LW</div></section>
       <section className="contact-main"><div className="contact-details contact-details-centered"><SectionLabel number="01">Get in touch / Visit by appointment</SectionLabel><div className="contact-detail-block"><span>Phone</span><a href="tel:+85589900300">+855 89 900 300</a></div><div className="contact-detail-block"><span>Studio</span><p style={{ fontSize: "22px" }}>#MF, NO. 112G EO, STREET 19, SANGKAT PHSAR KANDAL 2, KHAN DAUN PENH, PHNOM PENH, KINGDOM OF CAMBODIA</p></div><div className="contact-detail-block"><span>Email</span><a href="mailto:ADMIN@LUXHWORK.COM">ADMIN@LUXHWORK.COM</a></div><div className="contact-detail-block"><span>Quick contact</span><div className="social-row"><a href="https://t.me/+85589900300" target="_blank" rel="noreferrer">Telegram <ArrowUpRight size={13} /></a><a href="https://wa.me/85589900300" target="_blank" rel="noreferrer">WhatsApp <ArrowUpRight size={13} /></a></div></div><div className="contact-detail-block"><span>Elsewhere</span><div className="social-row"><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram <ArrowUpRight size={13} /></a><a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook <ArrowUpRight size={13} /></a><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={13} /></a></div></div><div className="map-embed"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.746668399256!2d104.92322857573429!3d11.570009844053546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31095100543a4e07%3A0xbf41ffe7a166ec48!2sSH%20Hotel%20Phnom%20Penh!5e0!3m2!1sen!2skh!4v1788634858017!5m2!1sen!2skh" width="600" height="450" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin" title="SH Hotel Phnom Penh map" /></div></div>
         <form className="contact-form contact-enquiry-form" onSubmit={submitForm}><div className="form-intro"><span>02</span><h2>Send a project enquiry</h2></div><div className="form-split"><label>Name *<input name="name" required placeholder="Your name" /></label><label>Company<input name="company" placeholder="Company name" /></label><label>Email *<input name="email" type="email" required placeholder="you@company.com" /></label><label>Phone or WhatsApp *<input name="phone" required placeholder="+855 ..." /></label><label>Project type *<select name="service" required defaultValue=""><option value="" disabled>Select a service</option>{services.map((service) => <option value={service.title} key={service.number}>{service.title}</option>)}</select></label><label>Location *<input name="location" required placeholder="City / country" /></label><label>Approximate area (sqm)<input name="area" inputMode="numeric" placeholder="e.g. 300" /></label><label>Target opening date<input name="opening" placeholder="Month / year" /></label></div><label>What does the space need to achieve? *<textarea name="details" required minLength={20} rows={5} placeholder="Tell us about the business, space or brief..." /></label>{formError && <p className="form-error" role="alert">{formError}</p>}<p className="privacy-consent">By submitting this form you agree that LUXHWORK may contact you about your enquiry. See our Privacy Policy.</p><button type="submit" className="button button-dark" disabled={submitInquiry.isPending}>{submitInquiry.isPending ? "Sending…" : "Discuss your project"} <ArrowUpRight size={17} /></button></form>
       </section>
       <FAQSection />
-    </PageShell>
+    </>
   );
 }
