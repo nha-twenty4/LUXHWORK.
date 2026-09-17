@@ -1073,35 +1073,21 @@ export function Home() {
         </div>
         <div className="hero-image hero-image-interactive" ref={heroImageRef}><SafeImage src={companyImages.jewelleryWide} alt="LUK FOOK Jewellery commercial interior by LUXH Works" loading="eager" fetchPriority="high" sizes="(max-width: 760px) 100vw, 43vw" /><div className="hero-image-caption"><span>BUILT WORK / LUK FOOK JEWELLERY</span><span>PHNOM PENH</span></div></div>
         <div className="hero-footer-strip"><span>SINCE 2019</span><span>CAMBODIA • THAILAND</span><span>DESIGN TO AFTERCARE</span></div>
-        <a href="#intro" className="hero-scroll">Scroll to explore <ArrowDownRight size={16} /></a>
-      </section>
-
-      <section className="intro" id="intro">
-        <SectionLabel number="01">Belief / The reason behind the work</SectionLabel>
-        <div className="intro-grid">
-          <h2 className="text-reveal"><span>A space must perform,</span><span><em>not impress.</em></span></h2>
-          <div className="intro-copy"><p className="text-reveal text-reveal-copy"><span>We balance brand experience, operational need, cost control and buildability, so every decision earns its place in the budget.</span></p><Link href="/about" className="text-link">How we work <ArrowUpRight size={16} /></Link></div>
-        </div>
-        <div className="v2-capabilities-grid">
-          <div><span>01</span><strong>INTERIOR DESIGN</strong><p>Concept to technical detailing</p></div>
-          <div><span>02</span><strong>FIT-OUT WORKS</strong><p>Site works to opening day</p></div>
-          <div><span>03</span><strong>PROJECT MANAGEMENT</strong><p>Programme, cost and reporting</p></div>
-          <div><span>04</span><strong>MEP COORDINATION</strong><p>Services planned with the interior</p></div>
-        </div>
+        <a href="#about" className="hero-scroll">Scroll to explore <ArrowDownRight size={16} /></a>
       </section>
       <AboutInline />
 
       <GallerySection />
 
       <section className="services-preview" id="services">
-        <SectionLabel number="03">What we do / Current services</SectionLabel>
+        <SectionLabel number="01">What we do / Current services</SectionLabel>
         <div className="service-rows">
           {services.map((service) => <Link href={`/services/${serviceSlug(service.title)}`} className="service-row service-row-reveal" key={service.number}><span>{service.number}</span><h3 className="text-reveal"><span>{service.title}</span></h3><p>{service.items.join(" · ")}</p><ArrowUpRight size={20} /></Link>)}
         </div>
       </section>
 
       <section className="manifesto" id="process">
-        <SectionLabel number="04" dark>How we work / Process</SectionLabel>
+        <SectionLabel number="02" dark>How we work / Process</SectionLabel>
         <div className="v2-process-header">
           <p className="manifesto-kicker">HOW WE WORK</p>
           <h2>From business need to<br /><em>operational space.</em></h2>
