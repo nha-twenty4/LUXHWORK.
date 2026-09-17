@@ -987,7 +987,7 @@ function GallerySection() {
   return (
     <section className="visual-gallery" id="projects">
       <div className="visual-gallery-head">
-        <SectionLabel number="02">Selected work / Built projects</SectionLabel>
+        <div className="selected-work-heading"><SectionLabel number="02">Selected work / Built projects</SectionLabel><h2>Spaces shaped around<br /><em>business purpose.</em></h2></div>
       </div>
       <div className="selected-work-grid">
         {projects.map((project) => (
