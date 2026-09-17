@@ -1117,9 +1117,8 @@ function AboutInline() {
       </section>
       <section className="about-story home-about-story">
         <div className="about-image"><SafeImage src={companyImages.bar} alt="LUXHWORK commercial interior project" /><span>About LUXHWORK / Phnom Penh</span></div>
-        <div className="about-copy"><SectionLabel number="01">About LUXHWORK</SectionLabel><h2>Commercial interiors<br /><em>with fewer surprises.</em></h2><p>We connect considered design with planning, MEP coordination, construction knowledge and hands-on follow-through — helping clients reach opening day with clearer decisions.</p></div>
+        <div className="about-copy"><SectionLabel number="01">About LUXHWORK</SectionLabel><h2>Commercial interiors<br /><em>with fewer surprises.</em></h2><p>We connect considered design with planning, MEP coordination, construction knowledge and hands-on follow-through — helping clients reach opening day with clearer decisions.</p><div className="about-stats home-about-stats"><SectionLabel number="02">At a glance</SectionLabel><div className="about-stats-grid"><div><strong>2019</strong><span>Founded</span></div><div><strong>05</strong><span>Core services</span></div><div><strong>02</strong><span>Countries</span></div></div></div></div>
       </section>
-      <section className="about-stats home-about-stats"><SectionLabel number="02">At a glance</SectionLabel><div className="about-stats-grid"><div><strong>2019</strong><span>Founded</span></div><div><strong>05</strong><span>Core services</span></div><div><strong>02</strong><span>Countries</span></div></div></section>
     </section>
   );
 }
