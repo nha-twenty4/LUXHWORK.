@@ -667,7 +667,7 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 }
 
 /* Inline About chapter reached by scrolling from the Home page. */
-.about-visual-hero { min-height:634px; position:relative; overflow:hidden; background:var(--dark); color:#f8f6f0; display:flex; align-items:center; padding:104px 3.2vw; }
+.about-visual-hero { min-height:calc(100svh - 81px); position:relative; overflow:hidden; background:var(--dark); color:#f8f6f0; display:flex; align-items:center; padding:104px 3.2vw; }
 .about-visual-hero>img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.82; }
 .about-visual-hero:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(10,12,11,.85) 0%,rgba(10,12,11,.48) 43%,rgba(10,12,11,.18) 100%),linear-gradient(0deg,rgba(10,12,11,.55),transparent 50%); }
 .about-visual-heading { position:relative; z-index:1; align-self:flex-start; margin:50px auto 0 0; max-width:610px; }
@@ -686,7 +686,7 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 .home-about-story { padding-top:105px; padding-bottom:105px; }
 .home-about-stats { padding-top:0; padding-bottom:110px; }
 @media (max-width:900px) {
-  .about-visual-hero { min-height:720px; display:block; padding:116px 20px 34px; }
+  .about-visual-hero { min-height:calc(100svh - 67px); display:block; padding:116px 20px 34px; }
   .about-visual-hero>img { object-position:58% center; }
   .about-visual-hero:after { background:linear-gradient(180deg,rgba(10,12,11,.74),rgba(10,12,11,.28) 48%,rgba(10,12,11,.72)); }
   .about-visual-heading { margin:0; max-width:100%; }
