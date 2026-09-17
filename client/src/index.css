@@ -13,7 +13,7 @@ body { margin:0; background:var(--paper); color:var(--ink); font-family:'DM Sans
 a { color:inherit; text-decoration:none; }
 button,input,textarea,select { font:inherit; }
 button { border:0; }
-button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible { outline:2px solid var(--brick); outline-offset:4px; }
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
 .site-shell { overflow:hidden; }
 .site-header { position:fixed; top:0; left:0; z-index:50; width:100%; transition:background .22s ease, color .22s ease, border-color .22s ease; }
 .header-on-hero { color:#f8f6f0; }
@@ -176,7 +176,7 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 .gallery-filter-row { display:flex; flex-wrap:wrap; gap:8px 23px; padding:0 0 27px; }
 .gallery-filter-row button { padding:0; border:0; background:transparent; color:var(--muted); font-family:'DM Mono',monospace; font-size:10px; cursor:pointer; transition:color .2s; }
 .gallery-filter-row button:hover,.gallery-filter-row .gallery-filter-active { color:var(--brick); }
-.gallery-filter-row .gallery-filter-active:before { content:'— '; }
+.gallery-filter-row .gallery-filter-active:before { content:none; }
 .search-filter-controls { margin:0 0 28px; }
 .project-search { display:flex; align-items:center; gap:10px; width:min(520px,100%); padding:12px 0; color:var(--muted); border-bottom:1px solid var(--line); transition:color .2s,border-color .2s; }
 .project-search:focus-within { color:var(--brick); border-color:var(--brick); }
@@ -416,7 +416,7 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 .filter-row { display:flex; flex-wrap:wrap; gap:8px 25px; padding:28px 0 39px; border-bottom:1px solid var(--line); }
 .filter-row button { background:transparent; padding:0; color:var(--muted); font-family:'DM Mono',monospace; font-size:10px; transition:color .2s; }
 .filter-row button:hover,.filter-row .filter-active { color:var(--brick); }
-.filter-row .filter-active:before { content:'— '; }
+.filter-row .filter-active:before { content:none; }
 .projects-grid { margin-top:39px; display:grid; grid-template-columns:repeat(2,1fr); gap:62px 24px; }
 .project-results-grid .project-card:nth-child(3n+1) { grid-column:auto; width:auto; }
 .projects-limit-note { margin:38px 0 0; color:var(--muted); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.04em; text-transform:uppercase; }
