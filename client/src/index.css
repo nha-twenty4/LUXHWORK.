@@ -304,7 +304,7 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 .footer-links .footer-contact { color:rgba(248,246,240,.9); font-size:11px; transition:color .2s,transform .2s; }
 .footer-links .footer-contact:hover { color:#dcab9e; transform:translateX(5px); }
 .footer-bottom { padding-top:18px; border-top:1px solid rgba(248,246,240,.15); display:flex; justify-content:space-between; color:rgba(248,246,240,.45); font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.02em; }
-.footer-nap { display:grid; grid-template-columns:1.65fr .8fr .8fr; gap:clamp(30px,6vw,100px); padding:28px 0 30px; border-top:1px solid rgba(248,246,240,.15); color:rgba(248,246,240,.58); font-family:'DM Mono',monospace; font-size:9px; line-height:1.7; }
+.footer-nap { display:grid; grid-template-columns:1.45fr .8fr .8fr; gap:clamp(30px,6vw,100px); padding:28px 0 30px; border-top:1px solid rgba(248,246,240,.15); color:rgba(248,246,240,.58); font-family:'DM Mono',monospace; font-size:9px; line-height:1.7; }
 .footer-nap>div { min-width:0; }
 .footer-nap strong { display:block; margin-bottom:8px; color:#f8f6f0; font-size:11px; letter-spacing:.08em; }
 .footer-nap p { margin:0; max-width:420px; }
