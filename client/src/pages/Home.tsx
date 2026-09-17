@@ -1116,7 +1116,7 @@ export function Home() {
           </h1>
           <div className="hero-bottom">
             <div className="hero-bottom-copy"><p>Interior consultancy, design, fit-out and aftercare for offices, retail, hospitality and F&amp;B.</p><div className="hero-mobile-meta"><a href="#about">Scroll to explore <ArrowDownRight size={14} /></a><span>SINCE 2019</span></div></div>
-            <div className="hero-actions"><Link href="/contact" className="button button-light">Discuss Your Project <MoveRight size={17} /></Link><Link href="/#projects" className="button button-outline-light">View selected work <ArrowUpRight size={17} /></Link></div>
+            <div className="hero-actions"><Link href="/contact" className="button button-light">Discuss Your Project <MoveRight size={17} /></Link><a href="#projects" className="button button-outline-light">View selected work <ArrowUpRight size={17} /></a></div>
           </div>
         </div>
         <div className="hero-image hero-image-interactive" ref={heroImageRef}><SafeImage src={companyImages.jewelleryWide} alt="LUK FOOK Jewellery commercial interior by LUXH Works" loading="eager" fetchPriority="high" sizes="(max-width: 760px) 100vw, 43vw" /><div className="hero-image-caption"><span>BUILT WORK / LUK FOOK JEWELLERY</span><span>PHNOM PENH</span></div></div>
