@@ -406,7 +406,7 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 .services-page-card h2 { max-width:430px; margin:auto 0 19px; font-size:clamp(35px,4vw,58px); line-height:.92; letter-spacing:-.05em; }
 .services-page-card p { max-width:430px; color:#5b5e59; font-size:13px; line-height:1.6; margin:0 0 22px; }
 .services-page-card:hover p { color:rgba(248,246,240,.7); }
-.services-page-card ul { display:flex; flex-wrap:wrap; gap:7px 17px; list-style:none; padding:0; margin:0 0 28px; color:var(--muted); font-family:'DM Mono',monospace; font-size:11px; line-height:1.5; text-transform:uppercase; }
+.services-page-card ul { display:flex; flex-wrap:wrap; gap:9px 17px; list-style:none; padding:0; margin:0 0 28px; color:var(--muted); font-family:'DM Mono',monospace; font-size:20px; line-height:1.4; text-transform:uppercase; }
 .services-page-card li:before { content:'— '; color:var(--brick); }
 .services-page-card .text-link { align-self:flex-start; margin-top:auto; }
 .services-page-card:hover .text-link { color:#f8f6f0; border-color:#f8f6f0; }
@@ -637,8 +637,13 @@ html.dark .contact-detail-block>p { color:#c0c6c0; }
   .selected-work-meta .project-label-tag { font-size:11px; }
 }
 
-.service-detail-tags { font-size:11px; line-height:1.7; letter-spacing:.1em; }
+.service-detail-tags { font-size:20px; line-height:1.5; letter-spacing:.06em; }
 .service-detail-scope-grid p { max-width:240px; font-size:14px; line-height:1.6; }
+
+@media (max-width: 900px) {
+  .services-page-card ul { font-size:14px; }
+  .service-detail-tags { font-size:14px; }
+}
 
 /* Admin control room */
 .admin-shell { min-height:100vh; background:var(--paper); color:var(--ink); }
