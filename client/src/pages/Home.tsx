@@ -773,6 +773,12 @@ export function PageShell({ children }: { children: React.ReactNode }) {
     return () => { window.history.scrollRestoration = previousRestoration; };
   }, []);
   useEffect(() => {
+    const targetId = window.location.hash.slice(1);
+    const target = targetId ? document.getElementById(targetId) : null;
+    if (target) {
+      const frame = window.requestAnimationFrame(() => target.scrollIntoView({ behavior: "auto", block: "start" }));
+      return () => { window.cancelAnimationFrame(frame); };
+    }
     const restoreScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     restoreScroll();
     const frame = window.requestAnimationFrame(() => window.requestAnimationFrame(restoreScroll));
@@ -939,7 +945,7 @@ function Footer() {
   );
 }
 
-function SectionLabel({ number, children, dark = false }: { number: string; children: React.ReactNode; dark?: boolean }) {
+function SectionLabel({ number, children, dark = false }: { number: string; children?: React.ReactNode; dark?: boolean }) {
   return <div className={`section-label ${dark ? "section-label-dark" : ""}`}><span>{number}</span><div /><p>{children}</p></div>;
 }
 
