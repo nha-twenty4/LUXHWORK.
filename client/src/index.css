@@ -629,6 +629,14 @@ html.dark .contact-detail-block>p { color:#c0c6c0; }
   .gallery-grid,.project-results-grid { animation: none; }
 }
 
+@media (min-width: 1440px) {
+  .services-process-grid h3 { font-size:32px; }
+  .services-process-grid p { max-width:280px; font-size:16px; line-height:1.7; }
+  .services-process-grid span { font-size:13px; }
+  .selected-work-meta p { font-size:13px; }
+  .selected-work-meta .project-label-tag { font-size:11px; }
+}
+
 /* Admin control room */
 .admin-shell { min-height:100vh; background:var(--paper); color:var(--ink); }
 .admin-header { min-height:82px; padding:20px 5vw; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); background:var(--paper); }
