@@ -1067,7 +1067,7 @@ export function Home() {
             <span className="hero-title-line"><span><em>designed to perform.</em></span></span>
           </h1>
           <div className="hero-bottom">
-            <p>Interior consultancy, design, fit-out and aftercare for offices, retail, hospitality and F&amp;B.</p>
+            <div className="hero-bottom-copy"><p>Interior consultancy, design, fit-out and aftercare for offices, retail, hospitality and F&amp;B.</p><div className="hero-mobile-meta"><a href="#about">Scroll to explore <ArrowDownRight size={14} /></a><span>SINCE 2019</span></div></div>
             <div className="hero-actions"><Link href="/contact" className="button button-light">Discuss Your Project <MoveRight size={17} /></Link><Link href="/#projects" className="button button-outline-light">View selected work <ArrowUpRight size={17} /></Link></div>
           </div>
         </div>
