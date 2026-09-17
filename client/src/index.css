@@ -60,8 +60,8 @@ h1 em,h2 em { font-family:'DM Serif Display',Georgia,serif; font-weight:400; let
 .hero-title-line:nth-child(3)>span { animation-delay:.36s; }
 @keyframes heroTitleLineIn { from { opacity:0; transform:translateY(105%); } to { opacity:1; transform:translateY(0); } }
 @keyframes heroTitleDrift { 0%,100% { transform:translate3d(0,0,0) rotate(0deg); } 22% { transform:translate3d(2px,-2px,0) rotate(-.15deg); } 50% { transform:translate3d(0,1px,0) rotate(0deg); } 76% { transform:translate3d(-2px,-1px,0) rotate(.15deg); } }
-.hero-bottom { margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:36px; max-width:610px; position:relative; }
-.hero-bottom-copy { display:flex; flex-direction:column; gap:12px; }
+.hero-bottom:before { content:''; position:absolute; left:0; right:0; top:0; height:2px; background:var(--brick); opacity:.95; pointer-events:none; }
+.hero-bottom-copy { display:flex; flex-direction:column; gap:12px; transform:translateY(-8px); }
 .hero-description-break { display:none; }
 .hero-bottom p { max-width:250px; font-size:13px; line-height:1.55; color:rgba(248,246,240,.7); margin-bottom:0; }
 .hero-actions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
