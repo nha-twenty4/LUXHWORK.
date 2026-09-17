@@ -671,7 +671,7 @@ html.dark .contact-detail-block>p { color:#c0c6c0; }
 /* Inline About chapter reached by scrolling from the Home page. */
 .about-visual-hero { min-height:calc(100svh - 81px); position:relative; overflow:hidden; background:var(--dark); color:#f8f6f0; display:flex; align-items:center; padding:104px 3.2vw; }
 .about-visual-hero>img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.82; }
-.about-visual-hero:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(10,12,11,.85) 0%,rgba(10,12,11,.48) 43%,rgba(10,12,11,.18) 100%),linear-gradient(0deg,rgba(10,12,11,.55),transparent 50%); }
+.about-visual-hero:after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(32,37,33,.35),transparent 52%),linear-gradient(0deg,rgba(10,12,11,.25),transparent 58%); pointer-events:none; }
 .about-visual-heading { position:relative; z-index:1; align-self:flex-start; margin:50px auto 0 0; max-width:610px; }
 .about-visual-heading .eyebrow { color:var(--brick); font-weight:600; }
 .about-visual-heading h1 { margin:26px 0 0; font-family:'DM Sans',Arial,sans-serif; font-size:clamp(48px,5.1vw,78px); line-height:.98; letter-spacing:-.07em; font-weight:400; }
