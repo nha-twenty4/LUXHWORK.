@@ -794,3 +794,32 @@ html.dark .about-visual-card .about-visual-stats { border-top-color:rgba(243,241
   .service-detail-copy h1 { font-size:58px; }
   .service-detail-body { font-size:16px; }
 }
+
+/* Home hero reference: dark concrete field with editorial type and bottom actions. */
+.hero { display:block; min-height:100svh; height:auto; background-color:#202421; background-image:radial-gradient(circle at 22% 18%,rgba(255,255,255,.045),transparent 24%),radial-gradient(circle at 82% 76%,rgba(0,0,0,.2),transparent 32%),linear-gradient(135deg,#252a27 0%,#1d211f 52%,#202421 100%); }
+.hero-image { display:none !important; }
+.hero-noise { opacity:.24; mix-blend-mode:soft-light; }
+.hero-copy { min-height:100svh; width:min(100%,1040px); padding:clamp(120px,12vh,170px) clamp(28px,8vw,110px) 72px; }
+.hero h1 { max-width:940px; margin:clamp(60px,9vh,118px) 0 0; font-size:clamp(66px,9.5vw,142px); line-height:.82; letter-spacing:-.075em; }
+.hero-bottom { max-width:800px; grid-template-columns:1fr; gap:30px; margin-top:clamp(54px,9vh,120px); }
+.hero-bottom-copy { transform:none; }
+.hero-bottom p { max-width:620px; font-size:clamp(16px,1.6vw,23px); line-height:1.38; color:rgba(248,246,240,.82); }
+.hero-actions { justify-self:start; gap:12px; }
+.hero-actions .button { min-height:58px; padding:16px 22px; font-size:14px; }
+.hero-footer-strip,.hero-scroll { display:none; }
+@media (max-width:900px) {
+  .hero { min-height:100svh; }
+  .hero-copy { min-height:100svh; padding:112px 28px 66px; }
+  .hero h1 { margin-top:56px; max-width:650px; font-size:clamp(58px,14vw,92px); line-height:.84; }
+  .hero-bottom { margin-top:56px; gap:27px; }
+  .hero-bottom p { max-width:560px; font-size:17px; line-height:1.42; }
+  .hero-actions { width:auto; flex-wrap:nowrap; }
+  .hero-actions .button { min-height:54px; padding:14px 17px; font-size:12px; }
+}
+@media (max-width:520px) {
+  .hero-copy { padding-left:26px; padding-right:26px; }
+  .hero h1 { font-size:clamp(54px,15.5vw,80px); }
+  .hero-bottom p { font-size:16px; }
+  .hero-actions { width:100%; }
+  .hero-actions .button { flex:1 1 0; justify-content:center; white-space:nowrap; }
+}
