@@ -850,3 +850,9 @@ html.dark .about-visual-card .about-visual-stats { border-top-color:rgba(243,241
 .project-detail-gallery img,
 .selected-work-image-link .project-image,
 .project-image-wrap .project-image { object-fit:cover; object-position:center; }
+
+/* Selected work label: slightly larger for easier reading. */
+.selected-work-heading > .section-label { font-size:13px; letter-spacing:.045em; }
+@media (max-width:900px) {
+  .selected-work-heading > .section-label { font-size:12px; }
+}
