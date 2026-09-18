@@ -856,3 +856,17 @@ html.dark .about-visual-card .about-visual-stats { border-top-color:rgba(243,241
 @media (max-width:900px) {
   .selected-work-heading > .section-label { font-size:12px; }
 }
+
+/* Editorial labels: larger, clearer section wayfinding across the homepage. */
+.hero > .hero-copy > .eyebrow,
+.about-visual-heading > .eyebrow,
+.services-preview > .section-label,
+.manifesto > .section-label,
+.contact-hero > .eyebrow { font-size:13px; letter-spacing:.045em; }
+@media (max-width:900px) {
+  .hero > .hero-copy > .eyebrow,
+  .about-visual-heading > .eyebrow,
+  .services-preview > .section-label,
+  .manifesto > .section-label,
+  .contact-hero > .eyebrow { font-size:12px; }
+}
