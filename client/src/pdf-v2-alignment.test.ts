@@ -15,9 +15,9 @@ describe("LUXHWORK PDF V2 alignment", () => {
     expect(source).toContain("hero-footer-strip");
     expect(source).toContain("DESIGN TO AFTERCARE");
 
-    // Selected work & labels
-    expect(source).toContain("project-status-tag");
-    expect(source).toContain("project-label-tag");
+    // Selected work without the removed BUILT badges
+    expect(source).not.toContain('>BUILT<');
+    expect(source).not.toContain('project-status-tag');
     expect(source).toContain("Spaces shaped around");
     expect(source).toContain("business purpose.");
 

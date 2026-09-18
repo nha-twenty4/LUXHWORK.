@@ -933,7 +933,7 @@ function ProjectCard({ project, featured = false, preset = "auto" }: { project: 
       <div className="project-image-wrap">
         <SafeImage src={project.image} alt={project.title} className={`project-image theme-image ${imagePresetClass(project.category, preset)}`} />
       </div>
-      <div className="project-meta"><div><h3>{project.title}</h3><p>{project.note}</p></div><span className="project-label-tag">BUILT</span></div>
+      <div className="project-meta"><div><h3>{project.title}</h3><p>{project.note}</p></div></div>
     </Link>
   );
 }
@@ -983,7 +983,6 @@ function GallerySection() {
             </Link>
             <div className="project-meta selected-work-meta">
               <div><h3>{project.title}</h3><p>{project.category} · {project.year}</p></div>
-              <span className="project-label-tag project-status-tag">BUILT</span>
             </div>
           </article>
         ))}
