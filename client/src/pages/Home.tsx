@@ -11,7 +11,6 @@ import {
   Moon,
   Palette,
   Plus,
-  Search,
   ScanLine,
   Sparkles,
   Sun,
@@ -167,7 +166,6 @@ type Project = {
 };
 
 type ColorPreset = "auto" | "monochrome" | "cinematic";
-type ProjectSort = "newest" | "oldest" | "location" | "client" | "size";
 
 function useColorPreset() {
   const [preset, setPreset] = useState<ColorPreset>(() => {
@@ -192,47 +190,6 @@ function imagePresetClass(category: Project["category"], preset: ColorPreset = "
 function ColorPresetControls({ preset, onChange }: { preset: ColorPreset; onChange: (value: ColorPreset) => void }) {
   const options: Array<[ColorPreset, string]> = [["auto", "By discipline"], ["monochrome", "Monochrome"], ["cinematic", "Cinematic"]];
   return <div className="color-preset-controls" role="group" aria-label="Choose image color preset">{options.map(([value, label]) => <button key={value} type="button" className={preset === value ? "color-preset-active" : ""} onClick={() => onChange(value)}>{label}</button>)}</div>;
-}
-
-function useProjectDiscoveryState() {
-  const [state, setState] = useState<{ query: string; filter: string; sort: ProjectSort; year: string }>(() => {
-    if (typeof window === "undefined") return { query: "", filter: "All", sort: "newest", year: "All" };
-    try {
-      const saved = JSON.parse(window.localStorage.getItem("luxh-project-discovery") || "{}");
-      const params = new URLSearchParams(window.location.search);
-      const urlSort = params.get("sort");
-      const validSort = (value: unknown): ProjectSort => value === "oldest" || value === "location" || value === "client" || value === "size" ? value : "newest";
-      return { query: params.get("q") ?? (typeof saved.query === "string" ? saved.query : ""), filter: params.get("category") ?? (typeof saved.filter === "string" ? saved.filter : "All"), sort: validSort(urlSort ?? saved.sort), year: params.get("year") ?? (typeof saved.year === "string" ? saved.year : "All") };
-    } catch {
-      return { query: "", filter: "All", sort: "newest", year: "All" };
-    }
-  });
-  useEffect(() => window.localStorage.setItem("luxh-project-discovery", JSON.stringify(state)), [state]);
-  useEffect(() => {
-    const params = new URLSearchParams();
-    if (state.query) params.set("q", state.query);
-    if (state.filter !== "All") params.set("category", state.filter);
-    if (state.sort !== "newest") params.set("sort", state.sort);
-    if (state.year !== "All") params.set("year", state.year);
-    const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}${window.location.hash}`;
-    window.history.replaceState(null, "", next);
-  }, [state]);
-  return {
-    ...state,
-    setQuery: (query: string) => setState((current) => ({ ...current, query })),
-    setFilter: (filter: string) => setState((current) => ({ ...current, filter })),
-    setSort: (sort: ProjectSort) => setState((current) => ({ ...current, sort })),
-    setYear: (year: string) => setState((current) => ({ ...current, year })),
-    clear: () => setState({ query: "", filter: "All", sort: "newest", year: "All" }),
-  };
-}
-
-function SearchFilterControls({ query, onQueryChange, filter, onFilterChange, sort, onSortChange, year, onYearChange, filters, counts, years }: { query: string; onQueryChange: (value: string) => void; filter: string; onFilterChange: (value: string) => void; sort: ProjectSort; onSortChange: (value: ProjectSort) => void; year: string; onYearChange: (value: string) => void; filters: string[]; counts: Record<string, number>; years: string[] }) {
-  return <div className="search-filter-controls">
-    <label className="project-search"><Search size={15} aria-hidden="true" /><span className="sr-only">Search projects</span><input value={query} onChange={(event) => onQueryChange(event.target.value)} placeholder="Search projects, categories, locations…" type="search" /></label>
-    <div className="filter-row" role="group" aria-label="Filter projects by category">{filters.map((item) => <button type="button" onClick={() => onFilterChange(item)} className={filter === item ? "filter-active" : ""} key={item}>{item} <span className="filter-count">{counts[item] ?? 0}</span></button>)}</div>
-    <div className="project-sort-row"><label htmlFor="project-sort">Sort by</label><select id="project-sort" value={sort} onChange={(event) => onSortChange(event.target.value as ProjectSort)}><option value="newest">Newest</option><option value="oldest">Oldest</option><option value="location">Location A–Z</option><option value="client">Client A–Z</option><option value="size">Project size</option></select><label htmlFor="project-year">Year</label><select id="project-year" value={year} onChange={(event) => onYearChange(event.target.value)}><option value="All">All years</option>{years.map((item) => <option value={item} key={item}>{item}</option>)}</select>{(query || filter !== "All" || sort !== "newest" || year !== "All") && <button type="button" className="clear-search-filter" onClick={() => { onQueryChange(""); onFilterChange("All"); onSortChange("newest"); onYearChange("All"); }}>Clear filters</button>}</div>
-  </div>;
 }
 
 const projects: Project[] = [
@@ -984,20 +941,7 @@ function ProjectCard({ project, featured = false, preset = "auto" }: { project: 
 function GallerySection() {
   const { projects } = usePortfolioProjects();
   const [preset] = useColorPreset();
-  const discovery = useProjectDiscoveryState();
-  const filters = ["All", ...Array.from(new Set(projects.map((project) => project.category)))];
-  const years = Array.from(new Set(projects.map((project) => project.year).filter((year) => year !== "Not listed"))).sort((a, b) => Number(b) - Number(a));
-  const counts = projects.reduce<Record<string, number>>((result, project) => {
-    result[project.category] = (result[project.category] ?? 0) + 1;
-    result.All = (result.All ?? 0) + 1;
-    return result;
-  }, {});
-  const filterResultsIn = (project: Project) => {
-    const searchable = `${project.title} ${project.category} ${project.location} ${project.client} ${project.description} ${project.note}`.toLowerCase();
-    return (!discovery.query || searchable.includes(discovery.query.toLowerCase())) && (discovery.filter === "All" || project.category === discovery.filter) && (discovery.year === "All" || project.year === discovery.year);
-  };
-  const uniqueProjects = projects.filter(filterResultsIn);
-  const visibleProjects = uniqueProjects;
+  const visibleProjects = projects;
   const galleryRef = useRef<HTMLElement>(null);
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
 
@@ -1031,7 +975,6 @@ function GallerySection() {
         <div className="selected-work-heading"><SectionLabel>Projects / Portfolio</SectionLabel><h2>Spaces shaped around<br /><em>business purpose.</em></h2></div>
         <p className="selected-work-intro">From regional offices to jewellery, hospitality and F&amp;B, our work connects commercial goals with a disciplined delivery process. All selected projects with distinct imagery.</p>
       </div>
-      <SearchFilterControls query={discovery.query} onQueryChange={discovery.setQuery} filter={discovery.filter} onFilterChange={discovery.setFilter} sort={discovery.sort} onSortChange={discovery.setSort} year={discovery.year} onYearChange={discovery.setYear} filters={filters} counts={counts} years={years} />
       <div className="selected-work-grid">
         {visibleProjects.map((project) => (
           <article data-slug={project.slug} className={`selected-work-card ${visibleCards.has(project.slug) ? 'selected-work-card-visible' : ''}`} key={project.slug}>
@@ -1045,7 +988,6 @@ function GallerySection() {
           </article>
         ))}
       </div>
-      {visibleProjects.length === 0 && <p className="empty-projects">No projects match this search. <button type="button" className="text-link" onClick={discovery.clear}>Clear filters</button></p>}
     </section>
   );
 }
