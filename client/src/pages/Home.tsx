@@ -1078,7 +1078,7 @@ export function Home() {
             <div className="hero-actions"><Link href="/contact" className="button button-light">Discuss Your Project <MoveRight size={17} /></Link><a href="#projects" className="button button-outline-light">View selected work <ArrowUpRight size={17} /></a></div>
           </div>
         </div>
-        <div className="hero-image hero-image-interactive" ref={heroImageRef}><SafeImage src={homeHeroImage} alt="Hospitality bar interior designed and fitted out by LUXH Works" loading="eager" fetchPriority="high" sizes="(max-width: 760px) 100vw, 43vw" /><div className="hero-image-caption"><span>BUILT WORK / HOSPITALITY INTERIOR</span><span>PHNOM PENH</span></div></div>
+        <div className="hero-image hero-image-interactive" ref={heroImageRef}><SafeImage src={homeHeroImage} alt="Hospitality bar interior designed and fitted out by LUXH Works" loading="eager" fetchPriority="high" sizes="(max-width: 760px) 100vw, 43vw" /><div className="hero-image-caption"><span>WORK / HOSPITALITY INTERIOR</span><span>PHNOM PENH</span></div></div>
         <div className="hero-footer-strip"><span>SINCE 2019</span><span>CAMBODIA • THAILAND</span><span>DESIGN TO AFTERCARE</span></div>
         <a href="#about" className="hero-scroll">Scroll to explore <ArrowDownRight size={16} /></a>
       </section>
