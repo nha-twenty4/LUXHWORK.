@@ -15,15 +15,6 @@ describe("LUXHWORK PDF V2 alignment", () => {
     expect(source).toContain("hero-footer-strip");
     expect(source).toContain("DESIGN TO AFTERCARE");
 
-    // Belief & capabilities
-    expect(source).toContain("A space must perform,");
-    expect(source).toContain("not impress.");
-    expect(source).toContain("v2-capabilities-grid");
-    expect(source).toContain("INTERIOR DESIGN");
-    expect(source).toContain("FIT-OUT WORKS");
-    expect(source).toContain("PROJECT MANAGEMENT");
-    expect(source).toContain("MEP COORDINATION");
-
     // Selected work & labels
     expect(source).toContain("project-status-tag");
     expect(source).toContain("project-label-tag");
@@ -43,7 +34,6 @@ describe("LUXHWORK PDF V2 alignment", () => {
     expect(source).not.toContain("Accountable partner");
 
     // CSS styling
-    expect(css).toContain(".v2-capabilities-grid");
     expect(css).toContain(".v2-process-steps");
     expect(css).toContain(".hero-footer-strip");
     expect(css).toContain(".project-status-tag");

@@ -1051,13 +1051,6 @@ function GallerySection() {
   );
 }
 
-function CapabilitiesSection() {
-  return <section className="v2-capabilities" id="capabilities">
-    <div className="v2-capabilities-intro"><SectionLabel number="01" dark>Belief / What guides the work</SectionLabel><h2>A space must perform,<br /><em>not impress.</em></h2><p>We balance brand experience, operational need, cost control and buildability, so every decision earns its place in the budget.</p></div>
-    <div className="v2-capabilities-grid">{services.filter((service) => service.number !== "05").map((service) => <article key={service.number}><span>{service.number}</span><h3>{service.title.replace("Interior Design & Consultancy", "INTERIOR DESIGN").replace("Fit-Out Works", "FIT-OUT WORKS").replace("Project Management", "PROJECT MANAGEMENT").replace("MEP Coordination", "MEP COORDINATION")}</h3><p>{service.text}</p></article>)}</div>
-  </section>;
-}
-
 export function Home() {
   const heroRef = useRef<HTMLElement>(null);
   const heroImageRef = useRef<HTMLDivElement>(null);
@@ -1149,7 +1142,6 @@ export function Home() {
         <a href="#about" className="hero-scroll">Scroll to explore <ArrowDownRight size={16} /></a>
       </section>
       <AboutInline />
-      <CapabilitiesSection />
 
       <GallerySection />
 
