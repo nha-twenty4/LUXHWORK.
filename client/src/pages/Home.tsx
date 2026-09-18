@@ -108,6 +108,8 @@ const images = {
   duskDetail: companyImages.jewellery,
 };
 
+const homeHeroImage = "/luxhwork-home-bar.png";
+
 const companyProjectImageSets: Record<string, string[]> = {
   "house-14": ["image37.jpeg", "image38.png", "image9.png", "image39.jpeg", "image40.jpeg", "image41.jpeg"].map(profileImage),
   "mori-residence": ["image44.jpeg", "image45.jpeg"].map(profileImage),
@@ -983,6 +985,20 @@ function ProjectCard({ project, featured = false, preset = "auto" }: { project: 
 function GallerySection() {
   const { projects } = usePortfolioProjects();
   const [preset] = useColorPreset();
+  const discovery = useProjectDiscoveryState();
+  const filters = ["All", ...Array.from(new Set(projects.map((project) => project.category)))];
+  const years = Array.from(new Set(projects.map((project) => project.year).filter((year) => year !== "Not listed"))).sort((a, b) => Number(b) - Number(a));
+  const counts = projects.reduce<Record<string, number>>((result, project) => {
+    result[project.category] = (result[project.category] ?? 0) + 1;
+    result.All = (result.All ?? 0) + 1;
+    return result;
+  }, {});
+  const filterResultsIn = (project: Project) => {
+    const searchable = `${project.title} ${project.category} ${project.location} ${project.client} ${project.description} ${project.note}`.toLowerCase();
+    return (!discovery.query || searchable.includes(discovery.query.toLowerCase())) && (discovery.filter === "All" || project.category === discovery.filter) && (discovery.year === "All" || project.year === discovery.year);
+  };
+  const uniqueProjects = projects.filter(filterResultsIn);
+  const visibleProjects = uniqueProjects;
   const galleryRef = useRef<HTMLElement>(null);
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
 
@@ -1014,23 +1030,32 @@ function GallerySection() {
     <section ref={galleryRef} className="visual-gallery" id="projects">
       <div className="visual-gallery-head">
         <div className="selected-work-heading"><SectionLabel number="02">Selected work / Built projects</SectionLabel><h2>Spaces shaped around<br /><em>business purpose.</em></h2></div>
-        <p className="selected-work-intro">From regional offices to jewellery, hospitality and F&amp;B, our work connects commercial goals with a disciplined delivery process.</p>
+        <p className="selected-work-intro">From regional offices to jewellery, hospitality and F&amp;B, our work connects commercial goals with a disciplined delivery process. All selected projects with distinct imagery.</p>
       </div>
+      <SearchFilterControls query={discovery.query} onQueryChange={discovery.setQuery} filter={discovery.filter} onFilterChange={discovery.setFilter} sort={discovery.sort} onSortChange={discovery.setSort} year={discovery.year} onYearChange={discovery.setYear} filters={filters} counts={counts} years={years} />
       <div className="selected-work-grid">
-        {projects.map((project) => (
+        {visibleProjects.map((project) => (
           <article data-slug={project.slug} className={`selected-work-card ${visibleCards.has(project.slug) ? 'selected-work-card-visible' : ''}`} key={project.slug}>
             <Link href={`/projects/${project.slug}`} className="selected-work-image-link">
               <SafeImage src={project.image} alt={project.title} className={`project-image theme-image ${imagePresetClass(project.category, preset)}`} />
             </Link>
             <div className="project-meta selected-work-meta">
               <div><h3>{project.title}</h3><p>{project.category} · {project.year}</p></div>
-              <span className="project-label-tag">BUILT</span>
+              <span className="project-label-tag project-status-tag">BUILT</span>
             </div>
           </article>
         ))}
       </div>
+      {visibleProjects.length === 0 && <p className="empty-projects">No projects match this search. <button type="button" className="text-link" onClick={discovery.clear}>Clear filters</button></p>}
     </section>
   );
+}
+
+function CapabilitiesSection() {
+  return <section className="v2-capabilities" id="capabilities">
+    <div className="v2-capabilities-intro"><SectionLabel number="01" dark>Belief / What guides the work</SectionLabel><h2>A space must perform,<br /><em>not impress.</em></h2><p>We balance brand experience, operational need, cost control and buildability, so every decision earns its place in the budget.</p></div>
+    <div className="v2-capabilities-grid">{services.filter((service) => service.number !== "05").map((service) => <article key={service.number}><span>{service.number}</span><h3>{service.title.replace("Interior Design & Consultancy", "INTERIOR DESIGN").replace("Fit-Out Works", "FIT-OUT WORKS").replace("Project Management", "PROJECT MANAGEMENT").replace("MEP Coordination", "MEP COORDINATION")}</h3><p>{service.text}</p></article>)}</div>
+  </section>;
 }
 
 export function Home() {
@@ -1119,11 +1144,12 @@ export function Home() {
             <div className="hero-actions"><Link href="/contact" className="button button-light">Discuss Your Project <MoveRight size={17} /></Link><a href="#projects" className="button button-outline-light">View selected work <ArrowUpRight size={17} /></a></div>
           </div>
         </div>
-        <div className="hero-image hero-image-interactive" ref={heroImageRef}><SafeImage src={companyImages.jewelleryWide} alt="LUK FOOK Jewellery commercial interior by LUXH Works" loading="eager" fetchPriority="high" sizes="(max-width: 760px) 100vw, 43vw" /><div className="hero-image-caption"><span>BUILT WORK / LUK FOOK JEWELLERY</span><span>PHNOM PENH</span></div></div>
+        <div className="hero-image hero-image-interactive" ref={heroImageRef}><SafeImage src={homeHeroImage} alt="Hospitality bar interior designed and fitted out by LUXH Works" loading="eager" fetchPriority="high" sizes="(max-width: 760px) 100vw, 43vw" /><div className="hero-image-caption"><span>BUILT WORK / HOSPITALITY INTERIOR</span><span>PHNOM PENH</span></div></div>
         <div className="hero-footer-strip"><span>SINCE 2019</span><span>CAMBODIA • THAILAND</span><span>DESIGN TO AFTERCARE</span></div>
         <a href="#about" className="hero-scroll">Scroll to explore <ArrowDownRight size={16} /></a>
       </section>
       <AboutInline />
+      <CapabilitiesSection />
 
       <GallerySection />
 
