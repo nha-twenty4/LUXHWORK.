@@ -889,3 +889,13 @@ html.dark .about-visual-card .about-visual-stats { border-top-color:rgba(243,241
   .service-row p { display:block; grid-column:2 / -1; grid-row:2; font-size:15px; line-height:1.5; }
   .service-row > svg { grid-column:3; grid-row:1; }
 }
+
+/* Process typography: prominent step numbers, headings, and readable descriptions. */
+.v2-process-steps span { font-size:22px; margin-bottom:12px; }
+.v2-process-steps strong { font-size:22px; margin-bottom:10px; }
+.v2-process-steps p { font-size:19px; line-height:1.5; }
+@media (max-width:900px) {
+  .v2-process-steps span { font-size:20px; }
+  .v2-process-steps strong { font-size:22px; }
+  .v2-process-steps p { font-size:19px; line-height:1.5; }
+}
