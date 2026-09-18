@@ -823,3 +823,13 @@ html.dark .about-visual-card .about-visual-stats { border-top-color:rgba(243,241
   .hero-actions { width:100%; }
   .hero-actions .button { flex:1 1 0; justify-content:center; white-space:nowrap; }
 }
+
+.home-photo-break { position:relative; min-height:min(76vh,780px); background:#171b18; overflow:hidden; }
+.home-photo-break-image { height:min(76vh,780px); }
+.home-photo-break-image img { display:block; width:100%; height:100%; object-fit:cover; object-position:center 56%; filter:saturate(.94) contrast(1.04); }
+.home-photo-break:after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(20,24,21,.04),rgba(20,24,21,.26)); pointer-events:none; }
+.home-photo-break-caption { position:absolute; z-index:1; left:clamp(28px,8vw,110px); right:clamp(28px,8vw,110px); bottom:25px; display:flex; justify-content:space-between; color:rgba(248,246,240,.82); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.05em; text-transform:uppercase; }
+@media (max-width:900px) {
+  .home-photo-break,.home-photo-break-image { min-height:58vh; height:58vh; }
+  .home-photo-break-caption { left:26px; right:26px; bottom:20px; font-size:8px; }
+}

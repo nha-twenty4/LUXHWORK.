@@ -1082,6 +1082,10 @@ export function Home() {
         <div className="hero-footer-strip"><span>SINCE 2019</span><span>CAMBODIA • THAILAND</span><span>DESIGN TO AFTERCARE</span></div>
         <a href="#about" className="hero-scroll">Scroll to explore <ArrowDownRight size={16} /></a>
       </section>
+      <section className="home-photo-break" aria-label="LUXHWORK hospitality interior">
+        <div className="home-photo-break-image"><SafeImage src={homeHeroImage} alt="Hospitality bar interior designed and fitted out by LUXHWORK" loading="lazy" /></div>
+        <div className="home-photo-break-caption"><span>BUILT WORK / HOSPITALITY INTERIOR</span><span>PHNOM PENH</span></div>
+      </section>
       <AboutInline />
 
       <GallerySection />
