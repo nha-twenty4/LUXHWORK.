@@ -12,7 +12,6 @@ import {
   Palette,
   Plus,
   Search,
-  Share2,
   ScanLine,
   Sparkles,
   Sun,
@@ -674,34 +673,34 @@ const services = [
     number: "01",
     title: "Interior Design & Consultancy",
     icon: Building2,
-    items: ["Spatial direction", "Material palettes", "Atmosphere studies"],
-    text: "We choreograph material, light, and proportion into spaces with a sense of calm and character.",
+    items: ["Spatial Direction", "Design Development", "Technical & Cost"],
+    text: "Tailored interior solutions that bring together refined design, functionality, and purpose — thoughtfully shaped around each client’s identity, needs, and way of working.",
   }, {
     number: "02",
     title: "Fit-Out Works",
     icon: Palette,
-    items: ["Space Planning", "Interior Design", "Architectural Works"],
-    text: "We deliver complete fit-out solutions that transform empty or unfinished spaces into functional, refined, and ready-to-use environments.",
+    items: ["Interior Fit-Out", "MEP & Technical Works", "Site Delivery"],
+    text: "End-to-end fit-out solutions that bring your interior from design to completion, with careful coordination of workmanship, materials, and technical requirements.",
   }, {
     number: "03",
     title: "Project Management",
     icon: ScanLine,
-    items: ["Project Planning", "Budget & Cost Control", "Design Coordination"],
-    text: "We provide end-to-end project management to ensure every project is delivered with clear coordination, controlled quality, and attention to time and budget.",
+    items: ["Planning & Coordination", "Quality & Cost Control", "Programme & Delivery"],
+    text: "Coordinated project delivery from planning to completion, ensuring every detail, timeline, and team remains aligned for a smooth and well-executed outcome.",
   },
   {
     number: "04",
     title: "MEP Coordination",
     icon: Building2,
-    items: ["Services planning", "Coordination", "Site integration"],
-    text: "Services planned with the interior so technical decisions support the experience and the build.",
+    items: ["MEP Planning", "Technical Coordination", "Performance & Efficiency"],
+    text: "Integrated MEP solutions carefully coordinated with the design and built environment to ensure reliable performance, efficient operation, and seamless execution.",
   },
   {
     number: "05",
     title: "Feasibility Studies",
     icon: Sparkles,
-    items: ["Site review", "Risk visibility", "Early cost direction"],
-    text: "We assess the site, constraints, intended use and programme before major commitments are made.",
+    items: ["Site & Space Assessment", "Design & Technical Feasibility", "Cost & Development Planning"],
+    text: "Assessing site conditions, design potential, technical requirements, and cost considerations to determine practical solutions and provide a clear foundation for informed project decisions.",
   },
 ];
 
@@ -714,11 +713,11 @@ const serviceReferenceImages: Record<string, string> = {
   "feasibility-studies": companyImages.restaurant,
 };
 const serviceDetailCopy: Record<string, { headline: string; body: string; tags: string }> = {
-  "interior-design-and-consultancy": { headline: "Spaces shaped with clarity.", body: "We align spatial direction, material palettes and atmosphere studies around how a business needs to work and feel.", tags: "SPATIAL DIRECTION / MATERIAL / ATMOSPHERE" },
-  "fit-out-works": { headline: "Built with control. Delivered business-ready.", body: "From site mobilisation to final finishes, we coordinate trades, programme, workmanship and inspections so the approved design is translated accurately on site.", tags: "CONSTRUCTION / QUALITY CONTROL / OPENING READINESS" },
-  "project-management": { headline: "Every decision, clearly coordinated.", body: "We keep scope, cost, design coordination and programme moving together, giving clients a clear view from first brief through delivery.", tags: "PROGRAMME / COST / COORDINATION" },
-  "mep-coordination": { headline: "Technical systems that support the experience.", body: "We coordinate mechanical, electrical and plumbing services with the interior so technical decisions are resolved early and integrated cleanly on site.", tags: "SERVICES PLANNING / COORDINATION / SITE INTEGRATION" },
-  "feasibility-studies": { headline: "Make the right commitment early.", body: "We assess site conditions, constraints, intended use and programme before major commitments are made, bringing risk and early cost direction into focus.", tags: "SITE REVIEW / RISK / EARLY COST DIRECTION" },
+  "interior-design-and-consultancy": { headline: "Spaces shaped with clarity.", body: "Tailored interior solutions that bring together refined design, functionality, and purpose — thoughtfully shaped around each client’s identity, needs, and way of working.", tags: "SPATIAL DIRECTION / DESIGN DEVELOPMENT / TECHNICAL & COST" },
+  "fit-out-works": { headline: "Built with control. Delivered business-ready.", body: "End-to-end fit-out solutions that bring your interior from design to completion, with careful coordination of workmanship, materials, and technical requirements.", tags: "INTERIOR FIT-OUT / TECHNICAL WORKS / SITE DELIVERY" },
+  "project-management": { headline: "Every decision, clearly coordinated.", body: "Coordinated project delivery from planning to completion, ensuring every detail, timeline, and team remains aligned for a smooth and well-executed outcome.", tags: "PLANNING / COST CONTROL / PROGRAMME & DELIVERY" },
+  "mep-coordination": { headline: "Technical systems that support the experience.", body: "Integrated MEP solutions carefully coordinated with the design and built environment to ensure reliable performance, efficient operation, and seamless execution.", tags: "MEP PLANNING / TECHNICAL COORDINATION / PERFORMANCE & EFFICIENCY" },
+  "feasibility-studies": { headline: "Make the right commitment early.", body: "Assessing site conditions, design potential, technical requirements, and cost considerations to determine practical solutions and provide a clear foundation for informed project decisions.", tags: "SITE ASSESSMENT / TECHNICAL FEASIBILITY / COST PLANNING" },
 };
 const serviceSlug = (title: string) => title.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
@@ -947,8 +946,8 @@ function Footer() {
   );
 }
 
-function SectionLabel({ number, children, dark = false }: { number: string; children?: React.ReactNode; dark?: boolean }) {
-  return <div className={`section-label ${dark ? "section-label-dark" : ""}`}><span>{number}</span><div /><p>{children}</p></div>;
+function SectionLabel({ number, children, dark = false }: { number?: string; children?: React.ReactNode; dark?: boolean }) {
+  return <div className={`section-label ${dark ? "section-label-dark" : ""}`}>{number && <span>{number}</span>}<div /><p>{children}</p></div>;
 }
 
 function ProjectCard({ project, featured = false, preset = "auto" }: { project: Project; featured?: boolean; preset?: ColorPreset }) {
@@ -1029,7 +1028,7 @@ function GallerySection() {
   return (
     <section ref={galleryRef} className="visual-gallery" id="projects">
       <div className="visual-gallery-head">
-        <div className="selected-work-heading"><SectionLabel number="02">Selected work / Built projects</SectionLabel><h2>Spaces shaped around<br /><em>business purpose.</em></h2></div>
+        <div className="selected-work-heading"><SectionLabel>Projects / Portfolio</SectionLabel><h2>Spaces shaped around<br /><em>business purpose.</em></h2></div>
         <p className="selected-work-intro">From regional offices to jewellery, hospitality and F&amp;B, our work connects commercial goals with a disciplined delivery process. All selected projects with distinct imagery.</p>
       </div>
       <SearchFilterControls query={discovery.query} onQueryChange={discovery.setQuery} filter={discovery.filter} onFilterChange={discovery.setFilter} sort={discovery.sort} onSortChange={discovery.setSort} year={discovery.year} onYearChange={discovery.setYear} filters={filters} counts={counts} years={years} />
@@ -1133,7 +1132,7 @@ export function Home() {
             <span className="hero-title-line"><span><em>designed to perform.</em></span></span>
           </h1>
           <div className="hero-bottom">
-            <div className="hero-bottom-copy"><p>Interior consultancy, design, fit-out and aftercare for offices, retail, hospitality and F&amp;B.</p><div className="hero-mobile-meta"><a href="#about">Scroll to explore <ArrowDownRight size={14} /></a><span>SINCE 2019</span></div></div>
+            <div className="hero-bottom-copy"><p>Interior consultancy, design, fit-out and post-completion support for offices, retail, hospitality and F&amp;B.</p><div className="hero-mobile-meta"><a href="#about">Scroll to explore <ArrowDownRight size={14} /></a><span>SINCE 2019</span></div></div>
             <div className="hero-actions"><Link href="/contact" className="button button-light">Discuss Your Project <MoveRight size={17} /></Link><a href="#projects" className="button button-outline-light">View selected work <ArrowUpRight size={17} /></a></div>
           </div>
         </div>
@@ -1146,14 +1145,14 @@ export function Home() {
       <GallerySection />
 
       <section className="services-preview" id="services">
-        <SectionLabel number="01">What we do / Current services</SectionLabel>
+        <SectionLabel>Services / What we do</SectionLabel>
         <div className="service-rows">
           {services.map((service) => <Link href={`/services/${serviceSlug(service.title)}`} className="service-row service-row-reveal" key={service.number}><span>{service.number}</span><h3 className="text-reveal"><span>{service.title}</span></h3><p>{service.items.join(" · ")}</p><ArrowUpRight size={20} /></Link>)}
         </div>
       </section>
 
       <section className="manifesto" id="process">
-        <SectionLabel number="02" dark>How we work / Process</SectionLabel>
+        <SectionLabel dark>How we work / Process</SectionLabel>
         <div className="v2-process-header">
           <p className="manifesto-kicker">HOW WE WORK</p>
           <h2>From business need to<br /><em>operational space.</em></h2>
@@ -1183,6 +1182,13 @@ function AboutInline() {
 
 function AboutVisualHero({ compact = false }: { compact?: boolean }) {
   const aboutRef = useRef<HTMLElement>(null);
+  const aboutImages = [companyImages.bar, companyImages.warmInterior, companyImages.jewelleryWide, companyImages.retailPanels];
+  const [activeImage, setActiveImage] = useState(0);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => setActiveImage((current) => (current + 1) % aboutImages.length), 5200);
+    return () => window.clearInterval(timer);
+  }, [aboutImages.length]);
   useEffect(() => {
     const section = aboutRef.current;
     if (!section || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -1195,8 +1201,9 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
     return () => observer.disconnect();
   }, []);
   return <section ref={aboutRef} className={`about-visual-hero${compact ? " about-visual-hero-compact" : ""}`}>
+    <div className="about-visual-slideshow" aria-hidden="true">{aboutImages.map((image, index) => <SafeImage key={`${image}-${index}`} src={image} className={index === activeImage ? "about-slide-active" : ""} alt="" />)}</div>
     <div className="about-visual-heading"><p className="eyebrow eyebrow-light">PHNOM PENH / SINCE 2019</p><h1>Local execution,<br />regional standards,<br />since 2019.</h1></div>
-    <div className="about-visual-card"><SectionLabel number="About LUXHWORK" /><h2>A commercial interior consultancy and fit-out company serving businesses in Cambodia and Thailand.</h2><p>Our team connects considered design with planning, MEP coordination, construction knowledge and hands-on follow-through — helping clients reach opening day with clearer decisions and fewer avoidable surprises.</p><div className="about-visual-stats"><div><strong>2019</strong><span>Founded</span></div><div><strong>05</strong><span>Core services</span></div><div><strong>02</strong><span>Countries</span></div></div></div>
+    <div className="about-visual-card"><SectionLabel>About LUXHWORK</SectionLabel><h2>A commercial interior consultancy and fit-out company serving businesses in Cambodia and Thailand.</h2><p>Our team connects considered design with planning, MEP coordination, construction knowledge and hands-on follow-through — helping clients reach opening day with clearer decisions and fewer avoidable surprises.</p><div className="about-visual-stats"><div><strong>2019</strong><span>Founded</span></div><div><strong>05</strong><span>Core services</span></div><div><strong>02</strong><span>Countries</span></div></div></div>
   </section>;
 }
 function CTA({ id }: { id?: string } = {}) {
@@ -1230,19 +1237,6 @@ export function ProjectDetailPage() {
   const previousProject = portfolioProjects[(projectIndex - 1 + portfolioProjects.length) % portfolioProjects.length];
   const nextProject = portfolioProjects[(projectIndex + 1) % portfolioProjects.length];
   const touchStart = useRef<{ x: number; y: number } | null>(null);
-  const related = portfolioProjects.filter((item) => item.slug !== project.slug).slice(0, 2);
-  const [shareStatus, setShareStatus] = useState("");
-  const shareUrl = typeof window !== "undefined" ? window.location.href : `/projects/${project.slug}`;
-  const shareTitle = `${project.title} — LUXH Works`;
-  const handleShare = async () => {
-    if (navigator.share) {
-      await navigator.share({ title: shareTitle, text: project.description, url: shareUrl });
-      return;
-    }
-    await navigator.clipboard?.writeText(shareUrl);
-    setShareStatus("Link copied");
-    window.setTimeout(() => setShareStatus(""), 1800);
-  };
   const navigateToProject = (targetSlug: string) => {
     navigate(`/projects/${targetSlug}`);
   };
@@ -1272,14 +1266,10 @@ export function ProjectDetailPage() {
   }, [nextProject.slug, previousProject.slug]);
   return (
     <PageShell>
-      <section className="project-detail-hero"><a href="/#projects" className="back-link"><ChevronLeft size={17} /> Selected work</a><p className="eyebrow">{project.category} / {project.year}</p><h1>{project.title}</h1><div className="project-detail-meta"><div><span>Location</span><p>{project.location}</p></div><div><span>Client</span><p>{project.client}</p></div><div><span>Scope</span><p>{project.note}</p></div><div><span>Year</span><p>{project.year}</p></div></div><p className="project-navigation-hint" aria-label="Project navigation instructions">← → Use arrow keys · Swipe to browse</p></section>
+      <section className="project-detail-hero"><a href="/#projects" className="back-link"><ChevronLeft size={17} /> Projects / Portfolio</a><p className="eyebrow">{project.category} / {project.year}</p><h1>{project.title}</h1><div className="project-detail-meta"><div><span>Location</span><p>{project.location}</p></div><div><span>Client</span><p>{project.client}</p></div><div><span>Scope</span><p>{project.note}</p></div><div><span>Year</span><p>{project.year}</p></div></div><p className="project-navigation-hint" aria-label="Project navigation instructions">← → Use arrow keys · Swipe to browse</p></section>
       <section className="project-detail-image project-main-image"><ColorPresetControls preset={preset} onChange={setPreset} /><SafeImage src={project.image} alt={project.title} className={`theme-image ${imagePresetClass(project.category, preset)}`} /></section>
-      <section className="project-narrative"><div><SectionLabel number="Project story">{isShHotel ? "Hospitality / Built work" : "A deliberate response"}</SectionLabel></div><div>{isShHotel ? <><p className="large-copy">A hospitality interior shaped for calm, practical guest experience.</p><p>SH Hotel is presented in the Company Profile preview as a Phnom Penh hospitality project. The design direction balances arrival, circulation and the everyday rhythm of the hotel, keeping the experience clear from first impression through continued operation.</p><p>Our role connects interior design thinking with fit-out coordination, material decisions and the practical controls needed to move from a considered proposal to a business-ready space.</p></> : <><p className="large-copy">{project.description}</p><p>Every project begins with a close reading of its context—the site, the brief, the people who will use it. We turn those findings into a clear design language, testing each decision against the experience it creates.</p><p>Here, a limited palette and a sequence of framed openings became the foundation for an atmosphere that is both composed and generous.</p></>}</div></section>
-      <section className="project-detail-gallery">{project.gallery.map((image, index) => <figure key={`${image}-${index}`} className={index === 0 ? "project-detail-gallery-featured" : ""}><SafeImage src={image} alt={`${project.title} detail ${index + 1}`} className={`theme-image ${imagePresetClass(project.category, preset)}`} /><figcaption>{index === 0 ? "Material and proportion" : index === 1 ? "Atmosphere study" : "A considered frame"}</figcaption></figure>)}</section>
-      <section className="project-resources"><div><SectionLabel number="Project resources">Drawings & documentation</SectionLabel><h2>See the thinking<br /><em>behind the frame.</em></h2></div><div className="resource-actions"><a href={storageUrl(project.floorPlan)} target="_blank" rel="noreferrer" className={`resource-card${project.floorPlan ? "" : " resource-link-disabled"}`} aria-disabled={!project.floorPlan} onClick={(event) => { if (!project.floorPlan) event.preventDefault(); }}><span>01 / Drawing</span><strong>Floor plan</strong><small>{project.floorPlan ? "Open plan →" : "Not available"}</small></a><a href={storageUrl(project.pdf)} target="_blank" rel="noreferrer" download className={`resource-card resource-card-accent${project.pdf ? "" : " resource-link-disabled"}`} aria-disabled={!project.pdf} onClick={(event) => { if (!project.pdf) event.preventDefault(); }}><span>02 / Document</span><strong>Project PDF</strong><small>{project.pdf ? "Open / download PDF →" : "Not available"}</small></a></div></section>
+      <section className="project-detail-gallery">{project.gallery.map((image, index) => <figure key={`${image}-${index}`} className={index === 0 ? "project-detail-gallery-featured" : ""}><SafeImage src={image} alt={`${project.title} detail ${index + 1}`} className={`theme-image ${imagePresetClass(project.category, preset)}`} /></figure>)}</section>
       {isShHotel && <ProjectInquiryForm projectTitle={project.title} />}
-      <section className="project-sharing"><div><SectionLabel number="Share project">Pass it on</SectionLabel><p>Know someone who would enjoy this direction?</p></div><div className="share-actions"><button type="button" onClick={handleShare}><Share2 size={15} />{shareStatus || "Share"}</button><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14} /></a><a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noreferrer">Facebook <ArrowUpRight size={14} /></a></div></section>
-      <section className="related"><SectionLabel number="Related work">Continue exploring</SectionLabel><div className="related-grid">{related.map((item) => <ProjectCard key={item.slug} project={item} preset={preset} />)}</div></section>
       <nav className="project-pagination" aria-label="Project navigation"><Link href={`/projects/${previousProject.slug}`} onClick={() => navigateToProject(previousProject.slug)} className="project-pagination-link"><span>Previous project · ←</span><strong>{previousProject.title}</strong></Link><Link href={`/projects/${nextProject.slug}`} onClick={() => navigateToProject(nextProject.slug)} className="project-pagination-link project-pagination-next"><span>Next project · →</span><strong>{nextProject.title}</strong></Link></nav>
       <section className="project-end-cta"><p>Like the direction?</p><h2>Start a similar<br /><em>project with us.</em></h2><Link href="/contact" className="button button-light">Begin a conversation <ArrowUpRight size={17} /></Link></section>
     </PageShell>
@@ -1292,7 +1282,7 @@ export function ServiceDetailPage() {
   const copy = serviceDetailCopy[serviceSlug(service.title)] ?? serviceDetailCopy["fit-out-works"];
   const ServiceIcon = service.icon;
   const serviceImage = serviceReferenceImages[serviceSlug(service.title)] ?? serviceReferenceFallback;
-  return <PageShell><section className="service-detail"><div className="service-detail-image"><SafeImage src={serviceImage} fallbackSrc={serviceReferenceFallback} alt={`${service.title} — LUXHWORK service`} /></div><div className="service-detail-copy"><a href="/#services" className="back-link">← What we do / Current services</a><p className="eyebrow eyebrow-light">{service.number} / {service.title}</p><h1>{copy.headline}</h1><p className="service-detail-body">{copy.body}</p><Link href="/contact" className="button button-service">Discuss your project <ArrowUpRight size={17} /></Link><div className="service-detail-tags">{copy.tags}</div><div className="service-detail-icon"><ServiceIcon size={34} strokeWidth={1.2} /></div></div></section><section className="service-detail-scope"><SectionLabel number="Scope / What we bring">{service.title}</SectionLabel><div className="service-detail-scope-grid">{service.items.map((item, index) => <div key={item}><span>0{index + 1}</span><h2>{item}</h2><p>Clear decisions, careful coordination and a practical route from brief to finished space.</p></div>)}</div></section><CTA id="enquiry-band" /></PageShell>;
+  return <PageShell><section className="service-detail"><div className="service-detail-image"><SafeImage src={serviceImage} fallbackSrc={serviceReferenceFallback} alt={`${service.title} — LUXHWORK service`} /></div><div className="service-detail-copy"><a href="/#services" className="back-link">← What we do / Current services</a><p className="eyebrow eyebrow-light">{service.title}</p><h1>{copy.headline}</h1><p className="service-detail-body">{copy.body}</p><Link href="/contact" className="button button-service">Discuss your project <ArrowUpRight size={17} /></Link><div className="service-detail-tags">{copy.tags}</div><div className="service-detail-icon"><ServiceIcon size={34} strokeWidth={1.2} /></div></div></section><section className="service-detail-scope"><SectionLabel>What we bring / Three connected stages</SectionLabel><div className="service-detail-scope-grid">{service.items.map((item, index) => <div key={item}><span>0{index + 1}</span><h2>{item}</h2><p>{service.text}</p></div>)}</div></section><CTA id="enquiry-band" /></PageShell>;
 }
 
 export function ServicesPage() {

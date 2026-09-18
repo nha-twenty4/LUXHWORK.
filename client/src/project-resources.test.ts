@@ -2,19 +2,21 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-describe("project resource links", () => {
+describe("simplified project pages", () => {
   const source = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf8");
 
-  it("resolves floor plans and PDFs through the storage URL helper", () => {
-    expect(source).toContain('href={storageUrl(project.floorPlan)}');
-    expect(source).toContain('href={storageUrl(project.pdf)}');
+  it("keeps the project gallery focused on full-frame images", () => {
+    expect(source).toContain("project-detail-gallery");
+    expect(source).toContain("alt={`${project.title} detail ${index + 1}`}");
+    expect(source).not.toContain("Material and proportion");
+    expect(source).not.toContain("Atmosphere study");
+    expect(source).not.toContain("A considered frame");
   });
 
-  it("opens cross-origin storage resources safely and prevents empty links", () => {
-    expect(source).toContain('target="_blank" rel="noreferrer"');
-    expect(source).toContain('aria-disabled={!project.floorPlan}');
-    expect(source).toContain('aria-disabled={!project.pdf}');
-    expect(source).toContain('if (!project.floorPlan) event.preventDefault()');
-    expect(source).toContain('if (!project.pdf) event.preventDefault()');
+  it("removes the resource and sharing blocks marked unnecessary in the revision", () => {
+    expect(source).not.toContain("project-resources");
+    expect(source).not.toContain("project-sharing");
+    expect(source).not.toContain("See the thinking");
+    expect(source).not.toContain("Pass it on");
   });
 });

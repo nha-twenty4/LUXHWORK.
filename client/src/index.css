@@ -762,3 +762,48 @@ html.dark .about-visual-card .about-visual-stats { border-top-color:rgba(243,241
   .selected-work-meta p { font-size:9px; }
   .selected-work-meta > span { display:block; margin-top:7px; }
 }
+
+/* WEBSITE REVISION 2: clearer type, larger image fields, and full-frame project imagery. */
+.about-visual-slideshow { position:absolute; inset:0; z-index:0; background:#151916; }
+.about-visual-slideshow:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(15,19,17,.9),rgba(15,19,17,.56) 56%,rgba(15,19,17,.76)),linear-gradient(0deg,rgba(15,19,17,.72),rgba(15,19,17,.12)); }
+.about-visual-slideshow img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; opacity:0; filter:saturate(.7) contrast(1.02); transition:opacity 1.2s ease, transform 8s ease; transform:scale(1.04); }
+.about-visual-slideshow img.about-slide-active { opacity:.42; transform:scale(1); }
+.about-visual-hero:after { z-index:1; }
+.about-visual-heading,.about-visual-card { z-index:2; }
+.about-visual-heading h1 { font-size:clamp(58px,6.2vw,96px); }
+.about-visual-card { width:min(560px,44vw); padding:48px 50px 44px; }
+.about-visual-card h2 { font-size:clamp(24px,2.2vw,34px); }
+.about-visual-card>p { font-size:15px; }
+.about-visual-stats strong { font-size:48px; }
+.selected-work-heading h2 { font-size:clamp(52px,6.4vw,96px); }
+.selected-work-intro { font-size:clamp(22px,2.2vw,34px); line-height:1.08; }
+.selected-work-meta h3 { font-size:clamp(17px,1.7vw,24px); }
+.selected-work-image-link .project-image,.project-image-wrap .project-image { object-fit:contain; background:#dedbd3; }
+.project-detail-hero h1 { max-width:1000px; font-size:clamp(52px,7vw,108px); line-height:.9; }
+.project-detail-gallery img { object-fit:contain; background:#dedbd3; }
+.project-detail-gallery figure:hover img { transform:scale(1.015); }
+.project-detail-gallery { grid-template-rows:450px 300px; }
+.service-row { padding:32px 0; }
+.service-row h3 { font-size:clamp(26px,3vw,46px); }
+.service-row p { font-size:12px; line-height:1.5; }
+.services-page-card h2 { font-size:clamp(28px,3.2vw,52px); }
+.services-page-card p,.services-page-card li { font-size:15px; line-height:1.65; }
+.service-detail-copy h1 { font-size:clamp(52px,6vw,92px); }
+.service-detail-body { font-size:18px; line-height:1.6; max-width:520px; }
+.service-detail-scope-grid h2 { font-size:clamp(25px,2.6vw,42px); }
+.service-detail-scope-grid p { max-width:310px; font-size:16px; line-height:1.6; }
+.contact-form label { font-size:11px; }
+.contact-form input,.contact-form textarea,.contact-form select { font-size:16px; }
+@media (max-width:900px) {
+  .about-visual-heading h1 { font-size:clamp(50px,12vw,78px); }
+  .about-visual-card { width:100%; padding:32px 26px 30px; }
+  .about-visual-card h2 { font-size:25px; }
+  .selected-work-heading h2 { font-size:clamp(44px,11vw,68px); }
+  .selected-work-intro { font-size:22px; }
+  .project-detail-hero h1 { font-size:clamp(48px,12vw,72px); }
+  .project-detail-gallery { grid-template-rows:300px 210px; }
+  .service-row h3 { font-size:28px; }
+  .service-row p { display:none; }
+  .service-detail-copy h1 { font-size:58px; }
+  .service-detail-body { font-size:16px; }
+}
