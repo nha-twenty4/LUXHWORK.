@@ -844,3 +844,9 @@ html.dark .about-visual-card .about-visual-stats { border-top-color:rgba(243,241
   .hero-image { position:relative; inset:auto; height:44svh; min-height:300px; }
   .hero-image-caption { display:flex; }
 }
+
+/* Project pages: fill image frames cleanly without the blank area caused by contain. */
+.project-detail-image img,
+.project-detail-gallery img,
+.selected-work-image-link .project-image,
+.project-image-wrap .project-image { object-fit:cover; object-position:center; }
