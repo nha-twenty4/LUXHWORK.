@@ -5763,3 +5763,53 @@ html.dark .about-visual-card .about-visual-stats {
     gap: 10px;
   }
 }
+
+/* Final Project Detail cleanup: stable rows, no image overflow, clear navigation separation. */
+.project-detail-image {
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+.project-detail-image img {
+  max-height: 680px;
+}
+.project-detail-gallery {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: auto;
+  align-items: stretch;
+  overflow: visible;
+  margin-bottom: 0;
+  padding-bottom: clamp(72px, 8vw, 120px);
+}
+.project-detail-gallery figure {
+  position: relative;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+.project-detail-gallery img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.project-pagination {
+  position: relative;
+  z-index: 2;
+  clear: both;
+  margin-top: 0;
+}
+@media (max-width: 900px) {
+  .project-detail-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-bottom: 72px;
+  }
+}
+@media (max-width: 520px) {
+  .project-detail-gallery {
+    padding-bottom: 56px;
+  }
+}
