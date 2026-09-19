@@ -5907,6 +5907,16 @@ html.dark .about-visual-card .about-visual-stats {
     height: auto;
     aspect-ratio: 4 / 3;
   }
+
+  /* Improve readability of the Services navigation and capability titles. */
+  .service-detail-copy .back-link {
+    font-size: 15px;
+  }
+  .services-page-card h2 {
+    font-size: 20px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
 }
 
 /* Preserve source detail: avoid interpolation blur and let images render naturally. */
