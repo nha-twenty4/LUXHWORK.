@@ -2067,7 +2067,6 @@ export function Home() {
             sizes="(max-width: 760px) 100vw, 43vw"
           />
           <div className="hero-image-caption">
-            <span>WORK / HOSPITALITY INTERIOR</span>
             <span>PHNOM PENH</span>
           </div>
         </div>
