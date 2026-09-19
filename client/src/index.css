@@ -5961,3 +5961,43 @@ html.dark .about-visual-card .about-visual-stats {
 .project-detail-gallery img {
   max-width: 100%;
 }
+
+/* Final service detail spacing override: keep the content group compact on every viewport. */
+.service-detail-copy {
+  justify-content: flex-start;
+  padding-top: 72px;
+  padding-bottom: 52px;
+}
+.service-detail-copy .back-link {
+  margin-bottom: 28px;
+}
+.service-detail-copy h1 {
+  margin-top: 12px;
+  margin-bottom: 22px;
+}
+.button-service {
+  margin-top: 24px;
+}
+.service-detail-tags {
+  margin-top: 22px;
+}
+@media (max-width: 900px) {
+  .service-detail-copy {
+    min-height: auto;
+    padding-top: 38px;
+    padding-bottom: 42px;
+  }
+  .service-detail-copy .back-link {
+    margin-bottom: 30px;
+  }
+  .service-detail-copy h1 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .button-service {
+    margin-top: 22px;
+  }
+  .service-detail-tags {
+    margin-top: 20px;
+  }
+}
