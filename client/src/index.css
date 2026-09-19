@@ -6023,3 +6023,14 @@ html.dark .about-visual-card .about-visual-stats {
     margin-bottom: 30px;
   }
 }
+
+/* Final global typography: keep service navigation and titles at the requested sizes. */
+.service-detail-copy .back-link {
+  font-size: 15px;
+  line-height: 1.35;
+}
+.services-page-card h2 {
+  font-size: 20px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
