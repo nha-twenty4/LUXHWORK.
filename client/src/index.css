@@ -6039,3 +6039,10 @@ html.dark .about-visual-card .about-visual-stats {
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
+
+/* Service Detail hero titles: requested 20px size for all five services. */
+.service-detail-copy .eyebrow {
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
