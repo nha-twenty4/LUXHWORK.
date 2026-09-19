@@ -5917,6 +5917,36 @@ html.dark .about-visual-card .about-visual-stats {
     line-height: 1.15;
     letter-spacing: -0.02em;
   }
+
+  /* Keep Service Detail content compact and connected. */
+  .service-detail-copy .back-link {
+    margin-bottom: 28px;
+  }
+  .service-detail-copy h1 {
+    margin-top: 12px;
+    margin-bottom: 22px;
+  }
+  .button-service {
+    margin-top: 24px;
+  }
+  .service-detail-tags {
+    margin-top: 22px;
+  }
+  @media (max-width: 900px) {
+    .service-detail-copy .back-link {
+      margin-bottom: 30px;
+    }
+    .service-detail-copy h1 {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    .button-service {
+      margin-top: 22px;
+    }
+    .service-detail-tags {
+      margin-top: 20px;
+    }
+  }
 }
 
 /* Preserve source detail: avoid interpolation blur and let images render naturally. */
