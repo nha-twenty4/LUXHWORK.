@@ -974,6 +974,7 @@ function SafeImage({
   src,
   fallbackSrc = images.villa,
   alt,
+  loading,
   ...props
 }: ImgHTMLAttributes<HTMLImageElement> & { fallbackSrc?: string }) {
   const [currentSrc, setCurrentSrc] = useState(() => resolveImageSource(src));
@@ -984,8 +985,9 @@ function SafeImage({
   return (
     <img
       {...imageProps}
-      loading={imageProps.loading ?? "lazy"}
-      decoding={imageProps.decoding ?? "async"}
+      loading={loading ?? "lazy"}
+      decoding="async"
+      fetchPriority={loading === "eager" ? "high" : "auto"}
       className={`${className ?? ""} image-loading${isLoaded ? " image-loaded" : ""}`}
       src={currentSrc}
       alt={alt}
@@ -2398,6 +2400,7 @@ export function ProjectDetailPage() {
         <SafeImage
           src={project.image}
           alt={project.title}
+          loading="eager"
           className={`theme-image ${imagePresetClass(project.category, preset)}`}
         />
       </section>

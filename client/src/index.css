@@ -5908,3 +5908,16 @@ html.dark .about-visual-card .about-visual-stats {
     aspect-ratio: 4 / 3;
   }
 }
+
+/* Preserve source detail: avoid interpolation blur and let images render naturally. */
+.project-detail-image img,
+.project-detail-gallery img,
+.project-image-wrap img,
+.selected-work-image-link img {
+  image-rendering: auto;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.project-detail-gallery img {
+  max-width: 100%;
+}
