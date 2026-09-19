@@ -902,3 +902,7 @@ html.dark .about-visual-card .about-visual-stats { border-top-color:rgba(243,241
 
 /* Service list numbering only: larger 01–05 markers without changing titles or tags. */
 .service-row > span { font-size:20px; }
+
+/* Service Detail scope typography: clearer stage label and 01–03 markers. */
+.service-detail-scope > .section-label p { font-size:15px; }
+.service-detail-scope-grid > div > span { font-size:20px; }
