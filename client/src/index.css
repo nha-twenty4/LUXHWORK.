@@ -6046,3 +6046,74 @@ html.dark .about-visual-card .about-visual-stats {
   line-height: 1.2;
   letter-spacing: 0.02em;
 }
+
+/* Clean Projects / Portfolio composition. */
+.visual-gallery {
+  padding: 96px 5vw 112px;
+}
+.visual-gallery-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  align-items: end;
+  gap: 5vw;
+  padding-bottom: 46px;
+}
+.selected-work-heading h2 {
+  max-width: 720px;
+  margin-top: 22px;
+  font-size: clamp(44px, 5vw, 76px);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+.selected-work-intro {
+  max-width: 500px;
+  margin: 0 0 3px;
+  align-self: end;
+  font-size: clamp(18px, 1.7vw, 26px);
+  line-height: 1.24;
+  letter-spacing: -0.025em;
+}
+.selected-work-grid {
+  gap: 34px 20px;
+}
+.selected-work-image-link {
+  aspect-ratio: 4 / 3;
+}
+.selected-work-meta {
+  padding-top: 12px;
+}
+.selected-work-meta h3 {
+  font-size: clamp(15px, 1.35vw, 19px);
+  line-height: 1.12;
+}
+.selected-work-meta p {
+  margin-top: 6px;
+  font-size: 10px;
+}
+@media (max-width: 900px) {
+  .visual-gallery {
+    padding: 76px 20px 88px;
+  }
+  .visual-gallery-head {
+    display: block;
+    padding-bottom: 32px;
+  }
+  .selected-work-heading h2 {
+    max-width: 620px;
+    margin-top: 18px;
+    font-size: clamp(40px, 10vw, 60px);
+    line-height: 0.95;
+  }
+  .selected-work-intro {
+    max-width: 440px;
+    margin: 24px 0 0;
+    font-size: 17px;
+    line-height: 1.35;
+  }
+  .selected-work-grid {
+    gap: 26px 12px;
+  }
+  .selected-work-image-link {
+    aspect-ratio: 4 / 3;
+  }
+}
