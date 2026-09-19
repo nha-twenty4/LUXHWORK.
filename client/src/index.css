@@ -6001,3 +6001,25 @@ html.dark .about-visual-card .about-visual-stats {
     margin-top: 20px;
   }
 }
+
+/* Keep the Service Detail back link visible after the compact top alignment. */
+.service-detail-copy {
+  padding-top: 96px;
+}
+.service-detail-copy .back-link {
+  display: inline-flex;
+  position: relative;
+  z-index: 5;
+  visibility: visible;
+  opacity: 1;
+  margin-top: 0;
+  margin-bottom: 28px;
+}
+@media (max-width: 900px) {
+  .service-detail-copy {
+    padding-top: 48px;
+  }
+  .service-detail-copy .back-link {
+    margin-bottom: 30px;
+  }
+}
