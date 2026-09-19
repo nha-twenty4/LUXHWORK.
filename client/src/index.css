@@ -6034,3 +6034,8 @@ html.dark .about-visual-card .about-visual-stats {
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
+.service-row h3 {
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
