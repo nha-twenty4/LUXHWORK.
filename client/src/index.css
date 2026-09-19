@@ -6169,11 +6169,11 @@ html.dark .about-visual-card .about-visual-stats {
 /* Process header: risk note sits top-right, above the full-width steps row. */
 .v2-process-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.5fr);
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 20vw);
   column-gap: 6vw;
   align-items: start;
-  width: min(1120px, 100%);
-  max-width: 1120px;
+  width: calc(100% + 5vw);
+  max-width: none;
   margin: 64px 0 0;
 }
 .v2-process-header .manifesto-kicker {
@@ -6187,6 +6187,7 @@ html.dark .about-visual-card .about-visual-stats {
 .v2-process-header .manifesto-copy {
   grid-column: 2;
   max-width: 240px;
+  justify-self: end;
   margin: 0;
   padding: 0 0 0 20px;
   border-left: 1px solid rgba(248, 246, 240, 0.2);
@@ -6204,6 +6205,7 @@ html.dark .about-visual-card .about-visual-stats {
 @media (max-width: 900px) {
   .v2-process-header {
     display: block;
+    width: 100%;
     margin-top: 46px;
   }
   .v2-process-header .manifesto-kicker {
