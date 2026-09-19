@@ -5733,3 +5733,33 @@ html.dark .about-visual-card .about-visual-stats {
     grid-auto-rows: 42vw;
   }
 }
+
+/* Gallery spacing refinement: quiet outer margins and consistent gutters. */
+.project-detail-image {
+  padding: 0 clamp(24px, 4vw, 64px) clamp(40px, 5vw, 72px);
+}
+.project-detail-gallery {
+  padding: 0 clamp(24px, 4vw, 64px) clamp(72px, 8vw, 112px);
+  gap: clamp(12px, 1.5vw, 22px);
+}
+.project-detail-gallery figure {
+  border-radius: 3px;
+}
+@media (max-width: 900px) {
+  .project-detail-image {
+    padding: 0 20px 48px;
+  }
+  .project-detail-gallery {
+    padding: 0 20px 72px;
+    gap: 12px;
+  }
+}
+@media (max-width: 520px) {
+  .project-detail-image {
+    padding: 0 16px 36px;
+  }
+  .project-detail-gallery {
+    padding: 0 16px 56px;
+    gap: 10px;
+  }
+}
