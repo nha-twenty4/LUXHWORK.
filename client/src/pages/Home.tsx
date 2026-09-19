@@ -1212,7 +1212,6 @@ export function ProjectDetailPage() {
       <section className="project-detail-gallery">{project.gallery.map((image, index) => <figure key={`${image}-${index}`} className={index === 0 ? "project-detail-gallery-featured" : ""}><SafeImage src={image} alt={`${project.title} detail ${index + 1}`} className={`theme-image ${imagePresetClass(project.category, preset)}`} /></figure>)}</section>
       {isShHotel && <ProjectInquiryForm projectTitle={project.title} />}
       <nav className="project-pagination" aria-label="Project navigation"><Link href={`/projects/${previousProject.slug}`} onClick={() => navigateToProject(previousProject.slug)} className="project-pagination-link"><span>Previous project · ←</span><strong>{previousProject.title}</strong></Link><Link href={`/projects/${nextProject.slug}`} onClick={() => navigateToProject(nextProject.slug)} className="project-pagination-link project-pagination-next"><span>Next project · →</span><strong>{nextProject.title}</strong></Link></nav>
-      <section className="project-end-cta"><p>Like the direction?</p><h2>Start a similar<br /><em>project with us.</em></h2><Link href="/contact" className="button button-light">Begin a conversation <ArrowUpRight size={17} /></Link></section>
     </PageShell>
   );
 }
