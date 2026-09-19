@@ -2218,7 +2218,7 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
         ))}
       </div>
       <div className="about-visual-heading">
-        <p className="eyebrow eyebrow-light">PHNOM PENH / SINCE 2019</p>
+        <p className="eyebrow eyebrow-light">ABOUT LUXHWORK</p>
         <h1>
           Local execution,
           <br />
