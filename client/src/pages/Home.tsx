@@ -2228,7 +2228,6 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
         </h1>
       </div>
       <div className="about-visual-card">
-        <SectionLabel>About LUXHWORK</SectionLabel>
         <h2>
           A commercial interior consultancy and fit-out company serving
           businesses in Cambodia and Thailand.
