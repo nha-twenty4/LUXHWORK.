@@ -2192,7 +2192,11 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
       className={`about-visual-hero${compact ? " about-visual-hero-compact" : ""}`}
     >
       <div className="about-visual-slideshow" aria-hidden="true">
-        <SafeImage src={companyImages.warmDining} alt="" />
+        <SafeImage
+          src={companyImages.warmDining}
+          className="about-slide-active"
+          alt=""
+        />
       </div>
       <div className="about-visual-heading">
         <p className="eyebrow eyebrow-light">ABOUT LUXHWORK</p>
