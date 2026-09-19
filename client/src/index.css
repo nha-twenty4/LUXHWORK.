@@ -6117,3 +6117,17 @@ html.dark .about-visual-card .about-visual-stats {
     aspect-ratio: 4 / 3;
   }
 }
+
+/* Home hero: give the bar image a little more presence beside the headline. */
+@media (min-width: 901px) {
+  .hero {
+    grid-template-columns: 54% 46%;
+  }
+  .hero-copy {
+    padding-right: 3vw;
+  }
+  .hero-image {
+    width: calc(100% + 1.2vw);
+    margin-left: -1.2vw;
+  }
+}
