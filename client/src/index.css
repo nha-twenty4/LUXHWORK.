@@ -6222,3 +6222,18 @@ html.dark .about-visual-card .about-visual-stats {
     margin-top: 36px;
   }
 }
+
+/* Put the process risk note at the actual section edge, above the steps row. */
+@media (min-width: 901px) {
+  .v2-process-header {
+    position: relative;
+  }
+  .v2-process-header .manifesto-copy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(260px, 20vw);
+    max-width: none;
+    justify-self: auto;
+  }
+}
