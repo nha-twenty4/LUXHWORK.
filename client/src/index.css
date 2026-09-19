@@ -6253,3 +6253,37 @@ html.dark .about-visual-card .about-visual-stats {
     border-left: 0;
   }
 }
+
+/* Contact hero: bring the message upward and keep the opening panel compact. */
+.contact-hero {
+  min-height: 570px;
+  padding: 132px 5vw 58px;
+}
+.contact-hero h1 {
+  margin-top: 56px;
+}
+.contact-intro {
+  margin-top: 32px;
+  max-width: 820px;
+}
+.contact-intro p {
+  max-width: 310px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+@media (max-width: 900px) {
+  .contact-hero {
+    min-height: 520px;
+    padding: 102px 20px 44px;
+  }
+  .contact-hero h1 {
+    margin-top: 44px;
+  }
+  .contact-intro {
+    margin-top: 28px;
+  }
+  .contact-intro p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
