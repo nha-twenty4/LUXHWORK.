@@ -899,3 +899,6 @@ html.dark .about-visual-card .about-visual-stats { border-top-color:rgba(243,241
   .v2-process-steps strong { font-size:22px; }
   .v2-process-steps p { font-size:19px; line-height:1.5; }
 }
+
+/* Service list numbering only: larger 01–05 markers without changing titles or tags. */
+.service-row > span { font-size:20px; }
