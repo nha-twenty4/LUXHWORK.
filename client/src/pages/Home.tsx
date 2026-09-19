@@ -2112,6 +2112,9 @@ export function Home() {
             <br />
             <em>operational space.</em>
           </h2>
+          <p className="manifesto-copy">
+            Each stage closes a different risk before it reaches your budget.
+          </p>
         </div>
         <div className="v2-process-layout">
           <div className="v2-process-steps">
@@ -2143,9 +2146,6 @@ export function Home() {
               <p>Repair, alter and support continued operation.</p>
             </div>
           </div>
-          <p className="manifesto-copy">
-            Each stage closes a different risk before it reaches your budget.
-          </p>
         </div>
       </section>
 

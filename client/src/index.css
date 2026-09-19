@@ -6165,3 +6165,58 @@ html.dark .about-visual-card .about-visual-stats {
     border-left: 0;
   }
 }
+
+/* Process header: risk note sits top-right, above the full-width steps row. */
+.v2-process-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.5fr);
+  column-gap: 6vw;
+  align-items: start;
+  width: min(1120px, 100%);
+  max-width: 1120px;
+  margin: 64px 0 0;
+}
+.v2-process-header .manifesto-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: 16px;
+}
+.v2-process-header h2 {
+  grid-column: 1;
+  margin: 0;
+}
+.v2-process-header .manifesto-copy {
+  grid-column: 2;
+  max-width: 240px;
+  margin: 0;
+  padding: 0 0 0 20px;
+  border-left: 1px solid rgba(248, 246, 240, 0.2);
+  color: rgba(248, 246, 240, 0.72);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.v2-process-layout {
+  display: block;
+  margin-top: 48px;
+}
+.v2-process-layout .v2-process-steps {
+  margin-top: 0;
+}
+@media (max-width: 900px) {
+  .v2-process-header {
+    display: block;
+    margin-top: 46px;
+  }
+  .v2-process-header .manifesto-kicker {
+    margin-bottom: 14px;
+  }
+  .v2-process-header .manifesto-copy {
+    max-width: 430px;
+    margin-top: 24px;
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(248, 246, 240, 0.2);
+    border-left: 0;
+  }
+  .v2-process-layout {
+    margin-top: 36px;
+  }
+}
