@@ -6121,13 +6121,13 @@ html.dark .about-visual-card .about-visual-stats {
 /* Home hero: give the bar image a little more presence beside the headline. */
 @media (min-width: 901px) {
   .hero {
-    grid-template-columns: 54% 46%;
+    grid-template-columns: 49% 51%;
   }
   .hero-copy {
-    padding-right: 3vw;
+    padding-right: 1vw;
   }
   .hero-image {
-    width: calc(100% + 1.2vw);
-    margin-left: -1.2vw;
+    width: calc(100% + 1.5vw);
+    margin-left: -1.5vw;
   }
 }
