@@ -2195,6 +2195,7 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
         <SafeImage
           src={companyImages.warmDining}
           className="about-slide-active"
+          loading="eager"
           alt=""
         />
       </div>
