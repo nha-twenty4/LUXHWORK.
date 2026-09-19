@@ -2162,21 +2162,6 @@ function AboutInline() {
 
 function AboutVisualHero({ compact = false }: { compact?: boolean }) {
   const aboutRef = useRef<HTMLElement>(null);
-  const aboutImages = [
-    companyImages.warmDining,
-    companyImages.warmInterior,
-    companyImages.jewelleryWide,
-    companyImages.retailPanels,
-  ];
-  const [activeImage, setActiveImage] = useState(0);
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(
-      () => setActiveImage(current => (current + 1) % aboutImages.length),
-      5200
-    );
-    return () => window.clearInterval(timer);
-  }, [aboutImages.length]);
   useEffect(() => {
     const section = aboutRef.current;
     if (
@@ -2207,14 +2192,7 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
       className={`about-visual-hero${compact ? " about-visual-hero-compact" : ""}`}
     >
       <div className="about-visual-slideshow" aria-hidden="true">
-        {aboutImages.map((image, index) => (
-          <SafeImage
-            key={`${image}-${index}`}
-            src={image}
-            className={index === activeImage ? "about-slide-active" : ""}
-            alt=""
-          />
-        ))}
+        <SafeImage src={companyImages.warmDining} alt="" />
       </div>
       <div className="about-visual-heading">
         <p className="eyebrow eyebrow-light">ABOUT LUXHWORK</p>
