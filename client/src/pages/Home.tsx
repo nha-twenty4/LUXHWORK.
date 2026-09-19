@@ -1080,7 +1080,7 @@ const serviceReferenceImages: Record<string, string> = {
   "interior-design-and-consultancy": "/VIPlounge-02.png",
   "fit-out-works": companyImages.retailPanels,
   "project-management": companyImages.visaOffice,
-  "mep-coordination": companyImages.warmInterior,
+  "mep-coordination": "/mep-coordination.png",
   "feasibility-studies": companyImages.restaurant,
 };
 const serviceDetailCopy: Record<
