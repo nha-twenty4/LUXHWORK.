@@ -6146,7 +6146,7 @@ html.dark .about-visual-card .about-visual-stats {
 .v2-process-layout .manifesto-copy {
   max-width: 220px;
   margin: 0;
-  padding: 32px 0 0 20px;
+  padding: 0 0 0 20px;
   border-left: 1px solid rgba(248, 246, 240, 0.2);
   color: rgba(248, 246, 240, 0.72);
   font-size: 14px;
