@@ -5866,3 +5866,25 @@ html.dark .about-visual-card .about-visual-stats {
     padding-top: 6px;
   }
 }
+
+/* Compact Project Detail hero rhythm for projects with shorter galleries. */
+.project-detail-hero {
+  padding-bottom: 32px;
+}
+.project-detail-hero h1 {
+  margin-bottom: 48px;
+}
+.project-navigation-hint {
+  margin-top: 22px;
+}
+@media (max-width: 900px) {
+  .project-detail-hero {
+    padding-bottom: 28px;
+  }
+  .project-detail-hero h1 {
+    margin-bottom: 38px;
+  }
+  .project-navigation-hint {
+    margin-top: 22px;
+  }
+}
