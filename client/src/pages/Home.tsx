@@ -1049,7 +1049,7 @@ const services = [
     items: [
       "Planning & Coordination",
       "Quality & Cost Control",
-      "Programme & Delivery",
+      "Programmed & Delivery",
     ],
     text: "Coordinated project delivery from planning to completion, ensuring every detail, timeline, and team remains aligned for a smooth and well-executed outcome.",
   },
@@ -1103,21 +1103,41 @@ const serviceDetailCopy: Record<
     headline: "Built with control. Delivered business-ready.",
     body: "End-to-end fit-out solutions that bring your interior from design to completion, with careful coordination of workmanship, materials, and technical requirements.",
     tags: "INTERIOR FIT-OUT / TECHNICAL WORKS / SITE DELIVERY",
+    scope: [
+      "From partitions and ceilings to flooring, joinery, and finishes, every element is carefully executed to bring the design into the built environment.",
+      "Integrated electrical, mechanical, plumbing, and other technical systems are coordinated to support the functionality and performance of the space.",
+      "Coordinated site execution, quality control, and project management ensure the work is delivered efficiently, accurately, and to the required standard.",
+    ],
   },
   "project-management": {
     headline: "Every decision, clearly coordinated.",
     body: "Coordinated project delivery from planning to completion, ensuring every detail, timeline, and team remains aligned for a smooth and well-executed outcome.",
     tags: "PLANNING / COST CONTROL / PROGRAMME & DELIVERY",
+    scope: [
+      "Clear planning and coordination across design, procurement, contractors, and site activities to keep every stage aligned.",
+      "Close oversight of workmanship, materials, budget, and project requirements to maintain quality and value.",
+      "Structured programmed management and site supervision to keep the project progressing efficiently towards timely completion.",
+    ],
   },
   "mep-coordination": {
     headline: "Technical systems that support the experience.",
     body: "Integrated MEP solutions carefully coordinated with the design and built environment to ensure reliable performance, efficient operation, and seamless execution.",
     tags: "MEP PLANNING / TECHNICAL COORDINATION / PERFORMANCE & EFFICIENCY",
+    scope: [
+      "Integrated mechanical, electrical, and plumbing systems planned around the design, operational needs, and spatial requirements.",
+      "Close coordination between MEP systems, architectural elements, and other site works to minimize clashes and ensure seamless integration.",
+      "Practical MEP solutions focused on reliable performance, efficient operation, and long-term maintainability.",
+    ],
   },
   "feasibility-studies": {
     headline: "Make the right commitment early.",
     body: "Assessing site conditions, design potential, technical requirements, and cost considerations to determine practical solutions and provide a clear foundation for informed project decisions.",
     tags: "SITE ASSESSMENT / TECHNICAL FEASIBILITY / COST PLANNING",
+    scope: [
+      "Evaluate site conditions, spatial potential, and project requirements to establish a clear foundation for the development.",
+      "Assess design concepts, technical requirements, and practical constraints to determine viable solutions.",
+      "Review budget considerations, project scope, and development requirements to support informed planning and decision-making.",
+    ],
   },
 };
 const serviceSlug = (title: string) =>
