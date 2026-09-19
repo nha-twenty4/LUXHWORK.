@@ -6237,3 +6237,19 @@ html.dark .about-visual-card .about-visual-stats {
     justify-self: auto;
   }
 }
+
+/* Process note polish: stronger type, no vertical divider. */
+.v2-process-header .manifesto-copy {
+  padding-left: 0;
+  border-left: 0;
+  color: #f2dfd6;
+  font-size: 17px;
+  line-height: 1.38;
+  letter-spacing: -0.012em;
+}
+@media (max-width: 900px) {
+  .v2-process-header .manifesto-copy {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
