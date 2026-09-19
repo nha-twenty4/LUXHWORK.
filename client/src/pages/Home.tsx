@@ -2112,38 +2112,40 @@ export function Home() {
             <br />
             <em>operational space.</em>
           </h2>
+        </div>
+        <div className="v2-process-layout">
+          <div className="v2-process-steps">
+            <div>
+              <span>01</span>
+              <strong>BRIEF &amp; CONSULT</strong>
+              <p>Define users, operation, priorities and constraints.</p>
+            </div>
+            <div>
+              <span>02</span>
+              <strong>DESIGN &amp; COST</strong>
+              <p>Develop concept, technical drawings and priced BOQ.</p>
+            </div>
+            <div>
+              <span>03</span>
+              <strong>BUILD &amp; MANAGE</strong>
+              <p>
+                Coordinate site works, contractors, inspections and reporting.
+              </p>
+            </div>
+            <div>
+              <span>04</span>
+              <strong>HANDOVER &amp; CARE</strong>
+              <p>Commission, inspect, hand over and support the space.</p>
+            </div>
+            <div>
+              <span>05</span>
+              <strong>MAINTAIN</strong>
+              <p>Repair, alter and support continued operation.</p>
+            </div>
+          </div>
           <p className="manifesto-copy">
             Each stage closes a different risk before it reaches your budget.
           </p>
-        </div>
-        <div className="v2-process-steps">
-          <div>
-            <span>01</span>
-            <strong>BRIEF &amp; CONSULT</strong>
-            <p>Define users, operation, priorities and constraints.</p>
-          </div>
-          <div>
-            <span>02</span>
-            <strong>DESIGN &amp; COST</strong>
-            <p>Develop concept, technical drawings and priced BOQ.</p>
-          </div>
-          <div>
-            <span>03</span>
-            <strong>BUILD &amp; MANAGE</strong>
-            <p>
-              Coordinate site works, contractors, inspections and reporting.
-            </p>
-          </div>
-          <div>
-            <span>04</span>
-            <strong>HANDOVER &amp; CARE</strong>
-            <p>Commission, inspect, hand over and support the space.</p>
-          </div>
-          <div>
-            <span>05</span>
-            <strong>MAINTAIN</strong>
-            <p>Repair, alter and support continued operation.</p>
-          </div>
         </div>
       </section>
 
