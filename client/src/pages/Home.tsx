@@ -2391,7 +2391,9 @@ export function ProjectDetailPage() {
           ← → Use arrow keys · Swipe to browse
         </p>
       </section>
-      <section className="project-detail-image project-main-image">
+      <section
+        className={`project-detail-image project-main-image project-main-image-${project.slug}`}
+      >
         <ColorPresetControls preset={preset} onChange={setPreset} />
         <SafeImage
           src={project.image}

@@ -5888,3 +5888,23 @@ html.dark .about-visual-card .about-visual-stats {
     margin-top: 22px;
   }
 }
+
+/* PP Link photography is 4:3; keep its hero frame compact and natural. */
+.project-main-image-mori-residence {
+  padding-bottom: 28px;
+}
+.project-main-image-mori-residence img {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  max-height: none;
+  object-fit: cover;
+}
+@media (max-width: 900px) {
+  .project-main-image-mori-residence {
+    padding-bottom: 24px;
+  }
+  .project-main-image-mori-residence img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
