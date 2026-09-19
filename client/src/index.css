@@ -5813,3 +5813,29 @@ html.dark .about-visual-card .about-visual-stats {
     padding-bottom: 56px;
   }
 }
+
+/* Keep Previous/Next project cards completely below the gallery. */
+.project-detail-gallery {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  margin-bottom: 0;
+}
+.project-pagination {
+  position: relative;
+  z-index: 3;
+  isolation: isolate;
+  margin-top: 48px;
+  padding-top: 24px;
+  background: var(--line);
+}
+.project-pagination-link {
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 520px) {
+  .project-pagination {
+    margin-top: 36px;
+    padding-top: 18px;
+  }
+}
