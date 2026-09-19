@@ -2637,8 +2637,8 @@ export function ContactPage() {
 }
 
 function ContactContent() {
-  const submitInquiry = trpc.contact.submit.useMutation();
   const [formError, setFormError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const submitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -2668,22 +2668,33 @@ function ContactContent() {
       return;
     }
     setFormError("");
+    setIsSubmitting(true);
     try {
-      await submitInquiry.mutateAsync({
-        name,
-        email,
-        phone: String(values.get("phone") ?? "") || undefined,
-        service,
-        details: [
-          details,
-          bookingType && `Preferred consultation: ${bookingType}`,
-          contactWindow && `Preferred contact window: ${contactWindow}`,
-        ]
-          .filter(Boolean)
-          .join("\n\n"),
-        budget: String(values.get("budget") ?? "") || undefined,
-        timeline: String(values.get("timeline") ?? "") || undefined,
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: String(values.get("phone") ?? "") || undefined,
+          service,
+          details: [
+            details,
+            bookingType && `Preferred consultation: ${bookingType}`,
+            contactWindow && `Preferred contact window: ${contactWindow}`,
+          ]
+            .filter(Boolean)
+            .join("\n\n"),
+          budget: String(values.get("budget") ?? "") || undefined,
+          timeline: String(values.get("timeline") ?? "") || undefined,
+        }),
       });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(
+          result.error ?? "We could not save your inquiry. Please try again."
+        );
+      }
       form.reset();
       toast.success("Thank you — we’ll be in touch shortly.");
     } catch (error) {
@@ -2693,6 +2704,8 @@ function ContactContent() {
           : "We could not save your inquiry. Please try again.";
       setFormError(message);
       toast.error(message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
@@ -2878,9 +2891,9 @@ function ContactContent() {
           <button
             type="submit"
             className="button button-dark"
-            disabled={submitInquiry.isPending}
+            disabled={isSubmitting}
           >
-            {submitInquiry.isPending ? "Sending…" : "Request consultation"}{" "}
+            {isSubmitting ? "Sending…" : "Request consultation"}{" "}
             <ArrowUpRight size={17} />
           </button>
         </form>
