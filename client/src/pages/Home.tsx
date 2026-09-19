@@ -1081,7 +1081,7 @@ const serviceReferenceImages: Record<string, string> = {
   "fit-out-works": companyImages.retailPanels,
   "project-management": companyImages.visaOffice,
   "mep-coordination": "/mep-coordination.png",
-  "feasibility-studies": companyImages.restaurant,
+  "feasibility-studies": "/feasibility-study.png",
 };
 const serviceDetailCopy: Record<
   string,
