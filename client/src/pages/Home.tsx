@@ -2164,7 +2164,7 @@ function AboutInline() {
 function AboutVisualHero({ compact = false }: { compact?: boolean }) {
   const aboutRef = useRef<HTMLElement>(null);
   const aboutImages = [
-    companyImages.bar,
+    companyImages.warmDining,
     companyImages.warmInterior,
     companyImages.jewelleryWide,
     companyImages.retailPanels,
