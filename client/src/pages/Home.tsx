@@ -280,11 +280,11 @@ const companyProjectImageSets: Record<string, string[]> = {
     "image73.jpeg",
   ].map(profileImage),
   "pool-side-house": [
-    "image137.png",
+    "image141.png",
     "image138.png",
     "image139.png",
     "image140.png",
-    "image141.png",
+    "image137.png",
   ].map(profileImage),
   "thailand-lukfook-rama9": [
     "image147.jpeg",
