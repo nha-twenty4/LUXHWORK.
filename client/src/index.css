@@ -5839,3 +5839,30 @@ html.dark .about-visual-card .about-visual-stats {
     padding-top: 18px;
   }
 }
+
+/* Keep Project Detail pages compact without letting navigation touch the images. */
+.project-detail-gallery {
+  padding-bottom: clamp(28px, 3vw, 48px);
+}
+.project-pagination {
+  margin-top: 18px;
+  padding-top: 10px;
+}
+@media (max-width: 900px) {
+  .project-detail-gallery {
+    padding-bottom: 32px;
+  }
+  .project-pagination {
+    margin-top: 16px;
+    padding-top: 8px;
+  }
+}
+@media (max-width: 520px) {
+  .project-detail-gallery {
+    padding-bottom: 26px;
+  }
+  .project-pagination {
+    margin-top: 12px;
+    padding-top: 6px;
+  }
+}
