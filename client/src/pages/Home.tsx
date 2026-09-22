@@ -1269,113 +1269,6 @@ function CookieConsent() {
   );
 }
 
-function ProjectInquiryForm({ projectTitle }: { projectTitle: string }) {
-  const submitInquiry = trpc.contact.submit.useMutation();
-  const [status, setStatus] = useState("");
-  const submit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const values = new FormData(event.currentTarget);
-    const name = String(values.get("name") ?? "").trim();
-    const email = String(values.get("email") ?? "").trim();
-    const details = String(values.get("details") ?? "").trim();
-    if (
-      name.length < 2 ||
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
-      details.length < 20
-    ) {
-      setStatus(
-        "Please provide your name, a valid email and at least 20 characters about the project."
-      );
-      return;
-    }
-    try {
-      await submitInquiry.mutateAsync({
-        name,
-        email,
-        phone: String(values.get("phone") ?? "") || undefined,
-        service: projectTitle,
-        details,
-        budget: String(values.get("budget") ?? "") || undefined,
-        timeline: String(values.get("timeline") ?? "") || undefined,
-      });
-      event.currentTarget.reset();
-      setStatus("Thank you — we’ll be in touch shortly.");
-    } catch {
-      setStatus(
-        "We could not send the enquiry. Please try again or email ADMIN@LUXHWORK.COM."
-      );
-    }
-  };
-  return (
-    <section className="project-inquiry">
-      <div>
-        <SectionLabel number="Project enquiry">
-          Start with SH Hotel
-        </SectionLabel>
-        <h2>
-          Have a similar
-          <br />
-          <em>space in mind?</em>
-        </h2>
-        <p>
-          Tell us about the location, brief and timing. We will help define the
-          right next step.
-        </p>
-      </div>
-      <form className="contact-form" onSubmit={submit}>
-        <div className="form-split">
-          <label>
-            Name *<input name="name" required placeholder="Your name" />
-          </label>
-          <label>
-            Email *
-            <input
-              name="email"
-              type="email"
-              required
-              placeholder="you@company.com"
-            />
-          </label>
-          <label>
-            Phone or WhatsApp
-            <input name="phone" placeholder="+855 ..." />
-          </label>
-          <label>
-            Budget / timeline
-            <input name="timeline" placeholder="Optional" />
-          </label>
-        </div>
-        <label>
-          Project details *
-          <textarea
-            name="details"
-            required
-            minLength={20}
-            rows={5}
-            placeholder="Tell us about the space or brief..."
-          />
-        </label>
-        {status && (
-          <p className="form-error" role="status">
-            {status}
-          </p>
-        )}
-        <p className="privacy-consent">
-          By sending this enquiry you agree that LUXHWORK may contact you about
-          your project.
-        </p>
-        <button
-          className="button button-dark"
-          type="submit"
-          disabled={submitInquiry.isPending}
-        >
-          {submitInquiry.isPending ? "Sending…" : "Discuss your project"}{" "}
-          <ArrowUpRight size={17} />
-        </button>
-      </form>
-    </section>
-  );
-}
 
 export function PageShell({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -2301,7 +2194,6 @@ export function ProjectDetailPage() {
   const [preset, setPreset] = useColorPreset();
   const project =
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
-  const isShHotel = project.slug === "the-hynd-hotel";
   const projectIndex = Math.max(
     0,
     portfolioProjects.findIndex(item => item.slug === project.slug)
@@ -2421,7 +2313,6 @@ export function ProjectDetailPage() {
           </figure>
         ))}
       </section>
-      {isShHotel && <ProjectInquiryForm projectTitle={project.title} />}
       <nav className="project-pagination" aria-label="Project navigation">
         <Link
           href={`/projects/${previousProject.slug}`}
