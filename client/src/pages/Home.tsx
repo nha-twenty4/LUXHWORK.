@@ -1001,7 +1001,7 @@ function usePortfolioProjects() {
     persistedProjects.map(project => project.slug)
   );
   const correctedStaticProjects = projects.map(project => {
-    const companyGallery = uploadedProjectMedia[project.slug];
+    const companyGallery = companyProjectImageSets[project.slug];
     return companyGallery
       ? { ...project, image: companyGallery[0], gallery: companyGallery }
       : project;

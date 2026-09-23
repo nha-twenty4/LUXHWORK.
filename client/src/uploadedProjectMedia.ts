@@ -1,5 +1,5 @@
 // Uploaded project photography from Picture.zip. Grouped by project slug.
-const uploadedProjectMediaBase: Record<string, string[]> = {
+export const uploadedProjectMedia: Record<string, string[]> = {
   "house-14": [
     "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/azTCJHUDTdihibBt.png",
     "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/PzwRVzkpwgGlIbMb.png",
@@ -140,17 +140,4 @@ const uploadedProjectMediaBase: Record<string, string[]> = {
     "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/eHzujsmIXEulQwbw.png",
     "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/DwkYEZeFeWfzoOFU.png",
   ],
-};
-
-// Every portfolio entry gets a current studio image set. Where the ZIP does not
-// contain a named folder, use the closest matching brief/category rather than old profile media.
-export const uploadedProjectMedia: Record<string, string[]> = {
-  ...uploadedProjectMediaBase,
-  "mori-residence": uploadedProjectMediaBase["house-14"],
-  "pp-link-broadcast": uploadedProjectMediaBase["house-14"],
-  "thailand-lukfook-rama9": uploadedProjectMediaBase["lukfook-funmall"],
-  "thailand-zhou-liufu": uploadedProjectMediaBase["lukfook-funmall"],
-  "thailand-lukfook-pinklao": uploadedProjectMediaBase["lukfook-funmall"],
-  "ratanac-mealea": uploadedProjectMediaBase["chj-jewellry-cb1"],
-  "fabric-factory": uploadedProjectMediaBase["northpoint"],
 };
