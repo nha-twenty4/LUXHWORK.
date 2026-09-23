@@ -1895,6 +1895,10 @@ function ProjectCard({
       </div>
       <div className="project-meta">
         <div>
+          <div className="project-card-topline">
+            <span>{projectBusinessCategory[project.slug] ?? project.category}</span>
+            <span>{project.year}</span>
+          </div>
           <h3>{project.title}</h3>
           <p>{project.note}</p>
         </div>
@@ -2360,7 +2364,8 @@ export function ProjectsPage() {
     "Commercial",
     "Food & Beverage (FnB)",
   ];
-  const archiveProjects = projects.filter(
+  const visibleProjects = projects;
+  const archiveProjects = visibleProjects.filter(
     project => !homeProjectSlugs.has(project.slug)
   );
   const filteredProjects = archiveProjects.filter(project =>

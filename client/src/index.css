@@ -6986,3 +6986,70 @@ html.dark .about-visual-card .about-visual-stats {
     gap: 20px;
   }
 }
+
+/* Portfolio-wide polish: restrained metadata, consistent image rhythm, and quiet luxury. */
+.projects-archive-head h1 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+.projects-archive-head p {
+  max-width: 560px;
+  font-size: 16px;
+}
+.projects-archive-grid {
+  gap: clamp(42px, 4.5vw, 72px) clamp(18px, 2.2vw, 32px);
+}
+.projects-archive-grid .project-card {
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.projects-archive-grid .project-card:hover {
+  transform: translateY(-5px);
+}
+.projects-archive-grid .project-image-wrap {
+  aspect-ratio: 1.28 / 1;
+  background: #dedbd3;
+  box-shadow: 0 12px 28px rgba(39, 43, 39, 0.06);
+}
+.projects-archive-grid .project-image {
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), filter 0.4s ease;
+}
+.projects-archive-grid .project-card:hover .project-image {
+  transform: scale(1.035);
+  filter: saturate(1.04) contrast(1.02);
+}
+.projects-archive-grid .project-meta {
+  min-height: 106px;
+  padding-top: 15px;
+}
+.project-card-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 9px;
+  color: var(--brick);
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.project-card-topline span:last-child {
+  color: var(--muted);
+}
+.projects-filter-list button {
+  letter-spacing: -0.01em;
+}
+@media (max-width: 900px) {
+  .projects-archive-grid {
+    gap: 38px 16px;
+  }
+}
+@media (max-width: 520px) {
+  .projects-archive-grid {
+    gap: 38px;
+  }
+  .projects-archive-grid .project-image-wrap {
+    aspect-ratio: 1.2 / 1;
+  }
+}
