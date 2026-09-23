@@ -2315,10 +2315,14 @@ export function ProjectsPage() {
       return "Corporate Office";
     return "Commercial";
   };
+  const homeProjectSlugs = new Set(["house-14", "mori-residence", "northpoint"]);
+  const archiveProjects = projects.filter(
+    project => !homeProjectSlugs.has(project.slug)
+  );
   const filteredProjects =
     activeFilter === "All"
-      ? projects
-      : projects.filter(project => projectCategory(project) === activeFilter);
+      ? archiveProjects
+      : archiveProjects.filter(project => projectCategory(project) === activeFilter);
   return (
     <PageShell>
       <section className="projects-index">
