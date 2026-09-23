@@ -2332,11 +2332,11 @@ export function ProjectsPage() {
               <ChevronLeft size={17} /> Home
             </a>
             <SectionLabel>Projects / Portfolio</SectionLabel>
-            <h1>
-              Our Vision:
-              <br />
-              <em>To transform spaces into inspiring experiences through innovation, efficiency, and exceptional craftsmanship.</em>
-            </h1>
+            <h1>Our Vision</h1>
+            <p className="projects-vision-statement">
+              To transform spaces into inspiring experiences through innovation,
+              efficiency, and exceptional craftsmanship.
+            </p>
           </div>
           <p>
             While fostering the next generation of leading designers and

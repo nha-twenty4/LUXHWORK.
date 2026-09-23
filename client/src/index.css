@@ -7297,6 +7297,32 @@ html.dark .about-visual-card .about-visual-stats {
   line-height: 1.35;
 }
 
+.projects-index-head .projects-vision-statement {
+  max-width: 640px;
+  margin: 28px 0 0;
+  color: var(--ink);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(25px, 3.1vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+@media (max-width: 900px) {
+  .projects-index-head .projects-vision-statement {
+    max-width: 680px;
+    margin-top: 22px;
+    font-size: clamp(26px, 5vw, 42px);
+  }
+}
+
+@media (max-width: 560px) {
+  .projects-index-head .projects-vision-statement {
+    font-size: 25px;
+    line-height: 1.14;
+  }
+}
+
 .projects-index-body {
   display: grid;
   grid-template-columns: 190px minmax(0, 1fr);
