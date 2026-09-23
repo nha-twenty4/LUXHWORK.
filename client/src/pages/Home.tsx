@@ -303,6 +303,9 @@ const companyProjectImageSets: Record<string, string[]> = {
   ].map(profileImage),
 };
 
+// The supplied VIP lounge photograph is the approved Golden Group cover image.
+companyProjectImageSets.northpoint = ["/golden-group-vip-lounge.png"];
+
 const companyProjectDetails: Record<
   string,
   {
@@ -1108,7 +1111,10 @@ type PersistedProject = {
 };
 
 function mapPersistedProject(item: PersistedProject): Project {
-  const companyGallery = uploadedProjectMedia[item.slug] ?? companyProjectImageSets[item.slug];
+  const companyGallery =
+    item.slug === "northpoint"
+      ? ["/golden-group-vip-lounge.png"]
+      : uploadedProjectMedia[item.slug] ?? companyProjectImageSets[item.slug];
   const details = companyProjectDetails[item.slug];
   const gallery =
     companyGallery ??
