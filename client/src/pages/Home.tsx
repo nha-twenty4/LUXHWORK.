@@ -437,6 +437,176 @@ type Project = {
   pdf: string;
 };
 
+type BusinessCategory =
+  | "Corporate Office"
+  | "Retails"
+  | "Commercial"
+  | "Food & Beverage (FnB)";
+
+const projectBusinessCategory: Record<string, BusinessCategory> = {
+  "house-14": "Corporate Office",
+  "visa-branch-office": "Corporate Office",
+  "mori-residence": "Commercial",
+  "pp-link-broadcast": "Commercial",
+  northpoint: "Commercial",
+  "frame-house": "Food & Beverage (FnB)",
+  "seascape-house": "Food & Beverage (FnB)",
+  "davidoff": "Retails",
+  "the-hynd-hotel": "Commercial",
+  "chj-jewellry-cb1": "Retails",
+  "chj-jewellry-cb3": "Retails",
+  "chj-jewellry-cb4": "Retails",
+  "atelier-common": "Retails",
+  "lukfook-sihanouk": "Retails",
+  "lukfook-funmall": "Retails",
+  "lukfook-chipmong": "Retails",
+  "lao-miao-naga-2": "Retails",
+  "thailand-lukfook-rama9": "Retails",
+  "thailand-zhou-liufu": "Retails",
+  "thailand-lukfook-pinklao": "Retails",
+  "ratanac-mealea": "Retails",
+  "field-notes": "Retails",
+  "courtyard-study": "Commercial",
+  "fabric-factory": "Commercial",
+};
+
+const projectDetailContent: Record<
+  string,
+  {
+    heading: string;
+    paragraphs: string[];
+    type: string;
+    size: string;
+    completion: string;
+    duration?: string;
+    client: string;
+  }
+> = {
+  "house-14": {
+    heading: "A Purposely Designed Workplace Designed For Modern Collaboration",
+    paragraphs: [
+      "Located within Vattanac Capital Tower in Phnom Penh, The VISA Worldwide office was designed as a modern corporate workplace that reflects the company’s global identity while producing a comfortable and efficient environment for their team.",
+      "Spanning approximately 136 sqm, the office features a clean, open layout with a contemporary corporate aesthetic. The design maximises the compact footprint, creating a workplace that feels bright, connected, and functional.",
+      "Through interior design and fit-out, LUXHWORK translated the concept into a cohesive workplace, carefully coordinating finishes, details, and construction to deliver a refined and professional environment.",
+    ],
+    type: "Corporate Offices",
+    size: "136 sqm",
+    completion: "April 2022 · Expansion Feb 2025",
+    duration: "9 weeks",
+    client: "VISA Worldwide",
+  },
+  northpoint: {
+    heading: "A Refined VIP Lounge for Private Dining and Entertainment",
+    paragraphs: [
+      "Completed in July 2022, the 170 sqm Golden Tower VIP Lounge in Phnom Penh was designed for VIP entertainment, private dining and special events.",
+      "The contemporary luxury interior combines intimate seating, custom joinery, geometric wall panels and a statement bar, enriched by teal accents and layered lighting.",
+      "Careful material selection, colour coordination and technical craftsmanship ensured the completed space remained faithful to the approved visual concept.",
+    ],
+    type: "Hospitality",
+    size: "170 sqm",
+    completion: "July 2022",
+    duration: "6 weeks",
+    client: "Golden Group",
+  },
+  "frame-house": {
+    heading: "A Bold and Energetic Fast-Food Experience",
+    paragraphs: [
+      "Located in Krong TaKhmao, the 377 sqm Lucky Burger restaurant expands the presence of one of Cambodia’s established fast-food chains within a standalone building.",
+      "The restaurant brings together indoor and outdoor dining, an efficient service counter and clear customer circulation within a highly visible branded environment.",
+      "Completed in September 2023, the project involved the design and complete fit-out of the existing building, including its façade, dining areas, service zones and integrated brand elements.",
+    ],
+    type: "Hospitality",
+    size: "377 sqm",
+    completion: "September 2023",
+    client: "REAL FOOD AND BEVERAGE Co., LTD",
+  },
+  "lukfook-sihanouk": {
+    heading: "Precision Fit-Out for a Premium Retail Experience",
+    paragraphs: [
+      "This LUKFOOK Jewellery boutique delivers a refined retail environment designed to showcase fine jewellery with clarity, elegance, and a strong sense of brand identity.",
+      "LUXHWORK was appointed to undertake the complete fit-out works and project management, coordinating specialist contractors, suppliers, technical services, and site execution to translate the approved design into a finished retail space.",
+      "Particular attention was given to workmanship, material consistency, lighting accuracy, and the precise installation of display fixtures—essential elements in creating a secure and sophisticated jewellery-shopping experience.",
+    ],
+    type: "Retail",
+    size: "355 sqm",
+    completion: "July 2026",
+    client: "Goldman Jewellery Co., LTD",
+  },
+  "lukfook-chipmong": {
+    heading: "Precision Fit-Out for a Premium Retail Experience",
+    paragraphs: [
+      "This LUKFOOK Jewellery boutique delivers a refined retail environment designed to showcase fine jewellery with clarity, elegance, and a strong sense of brand identity.",
+      "LUXHWORK was appointed to undertake the complete fit-out works and project management, coordinating specialist contractors, suppliers, technical services, and site execution to translate the approved design into a finished retail space.",
+      "Particular attention was given to workmanship, material consistency, lighting accuracy, and the precise installation of display fixtures—essential elements in creating a secure and sophisticated jewellery-shopping experience.",
+    ],
+    type: "Retail",
+    size: "75 sqm",
+    completion: "July 2026",
+    client: "Goldman Jewellery Co., LTD",
+  },
+  "chj-jewellry-cb1": {
+    heading: "Fit-Out Works Within a Compact Retail Space",
+    paragraphs: [
+      "Located at AEON Mall Phnom Penh in Cambodia, this 58 sqm CHJ Jewellery boutique delivers a bright and highly detailed retail environment within a compact footprint.",
+      "LUXHWORK was appointed to undertake the fit-out works and project management, coordinating specialist contractors, suppliers, building services, and on-site execution to translate the approved design into a completed retail space.",
+      "Through disciplined site supervision, quality control, and detailed coordination, LUXHWORK completed the boutique in accordance with the brand’s design intent, technical requirements, and retail operating standards.",
+    ],
+    type: "Retail",
+    size: "58 sqm",
+    completion: "June 2025",
+    duration: "8 weeks",
+    client: "Goldman Jewellery Co., LTD",
+  },
+  "lao-miao-naga-2": {
+    heading: "Meticulous Execution, Lasting Impression",
+    paragraphs: [
+      "Located at NagaWorld 1 in Phnom Penh, Cambodia, this 145 sqm LAOMIAO Jewellery boutique delivers a luxurious retail environment within a compact footprint.",
+      "LUXHWORK managed the complete fit-out works and project execution, coordinating specialist contractors, suppliers, MEP services, custom showcases, illuminated displays, detailed joinery, decorative finishes, and branded storefront elements.",
+      "Through precise coordination, site supervision, and quality control, the boutique was completed in accordance with the brand’s design intent, technical requirements, and operational standards.",
+    ],
+    type: "Retail",
+    size: "145 sqm",
+    completion: "January 2026",
+    duration: "7 weeks",
+    client: "n/a",
+  },
+  "seascape-house": {
+    heading: "A Dining Experience Shaped by Space and Ritual",
+    paragraphs: [
+      "Located at The Peak in Phnom Penh, Cambodia, this 330 sqm Ryukou Omakase restaurant was conceived as an immersive Japanese dining environment where architecture, atmosphere, and culinary performance come together.",
+      "LUXHWORK was appointed for the interior design scope, developing the spatial planning, material palette, lighting concept, custom joinery, and overall visual direction. The design balances privacy and openness through carefully considered dining zones, creating a natural progression from arrival to the intimate omakase experience.",
+      "Warm timber finishes, controlled lighting, textured surfaces, and precise architectural detailing establish a calm and sophisticated atmosphere. Every element was designed to frame the chef’s craft, enhance the guest journey, and express Ryukou Omakase’s identity through a cohesive dining environment.",
+    ],
+    type: "FnB",
+    size: "330 sqm",
+    completion: "January 2026",
+    client: "-",
+  },
+  "fabric-factory": {
+    heading: "A Purpose-Built Showcase for Fabric and Fashion",
+    paragraphs: [
+      "Located in Phnom Penh, Cambodia, this 350 sqm space for New Rainbow Fabric Factory was designed as a dedicated fashion display and presentation zone, bringing garments, fabrics, and collections together within an organised and visually engaging environment.",
+      "A balanced combination of warm timber finishes, neutral tones, glass partitions, and integrated lighting creates a clear, welcoming setting for presenting clothes and fabric collections.",
+      "Every element was considered to strengthen the company’s identity while delivering a functional showcase zone suited to the operational needs of a modern manufacturing business.",
+    ],
+    type: "Commercial",
+    size: "350 sqm",
+    completion: "2024",
+    client: "-",
+  },
+  "field-notes": {
+    heading: "A Family-Focused Retail Experience Designed for Discovery",
+    paragraphs: [
+      "The Combi showroom is conceived as a warm, intuitive retail environment where parents can explore, compare and experience products with ease. Natural oak finishes create a calm and welcoming atmosphere, while clean white surfaces and Combi’s signature orange accents reinforce the brand’s Japanese identity.",
+      "Products are organised into clearly defined zones, including dedicated stroller displays, child-seat testing areas and central accessory showcases. Integrated lighting highlights each collection without overwhelming the space, while wide circulation paths improve visibility and allow customers to move comfortably with children and strollers.",
+    ],
+    type: "Retail",
+    size: "90 sqm",
+    completion: "n/a",
+    client: "-",
+  },
+};
+
 type ColorPreset = "auto" | "monochrome" | "cinematic";
 
 function useColorPreset() {
@@ -1361,12 +1531,15 @@ function Header() {
     Services: "services",
     Contact: "contact",
   };
-  const headerItems = navItems.map(
-    ([label]) =>
-      [
-        label,
-        location === "/" ? `#${sectionIds[label]}` : `/#${sectionIds[label]}`,
-      ] as const
+  const headerItems = navItems.map(([label]) =>
+    [
+      label,
+      label === "Contact"
+        ? "/contact"
+        : location === "/"
+          ? `#${sectionIds[label]}`
+          : `/#${sectionIds[label]}`,
+    ] as const
   );
   const [activeSection, setActiveSection] = useState(
     location === "/" ? "hero" : ""
@@ -1708,7 +1881,7 @@ function ProjectCard({
 function GallerySection() {
   const { projects } = usePortfolioProjects();
   const [preset] = useColorPreset();
-  const visibleProjects = projects;
+  const visibleProjects = projects.slice(0, 3);
   const galleryRef = useRef<HTMLElement>(null);
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
 
@@ -1790,6 +1963,11 @@ function GallerySection() {
           </article>
         ))}
       </div>
+      <div className="selected-work-more">
+        <Link href="/projects" className="button button-dark">
+          More projects <ArrowUpRight size={17} />
+        </Link>
+      </div>
     </section>
   );
 }
@@ -1833,42 +2011,6 @@ export function Home() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (frame) window.cancelAnimationFrame(frame);
-    };
-  }, []);
-  useEffect(() => {
-    const heroImage = heroImageRef.current;
-    const image = heroImage?.querySelector("img");
-    if (
-      !heroImage ||
-      !image ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    )
-      return;
-    const updateImagePosition = (clientX: number, clientY: number) => {
-      const bounds = heroImage.getBoundingClientRect();
-      const x = ((clientX - bounds.left) / bounds.width - 0.5) * 10;
-      const y = ((clientY - bounds.top) / bounds.height - 0.5) * 8;
-      image.style.transform = `perspective(900px) rotateX(${-y * 0.22}deg) rotateY(${x * 0.22}deg) scale(1.04) translate3d(${x}px, ${y}px, 0)`;
-    };
-    const handlePointerMove = (event: PointerEvent) =>
-      updateImagePosition(event.clientX, event.clientY);
-    const handleTouchMove = (event: TouchEvent) => {
-      const touch = event.touches[0];
-      if (touch) updateImagePosition(touch.clientX, touch.clientY);
-    };
-    const resetImage = () => {
-      image.style.transform =
-        "perspective(900px) rotateX(0) rotateY(0) scale(1) translate3d(0, 0, 0)";
-    };
-    heroImage.addEventListener("pointermove", handlePointerMove);
-    heroImage.addEventListener("pointerleave", resetImage);
-    heroImage.addEventListener("touchmove", handleTouchMove, { passive: true });
-    heroImage.addEventListener("touchend", resetImage, { passive: true });
-    return () => {
-      heroImage.removeEventListener("pointermove", handlePointerMove);
-      heroImage.removeEventListener("pointerleave", resetImage);
-      heroImage.removeEventListener("touchmove", handleTouchMove);
-      heroImage.removeEventListener("touchend", resetImage);
     };
   }, []);
 
@@ -1941,7 +2083,7 @@ export function Home() {
             </div>
           </div>
         </div>
-        <div className="hero-image hero-image-interactive" ref={heroImageRef}>
+        <div className="hero-image" ref={heroImageRef}>
           <SafeImage
             src={homeHeroImage}
             alt="Hospitality bar interior designed and fitted out by LUXH Works"
@@ -2032,7 +2174,6 @@ export function Home() {
         </div>
       </section>
 
-      <ContactContent />
     </PageShell>
   );
 }
@@ -2096,8 +2237,8 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
       </div>
       <div className="about-visual-card">
         <h2>
-          A commercial interior consultancy and fit-out company serving
-          businesses in Cambodia and Thailand.
+          Singaporean Led– a commercial interior consultancy and fit-out
+          company serving businesses in Cambodia.
         </h2>
         <p>
           Our team connects considered design with planning, MEP coordination,
@@ -2144,6 +2285,13 @@ export function AboutPage() {
   return (
     <PageShell>
       <AboutVisualHero />
+      <section className="vision-section">
+        <SectionLabel number="02">Our vision</SectionLabel>
+        <div className="vision-copy">
+          <h2>To transform spaces into inspiring experiences through innovation, efficiency, and exceptional craftsmanship.</h2>
+          <p>While fostering the next generation of leading designers and cultivating a team of talented professionals to drive the future of commercial design.</p>
+        </div>
+      </section>
       <section className="expertise">
         <SectionLabel number="03">Skills / How we think and make</SectionLabel>
         <div className="expertise-grid">
@@ -2170,11 +2318,52 @@ export function AboutPage() {
 }
 
 export function ProjectsPage() {
-  const [, navigate] = useLocation();
-  useEffect(() => {
-    navigate("/#projects");
-  }, [navigate]);
-  return null;
+  const { projects } = usePortfolioProjects();
+  const [preset] = useColorPreset();
+  const [filter, setFilter] = useState<BusinessCategory | "All">("All");
+  const filters: Array<BusinessCategory | "All"> = [
+    "All",
+    "Corporate Office",
+    "Retails",
+    "Commercial",
+    "Food & Beverage (FnB)",
+  ];
+  const filteredProjects = projects.filter(project =>
+    filter === "All" ? true : projectBusinessCategory[project.slug] === filter
+  );
+  return (
+    <PageShell>
+      <section className="projects-archive">
+        <div className="projects-archive-head">
+          <SectionLabel>Projects / Portfolio</SectionLabel>
+          <h1>Spaces shaped around <em>business purpose.</em></h1>
+          <p>Explore selected LUXHWORK projects by the type of business they support.</p>
+        </div>
+        <div className="projects-archive-layout">
+          <aside className="projects-filter" aria-label="Filter projects by category">
+            <span className="projects-filter-label">Filter by category</span>
+            <div className="projects-filter-list" role="list">
+              {filters.map(item => (
+                <button
+                  key={item}
+                  type="button"
+                  className={filter === item ? "projects-filter-active" : ""}
+                  onClick={() => setFilter(item)}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </aside>
+          <div className="projects-archive-grid">
+            {filteredProjects.map(project => (
+              <ProjectCard key={project.slug} project={project} preset={preset} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </PageShell>
+  );
 }
 
 export function ProjectDetailPage() {
@@ -2184,6 +2373,7 @@ export function ProjectDetailPage() {
   const [preset, setPreset] = useColorPreset();
   const project =
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
+  const detail = projectDetailContent[project.slug];
   const projectIndex = Math.max(
     0,
     portfolioProjects.findIndex(item => item.slug === project.slug)
@@ -2253,6 +2443,21 @@ export function ProjectDetailPage() {
           {project.category} / {project.year}
         </p>
         <h1>{project.title}</h1>
+        {detail && (
+          <div className="project-detail-overview">
+            <div className="project-detail-facts">
+              <div><span>Client</span><strong>{detail.client}</strong></div>
+              <div><span>Type</span><strong>{detail.type}</strong></div>
+              <div><span>Size</span><strong>{detail.size}</strong></div>
+              <div><span>Completion</span><strong>{detail.completion}</strong></div>
+              {detail.duration && <div><span>Program duration</span><strong>{detail.duration}</strong></div>}
+            </div>
+            <div className="project-detail-copy">
+              <h2>{detail.heading}</h2>
+              {detail.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+          </div>
+        )}
         <div className="project-detail-meta">
           <div>
             <span>Location</span>
