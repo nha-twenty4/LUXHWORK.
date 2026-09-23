@@ -1535,7 +1535,9 @@ function Header() {
     [
       label,
       label === "Contact"
-        ? "/contact"
+        ? location === "/"
+          ? "#contact"
+          : "/#contact"
         : location === "/"
           ? `#${sectionIds[label]}`
           : `/#${sectionIds[label]}`,
@@ -2075,7 +2077,7 @@ export function Home() {
               </div>
             </div>
             <div className="hero-actions">
-              <Link href="/contact" className="button button-light">
+              <Link href="/#contact" className="button button-light">
                 Discuss Your Project <MoveRight size={17} />
               </Link>
               <a href="#projects" className="button button-outline-light">
@@ -2275,7 +2277,7 @@ function CTA({ id }: { id?: string } = {}) {
         <br />
         <em>something great.</em>
       </h2>
-      <Link href="/contact" className="button button-light">
+      <Link href="/#contact" className="button button-light">
         Start a conversation <ArrowUpRight size={17} />
       </Link>
       <div className="cta-mark">LW</div>
@@ -2560,7 +2562,7 @@ export function ServiceDetailPage() {
           <p className="eyebrow eyebrow-light">{service.title}</p>
           <h1>{copy.headline}</h1>
           <p className="service-detail-body">{copy.body}</p>
-          <Link href="/contact" className="button button-service">
+          <Link href="/#contact" className="button button-service">
             Discuss your project <ArrowUpRight size={17} />
           </Link>
           <div className="service-detail-tags">{copy.tags}</div>
@@ -2697,7 +2699,7 @@ export function ServicesPage() {
             </p>
           </div>
         </div>
-        <Link href="/contact#faq" className="text-link">
+        <Link href="/#contact" className="text-link">
           Read the 10 project FAQs <ArrowUpRight size={16} />
         </Link>
       </section>
@@ -2708,7 +2710,7 @@ export function ServicesPage() {
           <br />
           <em>right starting point.</em>
         </h2>
-        <Link href="/contact" className="button button-light">
+        <Link href="/#contact" className="button button-light">
           Start a conversation <ArrowUpRight size={17} />
         </Link>
       </section>
@@ -2717,11 +2719,11 @@ export function ServicesPage() {
 }
 
 export function ContactPage() {
-  return (
-    <PageShell>
-      <ContactContent />
-    </PageShell>
-  );
+  const [, navigate] = useLocation();
+  useEffect(() => {
+    navigate("/#contact");
+  }, [navigate]);
+  return null;
 }
 
 function ContactContent() {
