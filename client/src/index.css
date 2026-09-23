@@ -7308,11 +7308,24 @@ html.dark .about-visual-card .about-visual-stats {
   text-wrap: balance;
 }
 
+.projects-index-head .projects-vision-support {
+  max-width: 350px;
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
 @media (max-width: 900px) {
   .projects-index-head .projects-vision-statement {
     max-width: 680px;
     margin-top: 22px;
     font-size: clamp(26px, 5vw, 42px);
+  }
+  .projects-index-head .projects-vision-support {
+    max-width: 560px;
+    margin-bottom: 0;
   }
 }
 

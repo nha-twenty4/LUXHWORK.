@@ -2338,7 +2338,7 @@ export function ProjectsPage() {
               efficiency, and exceptional craftsmanship.
             </p>
           </div>
-          <p>
+          <p className="projects-vision-support">
             While fostering the next generation of leading designers and
             cultivating a team of talented professionals to drive the future
             of commercial design.
