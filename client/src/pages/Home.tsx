@@ -2179,7 +2179,7 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
         ))}
       </div>
       <div className="about-visual-heading">
-        <p className="eyebrow eyebrow-light">SINGAPOREAN-LED / SINCE 2019</p>
+        <p className="eyebrow eyebrow-light">About LUXHWORK</p>
         <h1>
           Local execution,
           <br />
@@ -2189,7 +2189,6 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
         </h1>
       </div>
       <div className="about-visual-card">
-        <SectionLabel>About LUXHWORK</SectionLabel>
         <h2>
           Singaporean-led — a commercial interior consultancy and fit-out
           company serving businesses in Cambodia.
