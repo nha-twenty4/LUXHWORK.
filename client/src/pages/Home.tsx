@@ -157,7 +157,7 @@ const companyProjectImageSets: Record<string, string[]> = {
   "mori-residence": ["image44.jpeg", "image45.jpeg"].map(profileImage),
   "pp-link-broadcast": ["image42.jpeg", "image43.jpeg"].map(profileImage),
   northpoint: [
-    "/golden-group-lounge.png",
+    "/VIPlounge-02.png",
     "/golden-group-dining.png",
     "/golden-group-lounge-detail.png",
     "/golden-group-meeting.png",
