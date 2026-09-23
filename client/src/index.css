@@ -2830,13 +2830,13 @@ h2 em {
   margin: 24px 0 75px;
 }
 .project-detail-hero-visa h1 {
-  max-width: none;
+  max-width: 720px;
   margin-bottom: 58px;
-  font-size: clamp(30px, 3.6vw, 64px);
+  font-size: clamp(46px, 6vw, 88px);
   font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.07em;
-  white-space: nowrap;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  white-space: normal;
 }
 .project-detail-meta {
   display: grid;
