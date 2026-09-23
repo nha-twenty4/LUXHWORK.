@@ -2491,30 +2491,6 @@ export function ProjectDetailPage() {
             </div>
           </div>
         )}
-        <div className="project-detail-meta">
-          <div>
-            <span>Location</span>
-            <p>{project.location}</p>
-          </div>
-          <div>
-            <span>Client</span>
-            <p>{project.client}</p>
-          </div>
-          <div>
-            <span>Scope</span>
-            <p>{project.note}</p>
-          </div>
-          <div>
-            <span>Year</span>
-            <p>{project.year}</p>
-          </div>
-        </div>
-        <p
-          className="project-navigation-hint"
-          aria-label="Project navigation instructions"
-        >
-          ← → Use arrow keys · Swipe to browse
-        </p>
       </section>
       <section
         className={`project-detail-image project-main-image project-main-image-${project.slug}`}
