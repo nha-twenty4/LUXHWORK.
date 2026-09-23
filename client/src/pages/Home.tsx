@@ -2669,26 +2669,6 @@ function ContactContent() {
   };
   return (
     <>
-      <section className="contact-hero" id="contact">
-        <p className="eyebrow eyebrow-light">
-          Contact / New projects and thoughtful conversations
-        </p>
-        <h1>
-          Let's work
-          <br />
-          <em>together.</em>
-        </h1>
-        <div className="contact-intro">
-          <p>
-            Tell us a little about what you are making. We usually reply within
-            two working days.
-          </p>
-          <a href="#booking" className="button button-light">
-            Book a consultation <ArrowUpRight size={17} />
-          </a>
-        </div>
-        <div className="contact-mark">LW</div>
-      </section>
       <section className="contact-main">
         <div className="contact-details contact-details-centered">
           <SectionLabel number="01">
