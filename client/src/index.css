@@ -6369,14 +6369,15 @@ html.dark .about-visual-card .about-visual-stats {
 }
 .selected-work-more {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  width: 100%;
-  margin: 50px 0 0;
-  padding: 18px 0 0;
+  justify-content: center;
+  gap: 14px;
+  width: min(100%, 330px);
+  margin: 54px auto 0;
+  padding: 22px 0 0;
   border-top: 1px solid var(--line);
+  text-align: center;
 }
 .selected-work-more > span {
   color: var(--muted);
@@ -6386,10 +6387,10 @@ html.dark .about-visual-card .about-visual-stats {
   text-transform: uppercase;
 }
 .selected-work-more .button {
-  min-width: 164px;
-  min-height: 44px;
+  min-width: 174px;
+  min-height: 48px;
   justify-content: center;
-  padding: 11px 16px;
+  padding: 13px 18px;
   font-size: 12px;
   letter-spacing: 0.02em;
   transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
@@ -6584,17 +6585,17 @@ html.dark .about-visual-card .about-visual-stats {
     grid-template-columns: 1fr;
   }
   .selected-work-more {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-    margin-top: 38px;
-    padding-top: 16px;
+    width: min(100%, 300px);
+    gap: 14px;
+    margin-top: 40px;
+    padding-top: 18px;
   }
   .selected-work-more > span {
     text-align: center;
   }
   .selected-work-more .button {
-    width: 100%;
+    min-width: 174px;
+    width: auto;
   }
   .project-detail-copy h2 {
     font-size: 32px;
