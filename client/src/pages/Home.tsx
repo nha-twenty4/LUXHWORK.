@@ -323,7 +323,7 @@ const companyProjectDetails: Record<
   }
 > = {
   "house-14": {
-    title: "VISA WORLDWIDE BRANCH OFFICE EXPANSION (PHNOM PENH)",
+    title: "VISA WORLDWIDE BRANCH OFFICE (PHNOM PENH)",
     category: "Interior",
     location: "Phnom Penh, Cambodia",
     client: "Visa Worldwide",
@@ -452,7 +452,6 @@ type BusinessCategory =
 
 const projectBusinessCategory: Record<string, BusinessCategory> = {
   "house-14": "Corporate Office",
-  "visa-branch-office": "Corporate Office",
   "mori-residence": "Commercial",
   "pp-link-broadcast": "Commercial",
   northpoint: "Commercial",
@@ -685,7 +684,7 @@ function ColorPresetControls({
 const baseProjects: Project[] = [
   {
     slug: "house-14",
-    title: "VISA WORLDWIDE BRANCH OFFICE EXPANSION (PHNOM PENH)",
+    title: "VISA WORLDWIDE BRANCH OFFICE (PHNOM PENH)",
     category: "Interior",
     image: images.villa,
     year: "2024",
@@ -868,29 +867,6 @@ const baseProjects: Project[] = [
       companyImages.retailFront,
       companyImages.jewellery,
     ],
-    floorPlan: "",
-    pdf: "",
-  },
-  {
-    slug: "visa-branch-office",
-    title: "VISA WORLDWIDE BRANCH OFFICE (PHNOM PENH)",
-    category: "Interior",
-    image: profileImage("image40.jpeg"),
-    year: "Not listed",
-    location: "Phnom Penh, Cambodia",
-    client: "Visa Worldwide",
-    description:
-      "Corporate interior design and fit-out works for the Visa Phnom Penh branch office.",
-    note: "Corporate office space",
-    size: "wide",
-    gallery: [
-      "image40.jpeg",
-      "image46.jpeg",
-      "image47.jpeg",
-      "image48.jpeg",
-      "image49.jpeg",
-      "image50.jpeg",
-    ].map(profileImage),
     floorPlan: "",
     pdf: "",
   },

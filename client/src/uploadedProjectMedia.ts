@@ -7,13 +7,6 @@ export const uploadedProjectMedia: Record<string, string[]> = {
     "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/RnlDxKdJnOCQdqGX.png",
     "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/cknftDKLaeIemdgi.jpg",
   ],
-  "visa-branch-office": [
-    "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/azTCJHUDTdihibBt.png",
-    "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/PzwRVzkpwgGlIbMb.png",
-    "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/flZsvuiYUdnRKBGk.png",
-    "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/RnlDxKdJnOCQdqGX.png",
-    "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/cknftDKLaeIemdgi.jpg",
-  ],
   "lao-miao-naga-2": [
     "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/MqPEMMPVRsvAsJcW.png",
     "https://files.manuscdn.com/user_upload_by_module/session_file/310519663951662723/TRjzKQzsPsDaxray.png",
