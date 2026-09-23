@@ -2339,6 +2339,11 @@ export function ProjectsPage() {
   const { projects } = usePortfolioProjects();
   const [preset] = useColorPreset();
   const [filter, setFilter] = useState<BusinessCategory | "All">("All");
+  const homeProjectSlugs = new Set([
+    "house-14",
+    "mori-residence",
+    "northpoint",
+  ]);
   const filters: Array<BusinessCategory | "All"> = [
     "All",
     "Corporate Office",
@@ -2346,7 +2351,10 @@ export function ProjectsPage() {
     "Commercial",
     "Food & Beverage (FnB)",
   ];
-  const filteredProjects = projects.filter(project =>
+  const archiveProjects = projects.filter(
+    project => !homeProjectSlugs.has(project.slug)
+  );
+  const filteredProjects = archiveProjects.filter(project =>
     filter === "All" ? true : projectBusinessCategory[project.slug] === filter
   );
   return (
