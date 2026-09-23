@@ -318,7 +318,7 @@ const companyProjectDetails: Record<
   }
 > = {
   "house-14": {
-    title: "VISA WORLDWIDE BRANCH OFFICE EXPANSION (PHNOM PENH)",
+    title: "VISA WORLD WIDE CORPORATE OFFICE",
     category: "Interior",
     location: "Phnom Penh, Cambodia",
     client: "Visa Worldwide",
@@ -2398,6 +2398,7 @@ export function ProjectDetailPage() {
   const [preset, setPreset] = useColorPreset();
   const project =
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
+  const isVisa = project.slug === "house-14";
   const isShHotel = project.slug === "the-hynd-hotel";
   const projectIndex = Math.max(
     0,
@@ -2471,26 +2472,81 @@ export function ProjectDetailPage() {
             </p>
             <h1>{project.title}</h1>
             <div className="project-detail-meta">
-              <div>
-                <span>Location</span>
-                <p>{project.location}</p>
-              </div>
-              <div>
-                <span>Client</span>
-                <p>{project.client}</p>
-              </div>
-              <div>
-                <span>Scope</span>
-                <p>{project.note}</p>
-              </div>
-              <div>
-                <span>Year</span>
-                <p>{project.year}</p>
-              </div>
+              {isVisa ? (
+                <>
+                  <div>
+                    <span>Client</span>
+                    <p>VISA Worldwide</p>
+                  </div>
+                  <div>
+                    <span>Type</span>
+                    <p>Corporate Offices</p>
+                  </div>
+                  <div>
+                    <span>Size</span>
+                    <p>136 sqm</p>
+                  </div>
+                  <div>
+                    <span>First Completion</span>
+                    <p>April 2022</p>
+                  </div>
+                  <div>
+                    <span>Second Completion (Expansion)</span>
+                    <p>Feb 2025</p>
+                  </div>
+                  <div>
+                    <span>Program duration</span>
+                    <p>9 weeks</p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <span>Location</span>
+                    <p>{project.location}</p>
+                  </div>
+                  <div>
+                    <span>Client</span>
+                    <p>{project.client}</p>
+                  </div>
+                  <div>
+                    <span>Scope</span>
+                    <p>{project.note}</p>
+                  </div>
+                  <div>
+                    <span>Year</span>
+                    <p>{project.year}</p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
           <div className="project-detail-reference-copy">
-            <p>{project.description}</p>
+            {isVisa ? (
+              <div className="project-detail-visa-story">
+                <h2>A Purposely Designed Workplace Designed For Modern Collaboration</h2>
+                <p>
+                  Located within Vattanac Capital Tower in Phnom Penh, the VISA
+                  Worldwide office was designed as a modern corporate workplace
+                  that reflects the company’s global identity while producing a
+                  comfortable and efficient environment for their team.
+                </p>
+                <p>
+                  Spanning approximately 136 sqm, the office features a clean,
+                  open layout with a contemporary corporate aesthetic. The
+                  design maximises the compact footprint, creating a workplace
+                  that feels bright, connected, and functional.
+                </p>
+                <p>
+                  Through interior design and fit-out, LUXHWORK translated the
+                  concept into a cohesive workplace, carefully coordinating
+                  finishes, details, and construction to deliver a refined and
+                  professional environment.
+                </p>
+              </div>
+            ) : (
+              <p>{project.description}</p>
+            )}
             <Link href="/contact" className="button button-dark">
               Enquire now <ArrowUpRight size={16} />
             </Link>

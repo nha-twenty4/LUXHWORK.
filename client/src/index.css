@@ -7456,6 +7456,28 @@ html.dark .about-visual-card .about-visual-stats {
   letter-spacing: -0.025em;
 }
 
+.project-detail-visa-story h2 {
+  max-width: 430px;
+  margin: 0 0 26px;
+  font-size: clamp(27px, 3vw, 42px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.project-detail-reference-copy .project-detail-visa-story p {
+  max-width: 450px;
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.62;
+  letter-spacing: 0;
+}
+
+.project-detail-visa-story + .button {
+  margin-top: 12px;
+}
+
 @media (max-width: 760px) {
   .project-detail-reference-grid {
     grid-template-columns: 1fr;
