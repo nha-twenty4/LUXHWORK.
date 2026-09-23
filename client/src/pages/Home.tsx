@@ -2347,9 +2347,12 @@ export function ProjectsPage() {
   const archiveProjects = visibleProjects.filter(
     project => !homeProjectSlugs.has(project.slug)
   );
-  const filteredProjects = archiveProjects.filter(project =>
-    filter === "All" ? true : projectBusinessCategory[project.slug] === filter
-  );
+  const filteredProjects =
+    filter === "All"
+      ? archiveProjects
+      : visibleProjects.filter(
+          project => projectBusinessCategory[project.slug] === filter
+        );
   return (
     <PageShell>
       <section className="projects-archive">
