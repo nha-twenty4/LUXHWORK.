@@ -216,7 +216,7 @@ const companyProjectImageSets: Record<string, string[]> = {
     "image95.jpeg",
   ].map(profileImage),
   "courtyard-study": [
-    "image100.png",
+    "image96.png",
     "image97.png",
     "image98.png",
     "image99.png",
@@ -303,8 +303,12 @@ const companyProjectImageSets: Record<string, string[]> = {
   ].map(profileImage),
 };
 
-// The supplied VIP lounge photograph is the approved Golden Group cover image.
-companyProjectImageSets.northpoint = ["/golden-group-vip-lounge.png"];
+// The supplied VIP lounge photograph is the approved Golden Group cover image;
+// keep the original project gallery after it so no detail images are lost.
+companyProjectImageSets.northpoint = [
+  "/golden-group-vip-lounge.png",
+  ...companyProjectImageSets.northpoint,
+];
 
 const companyProjectDetails: Record<
   string,
@@ -1113,7 +1117,10 @@ type PersistedProject = {
 function mapPersistedProject(item: PersistedProject): Project {
   const companyGallery =
     item.slug === "northpoint"
-      ? ["/golden-group-vip-lounge.png"]
+      ? [
+          "/golden-group-vip-lounge.png",
+          ...(uploadedProjectMedia[item.slug] ?? []).slice(1),
+        ]
       : uploadedProjectMedia[item.slug] ?? companyProjectImageSets[item.slug];
   const details = companyProjectDetails[item.slug];
   const gallery =
