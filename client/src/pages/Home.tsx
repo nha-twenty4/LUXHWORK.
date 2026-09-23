@@ -27,6 +27,7 @@ import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { useTheme } from "@/contexts/ThemeContext";
 import { profileProjectMedia } from "@/projectMedia";
+import { uploadedProjectMedia } from "@/uploadedProjectMedia";
 
 const storageBaseUrl = (import.meta.env.VITE_STORAGE_BASE_URL || "").replace(
   /\/$/,
@@ -503,7 +504,7 @@ function ColorPresetControls({
   );
 }
 
-const projects: Project[] = [
+const baseProjects: Project[] = [
   {
     slug: "house-14",
     title: "VISA WORLDWIDE BRANCH OFFICE EXPANSION (PHNOM PENH)",
@@ -923,6 +924,18 @@ const projects: Project[] = [
   },
 ];
 
+// Prefer the project-specific photography supplied by the studio over generic/profile media.
+// This single normalization keeps the Projects index and every project detail page in sync.
+const projects: Project[] = baseProjects.map((project) => {
+  const uploaded = uploadedProjectMedia[project.slug];
+  if (!uploaded?.length) return project;
+  return {
+    ...project,
+    image: uploaded[0],
+    gallery: uploaded,
+  };
+});
+
 type PersistedProject = {
   slug: string;
   title: string;
@@ -940,7 +953,7 @@ type PersistedProject = {
 };
 
 function mapPersistedProject(item: PersistedProject): Project {
-  const companyGallery = companyProjectImageSets[item.slug];
+  const companyGallery = uploadedProjectMedia[item.slug] ?? companyProjectImageSets[item.slug];
   const details = companyProjectDetails[item.slug];
   const gallery =
     companyGallery ??
