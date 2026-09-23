@@ -2472,9 +2472,6 @@ export function ProjectDetailPage() {
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
-        <p className="eyebrow">
-          {project.category} / {project.year}
-        </p>
         <h1>{project.title}</h1>
         {detail && (
           <div className="project-detail-overview">
