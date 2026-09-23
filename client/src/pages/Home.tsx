@@ -2475,7 +2475,7 @@ export function ProjectDetailPage() {
       <section
         className="project-detail-hero project-detail-hero-with-image"
         style={{
-          backgroundImage: `linear-gradient(105deg, rgba(19, 23, 20, 0.94) 0%, rgba(19, 23, 20, 0.78) 48%, rgba(19, 23, 20, 0.42) 100%), url("${resolveImageSource(project.image)}")`,
+          backgroundImage: `linear-gradient(90deg, var(--paper) 0%, var(--paper) 46%, rgba(251, 250, 247, 0.72) 58%, rgba(251, 250, 247, 0) 78%), url("${resolveImageSource(project.image)}")`,
         }}
       >
         <a href="/#projects" className="back-link">
