@@ -2399,7 +2399,18 @@ export function ProjectDetailPage() {
   const [preset, setPreset] = useColorPreset();
   const project =
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
-  const detail = projectDetailContent[project.slug];
+  const detail =
+    projectDetailContent[project.slug] ?? {
+      heading: "A considered space designed around the way the business works",
+      paragraphs: [
+        project.description,
+        "LUXHWORK brought together planning, design coordination and delivery to create a clear, functional environment shaped around the project brief.",
+      ],
+      type: project.category,
+      size: project.note,
+      completion: project.year,
+      client: project.client,
+    };
   const projectIndex = Math.max(
     0,
     portfolioProjects.findIndex(item => item.slug === project.slug)
