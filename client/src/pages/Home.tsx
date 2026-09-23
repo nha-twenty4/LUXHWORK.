@@ -129,7 +129,11 @@ const companyProjectImageSets: Record<string, string[]> = {
     "/project-media/ryuko/ryuko-13.png",
   ],
   "frame-house": ["image11.png", "image66.jpeg", "image67.jpeg", "image68.jpeg", "image69.jpeg"].map(profileImage),
-  "field-notes": ["image27.png", "image74.png", "image75.png", "image76.png"].map(profileImage),
+  "field-notes": [
+    "/project-media/combi/combi-01.png",
+    "/project-media/combi/combi-02.png",
+    "/project-media/combi/combi-03.png",
+  ],
   "ratanac-mealea": ["image26.png", "image77.png", "image78.png", "image79.png", "image80.png"].map(profileImage),
   "atelier-common": [
     "/project-media/aeon-3/aeon-3-01.png",
