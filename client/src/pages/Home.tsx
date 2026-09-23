@@ -2472,7 +2472,17 @@ export function ProjectDetailPage() {
             <p className="eyebrow">
               {project.category} / {project.year}
             </p>
-            <h1>{project.title}</h1>
+            <h1>
+              {isVisa ? (
+                <>
+                  VISA WORLDWIDE BRANCH OFFICE
+                  <br />
+                  EXPANSION (PHNOM PENH)
+                </>
+              ) : (
+                project.title
+              )}
+            </h1>
             <div className="project-detail-meta">
               {isVisa ? (
                 <>
