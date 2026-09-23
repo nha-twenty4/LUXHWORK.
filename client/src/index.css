@@ -6954,13 +6954,14 @@ html.dark .about-visual-card .about-visual-stats {
 .project-detail-facts {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   background: transparent;
-  border: 1px solid var(--line);
+  border: 0;
   box-shadow: none;
+  gap: 28px 38px;
 }
 .project-detail-facts div {
-  min-height: 86px;
-  padding: 15px 16px 13px;
-  border-color: var(--line);
+  min-height: auto;
+  padding: 0;
+  border: 0;
 }
 .project-detail-facts span {
   color: var(--muted);
@@ -6976,11 +6977,12 @@ html.dark .about-visual-card .about-visual-stats {
 @media (max-width: 900px) {
   .project-detail-facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 30px;
   }
 }
 @media (max-width: 520px) {
   .project-detail-facts {
     grid-template-columns: 1fr;
-    box-shadow: none;
+    gap: 20px;
   }
 }
