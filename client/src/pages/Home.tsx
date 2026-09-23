@@ -2472,7 +2472,12 @@ export function ProjectDetailPage() {
   }, [nextProject.slug, previousProject.slug]);
   return (
     <PageShell>
-      <section className="project-detail-hero">
+      <section
+        className="project-detail-hero project-detail-hero-with-image"
+        style={{
+          backgroundImage: `linear-gradient(105deg, rgba(19, 23, 20, 0.94) 0%, rgba(19, 23, 20, 0.78) 48%, rgba(19, 23, 20, 0.42) 100%), url("${resolveImageSource(project.image)}")`,
+        }}
+      >
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>

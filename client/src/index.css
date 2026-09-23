@@ -6834,3 +6834,45 @@ html.dark .about-visual-card .about-visual-stats {
     padding: 0 16px 64px;
   }
 }
+
+/* Use each project's main image as a cinematic backdrop behind its detail header. */
+.project-detail-hero-with-image {
+  position: relative;
+  isolation: isolate;
+  min-height: 720px;
+  color: #f8f6f0;
+  background-color: #1a1e1b;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.project-detail-hero-with-image > * {
+  position: relative;
+  z-index: 1;
+}
+.project-detail-hero-with-image .back-link {
+  color: rgba(248, 246, 240, 0.72);
+}
+.project-detail-hero-with-image > .eyebrow {
+  color: #e3b29e;
+}
+.project-detail-hero-with-image h1 {
+  color: #f8f6f0;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.2);
+}
+.project-detail-hero-with-image .project-detail-overview {
+  border-top-color: rgba(248, 246, 240, 0.3);
+}
+.project-detail-hero-with-image .project-detail-overview::before {
+  color: #e3b29e;
+}
+@media (max-width: 900px) {
+  .project-detail-hero-with-image {
+    min-height: 760px;
+  }
+}
+@media (max-width: 520px) {
+  .project-detail-hero-with-image {
+    min-height: 820px;
+  }
+}
