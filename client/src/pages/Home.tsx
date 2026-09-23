@@ -1121,6 +1121,8 @@ function mapPersistedProject(item: PersistedProject): Project {
           "/golden-group-vip-lounge.png",
           ...(uploadedProjectMedia[item.slug] ?? []).slice(1),
         ]
+      : item.slug === "chj-jewellry-cb4"
+        ? companyProjectImageSets["chj-jewellry-cb4"]
       : uploadedProjectMedia[item.slug] ?? companyProjectImageSets[item.slug];
   const details = companyProjectDetails[item.slug];
   const gallery =
