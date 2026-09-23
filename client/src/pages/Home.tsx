@@ -147,13 +147,12 @@ const homeHeroImage = "/luxhwork-home-bar.png";
 
 const companyProjectImageSets: Record<string, string[]> = {
   "house-14": [
-    "image37.jpeg",
-    "image38.png",
-    "image9.png",
-    "image39.jpeg",
-    "image40.jpeg",
-    "image41.jpeg",
-  ].map(profileImage),
+    "/visa-expansion-lounge.png",
+    "/visa-expansion-dining.png",
+    "/visa-expansion-lounge-detail.png",
+    "/visa-expansion-meeting.png",
+    "/visa-expansion-bar.png",
+  ],
   "mori-residence": ["image44.jpeg", "image45.jpeg"].map(profileImage),
   "pp-link-broadcast": ["image42.jpeg", "image43.jpeg"].map(profileImage),
   northpoint: [
@@ -512,7 +511,7 @@ const projects: Project[] = [
     slug: "house-14",
     title: "VISA WORLDWIDE BRANCH OFFICE EXPANSION (PHNOM PENH)",
     category: "Interior",
-    image: images.villa,
+    image: companyProjectImageSets["house-14"][0],
     year: "2024",
     location: "Phnom Penh, Cambodia",
     client: "Visa Worldwide",
@@ -520,7 +519,7 @@ const projects: Project[] = [
       "To propose corporate interior design and fit-out works for the Visa Phnom Penh office relocation.",
     note: "Corporate office space · 135 SQM",
     size: "wide",
-    gallery: [images.villa, images.modern, images.coastal],
+    gallery: companyProjectImageSets["house-14"],
     floorPlan: "/manus-storage/house-14-floor-plan_05ca90c2.svg",
     pdf: "/manus-storage/house-14-project_ec10947f.pdf",
   },
