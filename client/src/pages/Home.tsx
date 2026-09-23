@@ -2339,8 +2339,9 @@ export function ProjectsPage() {
             </h1>
           </div>
           <p>
-            Explore selected work across corporate offices, retail, commercial
-            spaces and food &amp; beverage environments.
+            While fostering the next generation of leading designers and
+            cultivating a team of talented professionals to drive the future
+            of commercial design.
           </p>
         </div>
         <div className="projects-index-body">
