@@ -318,7 +318,7 @@ const companyProjectDetails: Record<
   }
 > = {
   "house-14": {
-    title: "VISA WORLD WIDE CORPORATE OFFICE",
+    title: "VISA WORLDWIDE BRANCH OFFICE EXPANSION (PHNOM PENH)",
     category: "Interior",
     location: "Phnom Penh, Cambodia",
     client: "Visa Worldwide",
@@ -2461,7 +2461,9 @@ export function ProjectDetailPage() {
   }, [nextProject.slug, previousProject.slug]);
   return (
     <PageShell>
-      <section className="project-detail-hero">
+      <section
+        className={`project-detail-hero${isVisa ? " project-detail-hero-visa" : ""}`}
+      >
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
