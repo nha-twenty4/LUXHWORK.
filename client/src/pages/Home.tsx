@@ -2396,7 +2396,7 @@ export function ProjectDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const [, navigate] = useLocation();
   const { projects: portfolioProjects } = usePortfolioProjects();
-  const [preset] = useColorPreset();
+  const [preset, setPreset] = useColorPreset();
   const project =
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
   const detail =
@@ -2472,12 +2472,7 @@ export function ProjectDetailPage() {
   }, [nextProject.slug, previousProject.slug]);
   return (
     <PageShell>
-      <section
-        className="project-detail-hero project-detail-hero-with-image"
-        style={{
-          backgroundImage: `linear-gradient(90deg, var(--paper) 0%, var(--paper) 46%, rgba(251, 250, 247, 0.72) 58%, rgba(251, 250, 247, 0) 78%), url("${resolveImageSource(project.image)}")`,
-        }}
-      >
+      <section className="project-detail-hero">
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
@@ -2507,6 +2502,17 @@ export function ProjectDetailPage() {
             </div>
           </div>
         )}
+      </section>
+      <section
+        className={`project-detail-image project-main-image project-main-image-${project.slug}`}
+      >
+        <ColorPresetControls preset={preset} onChange={setPreset} />
+        <SafeImage
+          src={project.image}
+          alt={project.title}
+          loading="eager"
+          className={`theme-image ${imagePresetClass(project.category, preset)}`}
+        />
       </section>
       <section className="project-detail-gallery">
         {project.gallery.map((image, index) => (
