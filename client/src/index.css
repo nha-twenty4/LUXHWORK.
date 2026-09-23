@@ -5466,6 +5466,22 @@ html.dark .about-visual-card .about-visual-stats {
   object-position: center;
 }
 
+/* The supplied Ryuko collage is a tall composition; preserve the complete artwork. */
+.project-ryuko-collage > img {
+  width: min(100%, 900px);
+  height: auto;
+  min-height: 0;
+  margin: 0 auto;
+  object-fit: contain;
+  object-position: center;
+  background: #dedbd3;
+}
+.project-ryuko-collage-gallery .project-detail-gallery-featured img {
+  object-fit: contain;
+  object-position: center;
+  background: #dedbd3;
+}
+
 /* Selected work label: slightly larger for easier reading. */
 .selected-work-heading > .section-label {
   font-size: 13px;
