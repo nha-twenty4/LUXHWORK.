@@ -2473,15 +2473,7 @@ export function ProjectDetailPage() {
               {project.category} / {project.year}
             </p>
             <h1>
-              {isVisa ? (
-                <>
-                  VISA WORLDWIDE BRANCH OFFICE
-                  <br />
-                  EXPANSION (PHNOM PENH)
-                </>
-              ) : (
-                project.title
-              )}
+              {project.title}
             </h1>
             <div className="project-detail-meta">
               {isVisa ? (
