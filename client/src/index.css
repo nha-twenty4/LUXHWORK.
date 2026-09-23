@@ -6486,9 +6486,34 @@ html.dark .about-visual-card .about-visual-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 48px 20px;
+  align-items: start;
+  grid-auto-flow: row;
+}
+.projects-archive-grid .project-card,
+.projects-archive-grid .project-card:nth-child(3) {
+  width: 100%;
+  min-width: 0;
+  grid-column: auto;
+  grid-row: auto;
+  justify-self: stretch;
+  align-self: start;
+  margin-top: 0;
 }
 .projects-archive-grid .project-image-wrap {
   aspect-ratio: 4 / 3;
+  width: 100%;
+}
+.projects-archive-grid .project-meta {
+  min-height: 74px;
+  padding-top: 14px;
+}
+.projects-archive-grid .project-meta h3 {
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.16;
+}
+.projects-archive-grid .project-meta p {
+  margin-top: 6px;
+  font-size: 10px;
 }
 .project-detail-overview {
   display: grid;
