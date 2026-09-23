@@ -1165,7 +1165,10 @@ function SafeImage({
 
 function usePortfolioProjects() {
   const query = trpc.projects.list.useQuery(undefined, { retry: 1 });
-  const persistedProjects = query.data?.map(mapPersistedProject) ?? [];
+  const persistedProjects =
+    query.data
+      ?.map(mapPersistedProject)
+      .filter(project => project.slug !== "visa-branch-office") ?? [];
   const persistedSlugs = new Set(
     persistedProjects.map(project => project.slug)
   );
