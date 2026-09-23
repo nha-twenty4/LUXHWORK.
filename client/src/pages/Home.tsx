@@ -2175,6 +2175,7 @@ export function Home() {
         </div>
       </section>
 
+      <ContactContent />
     </PageShell>
   );
 }
