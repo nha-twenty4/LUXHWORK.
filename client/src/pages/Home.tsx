@@ -478,20 +478,24 @@ const projectDetailContent: Record<
     type: string;
     size: string;
     completion: string;
+    firstCompletion?: string;
+    secondCompletion?: string;
     duration?: string;
     client: string;
   }
 > = {
   "house-14": {
-    heading: "A Purposely Designed Workplace Designed For Modern Collaboration",
+    heading: "A Purposely Designed Workplace for Modern Collaboration",
     paragraphs: [
       "Located within Vattanac Capital Tower in Phnom Penh, The VISA Worldwide office was designed as a modern corporate workplace that reflects the company’s global identity while producing a comfortable and efficient environment for their team.",
-      "Spanning approximately 136 sqm, the office features a clean, open layout with a contemporary corporate aesthetic. The design maximises the compact footprint, creating a workplace that feels bright, connected, and functional.",
+      "Spanning approximately 136 sqm, the office features a clean, open layout with a refined corporate aesthetic. The design maximises the compact footprint, creating a workplace that feels bright, connected, and functional.",
       "Through interior design and fit-out, LUXHWORK translated the concept into a cohesive workplace, carefully coordinating finishes, details, and construction to deliver a refined and professional environment.",
     ],
     type: "Corporate Offices",
     size: "136 sqm",
     completion: "April 2022 · Expansion Feb 2025",
+    firstCompletion: "April 2022",
+    secondCompletion: "February 2025 (Expansion)",
     duration: "9 weeks",
     client: "VISA Worldwide",
   },
@@ -511,7 +515,7 @@ const projectDetailContent: Record<
   "frame-house": {
     heading: "A Bold and Energetic Fast-Food Experience",
     paragraphs: [
-      "Located in Krong TaKhmao, the 377 sqm Lucky Burger restaurant expands the presence of one of Cambodia’s established fast-food chains within a standalone building.",
+      "Located in Krong TaKhmao, the 376 sqm Lucky Burger restaurant expands the presence of one of Cambodia’s established fast-food chains within a standalone building.",
       "The restaurant brings together indoor and outdoor dining, an efficient service counter and clear customer circulation within a highly visible branded environment.",
       "Completed in September 2023, the project involved the design and complete fit-out of the existing building, including its façade, dining areas, service zones and integrated brand elements.",
     ],
@@ -524,8 +528,9 @@ const projectDetailContent: Record<
     heading: "Precision Fit-Out for a Premium Retail Experience",
     paragraphs: [
       "This LUKFOOK Jewellery boutique delivers a refined retail environment designed to showcase fine jewellery with clarity, elegance, and a strong sense of brand identity.",
-      "LUXHWORK was appointed to undertake the complete fit-out works and project management, coordinating specialist contractors, suppliers, technical services, and site execution to translate the approved design into a finished retail space.",
+      "LUXHWORK was appointed to undertake the complete fit-out works and project management, coordinating specialist contractors, suppliers, technical services, and site execution to translate the approved design into a finished retail space. The works included the storefront, illuminated display showcases, custom joinery, architectural finishes, lighting integration, and associated MEP coordination.",
       "Particular attention was given to workmanship, material consistency, lighting accuracy, and the precise installation of display fixtures—essential elements in creating a secure and sophisticated jewellery-shopping experience.",
+      "Through disciplined site supervision and quality control, LUXHWORK successfully delivered the boutique in accordance with the brand’s design intent and operational requirements.",
     ],
     type: "Retail",
     size: "355 sqm",
@@ -536,8 +541,9 @@ const projectDetailContent: Record<
     heading: "Precision Fit-Out for a Premium Retail Experience",
     paragraphs: [
       "This LUKFOOK Jewellery boutique delivers a refined retail environment designed to showcase fine jewellery with clarity, elegance, and a strong sense of brand identity.",
-      "LUXHWORK was appointed to undertake the complete fit-out works and project management, coordinating specialist contractors, suppliers, technical services, and site execution to translate the approved design into a finished retail space.",
+      "LUXHWORK was appointed to undertake the complete fit-out works and project management, coordinating specialist contractors, suppliers, technical services, and site execution to translate the approved design into a finished retail space. The works included the storefront, illuminated display showcases, custom joinery, architectural finishes, lighting integration, and associated MEP coordination.",
       "Particular attention was given to workmanship, material consistency, lighting accuracy, and the precise installation of display fixtures—essential elements in creating a secure and sophisticated jewellery-shopping experience.",
+      "Through disciplined site supervision and quality control, LUXHWORK successfully delivered the boutique in accordance with the brand’s design intent and operational requirements.",
     ],
     type: "Retail",
     size: "75 sqm",
@@ -549,6 +555,7 @@ const projectDetailContent: Record<
     paragraphs: [
       "Located at AEON Mall Phnom Penh in Cambodia, this 58 sqm CHJ Jewellery boutique delivers a bright and highly detailed retail environment within a compact footprint.",
       "LUXHWORK was appointed to undertake the fit-out works and project management, coordinating specialist contractors, suppliers, building services, and on-site execution to translate the approved design into a completed retail space.",
+      "The project involved the installation of custom jewellery showcases, illuminated display shelving, decorative metal screens, integrated lighting, branded storefront elements, architectural finishes, and associated MEP services. Careful coordination was required to accommodate the extensive display system while maintaining clear circulation and a comfortable customer experience.",
       "Through disciplined site supervision, quality control, and detailed coordination, LUXHWORK completed the boutique in accordance with the brand’s design intent, technical requirements, and retail operating standards.",
     ],
     type: "Retail",
@@ -585,9 +592,9 @@ const projectDetailContent: Record<
   "fabric-factory": {
     heading: "A Purpose-Built Showcase for Fabric and Fashion",
     paragraphs: [
-      "Located in Phnom Penh, Cambodia, this 350 sqm space for New Rainbow Fabric Factory was designed as a dedicated fashion display and presentation zone, bringing garments, fabrics, and collections together within an organised and visually engaging environment.",
-      "A balanced combination of warm timber finishes, neutral tones, glass partitions, and integrated lighting creates a clear, welcoming setting for presenting clothes and fabric collections.",
-      "Every element was considered to strengthen the company’s identity while delivering a functional showcase zone suited to the operational needs of a modern manufacturing business.",
+      "Located in Phnom Penh, Cambodia, this 350 sqm space for New Rainbow Fabric Factory was designed as a dedicated clothing and fabric showcase zone, bringing garments, materials, and collections together within an organised and visually engaging environment.",
+      "A balanced combination of warm timber finishes, neutral tones, glass partitions, and integrated lighting creates a professional yet welcoming setting for presenting clothes and fabric collections.",
+      "Every element was considered to strengthen the company’s identity while delivering a practical showcase zone suited to the operational needs of a modern manufacturing and fashion business.",
     ],
     type: "Commercial",
     size: "350 sqm",
@@ -599,6 +606,7 @@ const projectDetailContent: Record<
     paragraphs: [
       "The Combi showroom is conceived as a warm, intuitive retail environment where parents can explore, compare and experience products with ease. Natural oak finishes create a calm and welcoming atmosphere, while clean white surfaces and Combi’s signature orange accents reinforce the brand’s Japanese identity.",
       "Products are organised into clearly defined zones, including dedicated stroller displays, child-seat testing areas and central accessory showcases. Integrated lighting highlights each collection without overwhelming the space, while wide circulation paths improve visibility and allow customers to move comfortably with children and strollers.",
+      "The result is a functional, brand-led showroom that balances product presentation, customer interaction and an approachable family-focused experience.",
     ],
     type: "Retail",
     size: "90 sqm",
@@ -2453,7 +2461,14 @@ export function ProjectDetailPage() {
               <div><span>Client</span><strong>{detail.client}</strong></div>
               <div><span>Type</span><strong>{detail.type}</strong></div>
               <div><span>Size</span><strong>{detail.size}</strong></div>
-              <div><span>Completion</span><strong>{detail.completion}</strong></div>
+              {detail.firstCompletion ? (
+                <>
+                  <div><span>First Completion</span><strong>{detail.firstCompletion}</strong></div>
+                  <div><span>Second Completion / Expansion</span><strong>{detail.secondCompletion}</strong></div>
+                </>
+              ) : (
+                <div><span>Completion</span><strong>{detail.completion}</strong></div>
+              )}
               {detail.duration && <div><span>Program duration</span><strong>{detail.duration}</strong></div>}
             </div>
             <div className="project-detail-copy">
