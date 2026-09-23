@@ -113,7 +113,21 @@ const companyProjectImageSets: Record<string, string[]> = {
   "mori-residence": ["image44.jpeg", "image45.jpeg"].map(profileImage),
   "pp-link-broadcast": ["image42.jpeg", "image43.jpeg"].map(profileImage),
   northpoint: ["image51.png", "image1.jpeg", "image52.jpeg", "image53.jpeg", "image54.png", "image55.jpeg"].map(profileImage),
-  "seascape-house": ["/project-media/ryuko-omakase-davidoff-the-peak.png", "image56.jpeg", "image57.jpeg", "image32.jpeg", "image58.jpeg", "image59.jpeg", "image60.jpeg", "image61.jpeg"],
+  "seascape-house": [
+    "/project-media/ryuko/ryuko-01.png",
+    "/project-media/ryuko/ryuko-02.png",
+    "/project-media/ryuko/ryuko-03.png",
+    "/project-media/ryuko/ryuko-04.png",
+    "/project-media/ryuko/ryuko-05.png",
+    "/project-media/ryuko/ryuko-06.png",
+    "/project-media/ryuko/ryuko-07.png",
+    "/project-media/ryuko/ryuko-08.png",
+    "/project-media/ryuko/ryuko-09.png",
+    "/project-media/ryuko/ryuko-10.png",
+    "/project-media/ryuko/ryuko-11.png",
+    "/project-media/ryuko/ryuko-12.png",
+    "/project-media/ryuko/ryuko-13.png",
+  ],
   "frame-house": ["image11.png", "image66.jpeg", "image67.jpeg", "image68.jpeg", "image69.jpeg"].map(profileImage),
   "field-notes": ["image27.png", "image74.png", "image75.png", "image76.png"].map(profileImage),
   "ratanac-mealea": ["image26.png", "image77.png", "image78.png", "image79.png", "image80.png"].map(profileImage),
@@ -1212,8 +1226,8 @@ export function ProjectDetailPage() {
   return (
     <PageShell>
       <section className="project-detail-hero"><a href="/#projects" className="back-link"><ChevronLeft size={17} /> Projects / Portfolio</a><p className="eyebrow">{project.category} / {project.year}</p><h1>{project.title}</h1><div className="project-detail-meta"><div><span>Location</span><p>{project.location}</p></div><div><span>Client</span><p>{project.client}</p></div><div><span>Scope</span><p>{project.note}</p></div><div><span>Year</span><p>{project.year}</p></div></div><p className="project-navigation-hint" aria-label="Project navigation instructions">← → Use arrow keys · Swipe to browse</p></section>
-      <section className={`project-detail-image project-main-image ${project.slug === "seascape-house" ? "project-ryuko-collage" : ""}`}><ColorPresetControls preset={preset} onChange={setPreset} /><SafeImage src={project.image} alt={project.title} className={`theme-image ${imagePresetClass(project.category, preset)}`} /></section>
-      <section className={`project-detail-gallery ${project.slug === "seascape-house" ? "project-ryuko-collage-gallery" : ""}`}>{project.gallery.map((image, index) => <figure key={`${image}-${index}`} className={index === 0 ? "project-detail-gallery-featured" : ""}><SafeImage src={image} alt={`${project.title} detail ${index + 1}`} className={`theme-image ${imagePresetClass(project.category, preset)}`} /></figure>)}</section>
+      <section className="project-detail-image project-main-image"><ColorPresetControls preset={preset} onChange={setPreset} /><SafeImage src={project.image} alt={project.title} className={`theme-image ${imagePresetClass(project.category, preset)}`} /></section>
+      <section className="project-detail-gallery">{project.gallery.map((image, index) => <figure key={`${image}-${index}`} className={index === 0 ? "project-detail-gallery-featured" : ""}><SafeImage src={image} alt={`${project.title} detail ${index + 1}`} className={`theme-image ${imagePresetClass(project.category, preset)}`} /></figure>)}</section>
       {isShHotel && <ProjectInquiryForm projectTitle={project.title} />}
       <nav className="project-pagination" aria-label="Project navigation"><Link href={`/projects/${previousProject.slug}`} onClick={() => navigateToProject(previousProject.slug)} className="project-pagination-link"><span>Previous project · ←</span><strong>{previousProject.title}</strong></Link><Link href={`/projects/${nextProject.slug}`} onClick={() => navigateToProject(nextProject.slug)} className="project-pagination-link project-pagination-next"><span>Next project · →</span><strong>{nextProject.title}</strong></Link></nav>
     </PageShell>
