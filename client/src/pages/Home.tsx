@@ -2601,7 +2601,7 @@ function ContactContent() {
   };
   return (
     <>
-      <section className="contact-main">
+      <section className="contact-main" id="contact">
         <div className="contact-details contact-details-centered">
           <SectionLabel number="01">
             Get in touch / Visit by appointment
