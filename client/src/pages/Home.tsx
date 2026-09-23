@@ -2491,7 +2491,11 @@ export function ProjectDetailPage() {
             </div>
             <div className="project-detail-copy">
               <h2>{detail.heading}</h2>
-              {detail.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+              {detail.paragraphs.map((paragraph, index) => (
+                <p className={index === 0 ? "project-detail-lead" : ""} key={paragraph}>
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         )}
