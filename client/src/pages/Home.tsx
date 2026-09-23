@@ -2333,9 +2333,9 @@ export function ProjectsPage() {
             </a>
             <SectionLabel>Projects / Portfolio</SectionLabel>
             <h1>
-              Spaces shaped around
+              Our Vision:
               <br />
-              <em>business purpose.</em>
+              <em>To transform spaces into inspiring experiences through innovation, efficiency, and exceptional craftsmanship.</em>
             </h1>
           </div>
           <p>
