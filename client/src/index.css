@@ -6668,3 +6668,169 @@ html.dark .about-visual-card .about-visual-stats {
     grid-template-columns: 1fr;
   }
 }
+
+/* Premium Project Detail direction: quiet luxury, strong type, considered contrast. */
+.project-detail-hero {
+  padding: clamp(122px, 13vw, 190px) clamp(24px, 7vw, 112px) clamp(48px, 6vw, 82px);
+  background:
+    radial-gradient(circle at 92% 12%, rgba(167, 113, 77, 0.08), transparent 28%),
+    var(--paper);
+}
+.project-detail-hero .back-link {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.project-detail-hero > .eyebrow {
+  margin-top: clamp(46px, 7vw, 92px);
+  padding: 0;
+  border: 0;
+  color: var(--brick);
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+.project-detail-hero h1 {
+  max-width: 1180px;
+  margin-top: 22px;
+  margin-bottom: clamp(52px, 7vw, 96px);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(52px, 8.2vw, 142px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+.project-detail-overview {
+  grid-template-columns: minmax(260px, 0.43fr) minmax(0, 1fr);
+  gap: clamp(40px, 8vw, 132px);
+  margin: 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(39, 43, 39, 0.22);
+}
+.project-detail-overview::before {
+  transform: translateY(-38px);
+  color: var(--brick);
+  letter-spacing: 0.12em;
+}
+.project-detail-facts {
+  background: var(--dark);
+  border: 0;
+  box-shadow: 12px 12px 0 rgba(39, 43, 39, 0.08);
+}
+.project-detail-facts div {
+  min-height: 88px;
+  padding: 16px 17px 14px;
+  border-color: rgba(248, 246, 240, 0.14);
+}
+.project-detail-facts span {
+  color: rgba(248, 246, 240, 0.52);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+.project-detail-facts strong {
+  color: #f8f6f0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.project-detail-copy {
+  padding-top: 4px;
+}
+.project-detail-copy h2 {
+  max-width: 820px;
+  margin-bottom: 30px;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(34px, 4.4vw, 68px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+.project-detail-copy p {
+  max-width: 670px;
+  margin-bottom: 22px;
+  color: #5c605a;
+  font-size: 16px;
+  line-height: 1.72;
+}
+.project-detail-image {
+  padding: 0 clamp(24px, 7vw, 112px) clamp(56px, 8vw, 112px);
+  background: var(--paper);
+}
+.project-detail-image img {
+  height: min(68vw, 820px);
+  min-height: 460px;
+  border-radius: 2px;
+  box-shadow: 0 24px 70px rgba(31, 34, 31, 0.16);
+}
+.project-detail-gallery {
+  padding: 0 clamp(24px, 7vw, 112px) clamp(72px, 10vw, 140px);
+  gap: clamp(12px, 2vw, 26px);
+  background: var(--paper);
+}
+.project-detail-gallery figure {
+  border-radius: 2px;
+}
+.project-detail-gallery img {
+  transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1), filter 0.4s ease;
+}
+.project-detail-gallery figure:hover img {
+  transform: scale(1.025);
+  filter: saturate(1.04) contrast(1.02);
+}
+@media (max-width: 900px) {
+  .project-detail-hero {
+    padding: 110px 20px 58px;
+  }
+  .project-detail-hero h1 {
+    margin-top: 18px;
+    margin-bottom: 68px;
+    font-size: clamp(52px, 12vw, 92px);
+  }
+  .project-detail-overview {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+  .project-detail-copy h2 {
+    font-size: clamp(36px, 8vw, 60px);
+  }
+  .project-detail-image {
+    padding: 0 20px 56px;
+  }
+  .project-detail-gallery {
+    padding: 0 20px 82px;
+  }
+}
+@media (max-width: 520px) {
+  .project-detail-hero {
+    padding: 96px 16px 48px;
+  }
+  .project-detail-hero h1 {
+    margin-bottom: 58px;
+    font-size: clamp(46px, 14vw, 72px);
+  }
+  .project-detail-facts {
+    box-shadow: 7px 7px 0 rgba(39, 43, 39, 0.08);
+  }
+  .project-detail-facts strong {
+    font-size: 18px;
+  }
+  .project-detail-copy h2 {
+    font-size: 38px;
+  }
+  .project-detail-copy p {
+    font-size: 15px;
+  }
+  .project-detail-image {
+    padding: 0 16px 42px;
+  }
+  .project-detail-image img {
+    min-height: 260px;
+    height: 68vw;
+  }
+  .project-detail-gallery {
+    padding: 0 16px 64px;
+  }
+}
