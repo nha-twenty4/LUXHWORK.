@@ -1964,6 +1964,7 @@ function GallerySection() {
         ))}
       </div>
       <div className="selected-work-more">
+        <span>Explore the full portfolio</span>
         <Link href="/projects" className="button button-dark">
           More projects <ArrowUpRight size={17} />
         </Link>
