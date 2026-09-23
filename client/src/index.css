@@ -5261,6 +5261,9 @@ html.dark .about-visual-card .about-visual-stats {
   font-size: clamp(66px, 9.5vw, 142px);
   line-height: 0.82;
   letter-spacing: -0.075em;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.045em;
 }
 .hero-bottom {
   max-width: 800px;
