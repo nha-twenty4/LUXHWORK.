@@ -139,7 +139,12 @@ const companyProjectImageSets: Record<string, string[]> = {
   "the-hynd-hotel": ["image101.png", "image102.png", "image103.png", "image104.png", "image105.png"].map(profileImage),
   "chj-jewellry-cb1": ["image106.png", "image107.png", "image108.png", "image109.png", "image110.png", "image111.png"].map(profileImage),
   "chj-jewellry-cb3": ["image112.png", "image113.png", "image114.png", "image115.png", "image116.png"].map(profileImage),
-  "lukfook-chipmong": ["/project-media/lukfook-chipmong-mega-mall-271.png", "image117.png", "image118.png", "image119.png", "image120.png", "image121.png"],
+  "lukfook-chipmong": [
+    "/project-media/chipmong-271/chipmong-271-01.png",
+    "/project-media/chipmong-271/chipmong-271-02.png",
+    "/project-media/chipmong-271/chipmong-271-03.png",
+    "/project-media/chipmong-271/chipmong-271-04.png",
+  ],
   "lao-miao-naga-2": ["image122.png", "image123.jpeg", "image124.png", "image125.png", "image126.png"].map(profileImage),
   "chj-jewellry-cb4": ["image127.png", "image128.jpeg", "image129.jpeg", "image130.jpeg", "image113.png"].map(profileImage),
   "fabric-factory": ["image70.jpeg", "image3.jpeg", "image71.jpeg", "image36.jpeg", "image72.jpeg", "image73.jpeg"].map(profileImage),
