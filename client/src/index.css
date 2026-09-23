@@ -5259,7 +5259,7 @@ html.dark .about-visual-card .about-visual-stats {
   max-width: 940px;
   margin: clamp(60px, 9vh, 118px) 0 0;
   font-size: clamp(66px, 9.5vw, 142px);
-  line-height: 0.82;
+  line-height: 0.94;
   letter-spacing: -0.075em;
   font-family: "DM Serif Display", Georgia, serif;
   font-weight: 400;
@@ -5305,7 +5305,7 @@ html.dark .about-visual-card .about-visual-stats {
     margin-top: 56px;
     max-width: 650px;
     font-size: clamp(58px, 14vw, 92px);
-    line-height: 0.84;
+    line-height: 0.94;
   }
   .hero-bottom {
     margin-top: 56px;
