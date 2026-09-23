@@ -2830,12 +2830,12 @@ h2 em {
   margin: 24px 0 75px;
 }
 .project-detail-hero-visa h1 {
-  max-width: 720px;
+  max-width: 680px;
   margin-bottom: 58px;
-  font-size: clamp(46px, 6vw, 88px);
+  font-size: clamp(28px, 3.2vw, 52px);
   font-weight: 500;
-  line-height: 0.9;
-  letter-spacing: -0.06em;
+  line-height: 1.16;
+  letter-spacing: -0.035em;
   white-space: normal;
 }
 .project-detail-meta {
@@ -3932,12 +3932,11 @@ html.dark .contact-detail-block > p {
     margin-bottom: 46px;
   }
   .project-detail-hero-visa h1 {
-    max-width: 680px;
+    max-width: 100%;
     margin-bottom: 46px;
-    font-size: clamp(46px, 10vw, 66px);
-    line-height: 0.94;
+    font-size: clamp(28px, 8vw, 42px);
+    line-height: 1.16;
     white-space: normal;
-    text-wrap: balance;
   }
   .project-detail-meta {
     grid-template-columns: 1fr;
