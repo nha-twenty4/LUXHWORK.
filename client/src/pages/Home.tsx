@@ -2396,7 +2396,7 @@ export function ProjectDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const [, navigate] = useLocation();
   const { projects: portfolioProjects } = usePortfolioProjects();
-  const [preset, setPreset] = useColorPreset();
+  const [preset] = useColorPreset();
   const project =
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
   const detail =
@@ -2507,17 +2507,6 @@ export function ProjectDetailPage() {
             </div>
           </div>
         )}
-      </section>
-      <section
-        className={`project-detail-image project-main-image project-main-image-${project.slug}`}
-      >
-        <ColorPresetControls preset={preset} onChange={setPreset} />
-        <SafeImage
-          src={project.image}
-          alt={project.title}
-          loading="eager"
-          className={`theme-image ${imagePresetClass(project.category, preset)}`}
-        />
       </section>
       <section className="project-detail-gallery">
         {project.gallery.map((image, index) => (
