@@ -1783,7 +1783,7 @@ function ProjectCard({
 function GallerySection() {
   const { projects } = usePortfolioProjects();
   const [preset] = useColorPreset();
-  const visibleProjects = projects;
+  const visibleProjects = projects.slice(0, 3);
   const galleryRef = useRef<HTMLElement>(null);
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
 
@@ -1865,6 +1865,9 @@ function GallerySection() {
           </article>
         ))}
       </div>
+      <Link href="/projects" className="more-projects-link">
+        More projects <ArrowUpRight size={16} />
+      </Link>
     </section>
   );
 }
@@ -2176,7 +2179,7 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
         ))}
       </div>
       <div className="about-visual-heading">
-        <p className="eyebrow eyebrow-light">PHNOM PENH / SINCE 2019</p>
+        <p className="eyebrow eyebrow-light">SINGAPOREAN-LED / SINCE 2019</p>
         <h1>
           Local execution,
           <br />
@@ -2188,8 +2191,8 @@ function AboutVisualHero({ compact = false }: { compact?: boolean }) {
       <div className="about-visual-card">
         <SectionLabel>About LUXHWORK</SectionLabel>
         <h2>
-          A commercial interior consultancy and fit-out company serving
-          businesses in Cambodia and Thailand.
+          Singaporean-led — a commercial interior consultancy and fit-out
+          company serving businesses in Cambodia.
         </h2>
         <p>
           Our team connects considered design with planning, MEP coordination,
@@ -2236,6 +2239,20 @@ export function AboutPage() {
   return (
     <PageShell>
       <AboutVisualHero />
+      <section className="about-vision">
+        <SectionLabel number="02">Our vision</SectionLabel>
+        <div className="about-vision-copy">
+          <p>
+            To transform spaces into inspiring experiences through innovation,
+            efficiency, and exceptional craftsmanship.
+          </p>
+          <p>
+            While fostering the next generation of leading designers and
+            cultivating a team of talented professionals to drive the future of
+            commercial design.
+          </p>
+        </div>
+      </section>
       <section className="expertise">
         <SectionLabel number="03">Skills / How we think and make</SectionLabel>
         <div className="expertise-grid">
@@ -2262,11 +2279,112 @@ export function AboutPage() {
 }
 
 export function ProjectsPage() {
-  const [, navigate] = useLocation();
-  useEffect(() => {
-    navigate("/#projects");
-  }, [navigate]);
-  return null;
+  const { projects } = usePortfolioProjects();
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [preset] = useColorPreset();
+  const filters = [
+    "All",
+    "Corporate Office",
+    "Retail",
+    "Commercial",
+    "Food & Beverage (FnB)",
+  ];
+  const projectCategory = (project: Project) => {
+    if (
+      [
+        "field-notes",
+        "atelier-common",
+        "chj-jewellry-cb1",
+        "chj-jewellry-cb3",
+        "chj-jewellry-cb4",
+        "lukfook-chipmong",
+        "lao-miao-naga-2",
+        "lukfook-funmall",
+      ].includes(project.slug)
+    )
+      return "Retail";
+    if (
+      [
+        "seascape-house",
+        "the-hynd-hotel",
+        "courtyard-study",
+        "frame-house",
+      ].includes(project.slug)
+    )
+      return "Food & Beverage (FnB)";
+    if (["house-14", "mori-residence"].includes(project.slug))
+      return "Corporate Office";
+    return "Commercial";
+  };
+  const filteredProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter(project => projectCategory(project) === activeFilter);
+  return (
+    <PageShell>
+      <section className="projects-index">
+        <div className="projects-index-head">
+          <div>
+            <a href="/" className="back-link">
+              <ChevronLeft size={17} /> Home
+            </a>
+            <SectionLabel>Projects / Portfolio</SectionLabel>
+            <h1>
+              Spaces shaped around
+              <br />
+              <em>business purpose.</em>
+            </h1>
+          </div>
+          <p>
+            Explore selected work across corporate offices, retail, commercial
+            spaces and food &amp; beverage environments.
+          </p>
+        </div>
+        <div className="projects-index-body">
+          <aside className="projects-filter" aria-label="Project categories">
+            <span>Filter by category</span>
+            <div>
+              {filters.map(filter => (
+                <button
+                  type="button"
+                  className={activeFilter === filter ? "is-active" : ""}
+                  onClick={() => setActiveFilter(filter)}
+                  key={filter}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          </aside>
+          <div className="projects-index-grid">
+            {filteredProjects.map(project => (
+              <article
+                className="selected-work-card selected-work-card-visible"
+                key={project.slug}
+              >
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="selected-work-image-link"
+                >
+                  <SafeImage
+                    src={project.image}
+                    alt={project.title}
+                    className={`project-image theme-image ${imagePresetClass(project.category, preset)}`}
+                  />
+                </Link>
+                <div className="project-meta selected-work-meta">
+                  <h3>{project.title}</h3>
+                  <p>
+                    {projectCategory(project)} · {project.year}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </PageShell>
+  );
 }
 
 export function ProjectDetailPage() {
@@ -2342,26 +2460,36 @@ export function ProjectDetailPage() {
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
-        <p className="eyebrow">
-          {project.category} / {project.year}
-        </p>
-        <h1>{project.title}</h1>
-        <div className="project-detail-meta">
+        <div className="project-detail-reference-grid">
           <div>
-            <span>Location</span>
-            <p>{project.location}</p>
+            <p className="eyebrow">
+              {project.category} / {project.year}
+            </p>
+            <h1>{project.title}</h1>
+            <div className="project-detail-meta">
+              <div>
+                <span>Location</span>
+                <p>{project.location}</p>
+              </div>
+              <div>
+                <span>Client</span>
+                <p>{project.client}</p>
+              </div>
+              <div>
+                <span>Scope</span>
+                <p>{project.note}</p>
+              </div>
+              <div>
+                <span>Year</span>
+                <p>{project.year}</p>
+              </div>
+            </div>
           </div>
-          <div>
-            <span>Client</span>
-            <p>{project.client}</p>
-          </div>
-          <div>
-            <span>Scope</span>
-            <p>{project.note}</p>
-          </div>
-          <div>
-            <span>Year</span>
-            <p>{project.year}</p>
+          <div className="project-detail-reference-copy">
+            <p>{project.description}</p>
+            <Link href="/contact" className="button button-dark">
+              Enquire now <ArrowUpRight size={16} />
+            </Link>
           </div>
         </div>
         <p
