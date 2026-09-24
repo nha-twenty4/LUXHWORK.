@@ -7470,6 +7470,7 @@ html.dark .about-visual-card .about-visual-stats {
   font-size: clamp(18px, 2vw, 28px);
   line-height: 1.16;
   letter-spacing: -0.025em;
+  white-space: pre-line;
 }
 
 .project-detail-visa-story h2 {
@@ -7570,7 +7571,10 @@ html.dark .about-visual-card .about-visual-stats {
   letter-spacing: -0.04em;
 }
 
-.project-detail-hero-visa .project-detail-reference-copy .project-detail-visa-story p {
+.project-detail-hero-visa
+  .project-detail-reference-copy
+  .project-detail-visa-story
+  p {
   max-width: 860px;
   margin-bottom: 10px;
   color: var(--ink);
@@ -7696,7 +7700,10 @@ html.dark .about-visual-card .about-visual-stats {
   letter-spacing: -0.04em;
 }
 
-.project-detail-hero-visa .project-detail-reference-copy .project-detail-visa-story p {
+.project-detail-hero-visa
+  .project-detail-reference-copy
+  .project-detail-visa-story
+  p {
   max-width: 490px;
   margin: 0 0 28px;
   color: var(--muted);

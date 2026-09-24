@@ -442,6 +442,9 @@ type Project = {
   client: string;
   description: string;
   note: string;
+  typeLabel?: string;
+  sizeLabel?: string;
+  completionLabel?: string;
   size: "wide" | "tall" | "standard";
   gallery: string[];
   floorPlan: string;
@@ -559,17 +562,20 @@ const projects: Project[] = [
   },
   {
     slug: "seascape-house",
-    title: "RYUKO OMAKASE (PHNOM PENH)",
+    title: "RYUKOU OMAKASE",
     category: "Interior",
     image: images.coastal,
-    year: "2023",
-    location: "Phnom Penh, Cambodia",
-    client: "Ryuko Omakase",
+    year: "Jan 2026",
+    location: "The Peak, Phnom Penh, Cambodia",
+    client: "-",
     description:
-      "Interior design and fit-out works for Ryuko Omakase, shaped around a warm hospitality experience.",
-    note: "Hospitality / F&B",
+      "A Dining Experience Shaped by Space and Ritual\n\nLocated at The Peak in Phnom Penh, Cambodia, this 330 sqm Ryukou Omakase restaurant was conceived as an immersive Japanese dining environment where architecture, atmosphere, and culinary performance come together.\n\nLUXHWORK was appointed for the interior design scope, developing the spatial planning, material palette, lighting concept, custom joinery, and overall visual direction. The design balances privacy and openness through carefully considered dining zones, creating a natural progression from arrival to the intimate omakase experience.\n\nWarm timber finishes, controlled lighting, textured surfaces, and precise architectural detailing establish a calm and sophisticated atmosphere. Every element was designed to frame the chef’s craft, enhance the guest journey, and express Ryukou Omakase’s identity through a cohesive dining environment.",
+    note: "330 sqm",
+    typeLabel: "FnB",
+    sizeLabel: "330 sqm",
+    completionLabel: "Jan 2026",
     size: "tall",
-    gallery: [images.coastal, images.villa, images.warmDetail],
+    gallery: companyProjectImageSets["seascape-house"],
     floorPlan: "/manus-storage/seascape-house-floor-plan_ae136de4.svg",
     pdf: "/manus-storage/seascape-house-project_a2e250e4.pdf",
   },
@@ -2324,14 +2330,20 @@ export function ProjectsPage() {
       return "Corporate Office";
     return "Commercial";
   };
-  const homeProjectSlugs = new Set(["house-14", "mori-residence", "northpoint"]);
+  const homeProjectSlugs = new Set([
+    "house-14",
+    "mori-residence",
+    "northpoint",
+  ]);
   const archiveProjects = projects.filter(
     project => !homeProjectSlugs.has(project.slug)
   );
   const filteredProjects =
     activeFilter === "All"
       ? archiveProjects
-      : archiveProjects.filter(project => projectCategory(project) === activeFilter);
+      : archiveProjects.filter(
+          project => projectCategory(project) === activeFilter
+        );
   return (
     <PageShell>
       <section className="projects-index">
@@ -2349,8 +2361,8 @@ export function ProjectsPage() {
           </div>
           <p className="projects-vision-support">
             While fostering the next generation of leading designers and
-            cultivating a team of talented professionals to drive the future
-            of commercial design.
+            cultivating a team of talented professionals to drive the future of
+            commercial design.
           </p>
         </div>
         <div className="projects-index-body">
@@ -2412,7 +2424,9 @@ export function ProjectDetailPage() {
   const isLucky = project.slug === "frame-house";
   const isChj = project.slug === "chj-jewellry-cb1";
   const isLaomiao = project.slug === "lao-miao-naga-2";
-  const isReferenceProject = isVisa || isGolden || isLucky || isChj || isLaomiao;
+  const isRyukou = project.slug === "seascape-house";
+  const isReferenceProject =
+    isVisa || isGolden || isLucky || isChj || isLaomiao || isRyukou;
   const isShHotel = project.slug === "the-hynd-hotel";
   const projectIndex = Math.max(
     0,
@@ -2503,7 +2517,7 @@ export function ProjectDetailPage() {
                   ? "CHJ JEWELLERY-AEON1"
                   : isLaomiao
                     ? "LAOMIAO- NAGAWORLD 1"
-                : project.title}
+                    : project.title}
         </h1>
         <div className="project-detail-reference-grid">
           <div>
@@ -2623,6 +2637,25 @@ export function ProjectDetailPage() {
                     <p>7 weeks</p>
                   </div>
                 </>
+              ) : isRyukou ? (
+                <>
+                  <div>
+                    <span>Client:</span>
+                    <p>-</p>
+                  </div>
+                  <div>
+                    <span>Type:</span>
+                    <p>FnB</p>
+                  </div>
+                  <div>
+                    <span>Size:</span>
+                    <p>330 sqm</p>
+                  </div>
+                  <div>
+                    <span>Completion:</span>
+                    <p>Jan 2026</p>
+                  </div>
+                </>
               ) : (
                 <>
                   <div>
@@ -2648,7 +2681,10 @@ export function ProjectDetailPage() {
           <div className="project-detail-reference-copy">
             {isVisa ? (
               <div className="project-detail-visa-story">
-                <h2>A Purposely Designed Workplace Designed For Modern Collaboration</h2>
+                <h2>
+                  A Purposely Designed Workplace Designed For Modern
+                  Collaboration
+                </h2>
                 <p>
                   Located within VattanacCapital Tower in Phnom Penh, the VISA
                   Worldwide office was designed as a modern corporate workplace
@@ -2670,7 +2706,9 @@ export function ProjectDetailPage() {
               </div>
             ) : isGolden ? (
               <div className="project-detail-visa-story">
-                <h2>A Refined VIP Lounge for Private Dining and Entertainment</h2>
+                <h2>
+                  A Refined VIP Lounge for Private Dining and Entertainment
+                </h2>
                 <p>
                   Careful material selection, colour coordination and technical
                   craftsmanship ensured the completed space remained faithful to
@@ -2691,9 +2729,9 @@ export function ProjectDetailPage() {
               <div className="project-detail-visa-story">
                 <h2>A Bold and Energetic Fast-Food Experience</h2>
                 <p>
-                  Located in Krong Ta Khmao, the 376 sqm Lucky Burger
-                  restaurant expands the presence of one of Cambodia’s
-                  established fast-food chains within a standalone building.
+                  Located in Krong Ta Khmao, the 376 sqm Lucky Burger restaurant
+                  expands the presence of one of Cambodia’s established
+                  fast-food chains within a standalone building.
                 </p>
                 <p>
                   The restaurant brings together indoor and outdoor dining, an
@@ -2739,8 +2777,8 @@ export function ProjectDetailPage() {
                 </p>
                 <p>
                   LUXHWORK managed the complete fit-out works and project
-                  execution, coordinating specialist contractors, suppliers,
-                  MEP services, custom showcases, illuminated displays, detailed
+                  execution, coordinating specialist contractors, suppliers, MEP
+                  services, custom showcases, illuminated displays, detailed
                   joinery, decorative finishes and branded storefront elements.
                 </p>
                 <p>
