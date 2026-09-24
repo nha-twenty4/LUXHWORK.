@@ -354,13 +354,13 @@ const companyProjectDetails: Record<
     note: "Hospitality / F&B",
   },
   "frame-house": {
-    title: "LUCKY BURGER TAKMAO",
+    title: "LUCKY BURGER",
     category: "Interior",
     location: "Takmao, Cambodia",
-    client: "Lucky Burger",
+    client: "REAL FOOD AND BEVERAGE Co., LTD",
     description:
-      "Interior and facade fit-out work for the Lucky Burger Takmao restaurant.",
-    note: "Restaurant / F&B · Interior and facade fit-out",
+      "Interior design and complete fit-out works for the Lucky Burger restaurant in Krong Ta Khmao.",
+    note: "Hospitality · 377 SQM · Completed September 2023",
   },
   "field-notes": {
     title: "COMBI (PHNOM PENH)",
@@ -566,12 +566,12 @@ const projects: Project[] = [
   },
   {
     slug: "frame-house",
-    title: "LUCKY BURGER TAKMAO",
+    title: "LUCKY BURGER",
     category: "Interior",
     image: images.modern,
-    year: "2022",
+    year: "2023",
     location: "Takmao, Cambodia",
-    client: "Lucky Burger",
+    client: "REAL FOOD AND BEVERAGE Co., LTD",
     description:
       "Interior and facade fit-out work for the Lucky Burger Takmao restaurant.",
     note: "Restaurant / F&B · Interior and facade fit-out",
@@ -2400,7 +2400,8 @@ export function ProjectDetailPage() {
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
   const isVisa = project.slug === "house-14";
   const isGolden = project.slug === "northpoint";
-  const isReferenceProject = isVisa || isGolden;
+  const isLucky = project.slug === "frame-house";
+  const isReferenceProject = isVisa || isGolden || isLucky;
   const isShHotel = project.slug === "the-hynd-hotel";
   const projectIndex = Math.max(
     0,
@@ -2475,12 +2476,16 @@ export function ProjectDetailPage() {
           </p>
         ) : isGolden ? (
           <p className="eyebrow">Hospitality</p>
+        ) : isLucky ? (
+          <p className="eyebrow">FnB</p>
         ) : null}
         <h1>
           {isVisa
             ? "VISA WORLD WIDE CORPORATE OFFICE"
             : isGolden
               ? "GOLDEN TOWER VIP LOUNGE"
+              : isLucky
+                ? "LUCKY BURGER"
               : project.title}
         </h1>
         <div className="project-detail-reference-grid">
@@ -2534,6 +2539,25 @@ export function ProjectDetailPage() {
                   <div>
                     <span>Program duration:</span>
                     <p>6 weeks</p>
+                  </div>
+                </>
+              ) : isLucky ? (
+                <>
+                  <div>
+                    <span>Client:</span>
+                    <p>REAL FOOD AND BEVERAGE Co., LTD</p>
+                  </div>
+                  <div>
+                    <span>Type:</span>
+                    <p>Hospitality</p>
+                  </div>
+                  <div>
+                    <span>Size:</span>
+                    <p>377 sqm</p>
+                  </div>
+                  <div>
+                    <span>Completion:</span>
+                    <p>September 2023</p>
                   </div>
                 </>
               ) : (
@@ -2598,6 +2622,26 @@ export function ProjectDetailPage() {
                   The contemporary luxury interior combines intimate seating,
                   custom joinery, geometric wall panels and a statement bar,
                   enriched by teal accents and layered lighting.
+                </p>
+              </div>
+            ) : isLucky ? (
+              <div className="project-detail-visa-story">
+                <h2>A Bold and Energetic Fast-Food Experience</h2>
+                <p>
+                  Located in Krong Ta Khmao, the 376 sqm Lucky Burger
+                  restaurant expands the presence of one of Cambodia’s
+                  established fast-food chains within a standalone building.
+                </p>
+                <p>
+                  The restaurant brings together indoor and outdoor dining, an
+                  efficient service counter and clear customer circulation
+                  within a highly visible branded environment.
+                </p>
+                <p>
+                  Completed in September 2023, the project involved the design
+                  and complete fit-out of the existing building, including its
+                  façade, dining areas, service zones and integrated brand
+                  elements.
                 </p>
               </div>
             ) : (
