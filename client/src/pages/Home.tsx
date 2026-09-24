@@ -2467,22 +2467,14 @@ export function ProjectDetailPage() {
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
+        <p className="eyebrow">
+          {project.category} / {project.year}
+        </p>
+        <h1>
+          {isVisa ? "VISA WORLD WIDE CORPORATE OFFICE" : project.title}
+        </h1>
         <div className="project-detail-reference-grid">
           <div>
-            <p className="eyebrow">
-              {project.category} / {project.year}
-            </p>
-            <h1>
-              {isVisa ? (
-                <>
-                  VISA WORLDWIDE BRANCH OFFICE
-                  <br />
-                  <em>EXPANSION (PHNOM PENH)</em>
-                </>
-              ) : (
-                project.title
-              )}
-            </h1>
             <div className="project-detail-meta">
               {isVisa ? (
                 <>

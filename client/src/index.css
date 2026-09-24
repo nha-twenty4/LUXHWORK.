@@ -7494,6 +7494,67 @@ html.dark .about-visual-card .about-visual-stats {
   margin-top: 12px;
 }
 
+.project-detail-hero-visa > h1 {
+  max-width: none;
+  margin: 20px 0 64px;
+  font-size: clamp(34px, 4.2vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+}
+
+.project-detail-hero-visa .project-detail-reference-grid {
+  grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
+  gap: clamp(48px, 9vw, 140px);
+  align-items: start;
+}
+
+.project-detail-hero-visa .project-detail-meta {
+  grid-template-columns: 1fr;
+  max-width: 190px;
+  gap: 22px;
+  border-top: 0;
+}
+
+.project-detail-hero-visa .project-detail-meta > div {
+  padding: 0;
+}
+
+.project-detail-hero-visa .project-detail-meta span {
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.project-detail-hero-visa .project-detail-meta p {
+  margin-top: 3px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.project-detail-hero-visa .project-detail-reference-copy {
+  max-width: 720px;
+  padding: 0;
+}
+
+.project-detail-hero-visa .project-detail-visa-story h2 {
+  max-width: 680px;
+  margin-bottom: 12px;
+  font-family: inherit;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+}
+
+.project-detail-hero-visa .project-detail-reference-copy .project-detail-visa-story p {
+  max-width: 720px;
+  margin-bottom: 12px;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.42;
+}
+
 @media (max-width: 760px) {
   .project-detail-reference-grid {
     grid-template-columns: 1fr;
@@ -7502,5 +7563,16 @@ html.dark .about-visual-card .about-visual-stats {
 
   .project-detail-reference-copy {
     padding-bottom: 0;
+  }
+
+  .project-detail-hero-visa > h1 {
+    margin-bottom: 42px;
+    font-size: clamp(34px, 9vw, 54px);
+    line-height: 1.02;
+    white-space: normal;
+  }
+
+  .project-detail-hero-visa .project-detail-meta {
+    max-width: none;
   }
 }
