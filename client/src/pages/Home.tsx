@@ -363,13 +363,13 @@ const companyProjectDetails: Record<
     note: "Hospitality · 377 SQM · Completed September 2023",
   },
   "field-notes": {
-    title: "COMBI (PHNOM PENH)",
+    title: "COMBI",
     category: "Interior",
     location: "Phnom Penh, Cambodia",
-    client: "Combi",
+    client: "-",
     description:
-      "To propose interior design and fit-out works for the Combi retail store relocation.",
-    note: "Retail shop · Outlet 1 & 2 · 130 SQM",
+      "A Family-Focused Retail Experience Designed for Discovery\n\nThe Combi showroom is conceived as a warm, intuitive retail environment where parents can explore, compare and experience products with ease. Natural oak finishes create a calm and welcoming atmosphere, while clean white surfaces and Combi’s signature orange accents reinforce the brand’s Japanese identity.\n\nProducts are organized into clearly defined zones, including dedicated stroller displays, child-seat testing areas and central accessory showcases. Integrated lighting highlights each collection without overwhelming the space, while wide circulation paths improve visibility and allow customers to move comfortably with children and strollers.\n\nThe result is a functional, brand-led showroom that balances product presentation, customer interaction and an approachable family-focused experience.",
+    note: "90 sqm",
   },
   "atelier-common": {
     title: "LUK FOOK JEWELLERY AEON 3",
@@ -597,15 +597,18 @@ const projects: Project[] = [
   },
   {
     slug: "field-notes",
-    title: "COMBI (PHNOM PENH)",
+    title: "COMBI",
     category: "Interior",
     image: images.interior,
-    year: "2024",
+    year: "n/a",
     location: "Phnom Penh, Cambodia",
-    client: "Combi",
+    client: "-",
     description:
-      "To propose interior design and fit-out works for the Combi retail store relocation.",
-    note: "Retail shop · Outlet 1 & 2 · 130 SQM",
+      "A Family-Focused Retail Experience Designed for Discovery\n\nThe Combi showroom is conceived as a warm, intuitive retail environment where parents can explore, compare and experience products with ease. Natural oak finishes create a calm and welcoming atmosphere, while clean white surfaces and Combi’s signature orange accents reinforce the brand’s Japanese identity.\n\nProducts are organized into clearly defined zones, including dedicated stroller displays, child-seat testing areas and central accessory showcases. Integrated lighting highlights each collection without overwhelming the space, while wide circulation paths improve visibility and allow customers to move comfortably with children and strollers.\n\nThe result is a functional, brand-led showroom that balances product presentation, customer interaction and an approachable family-focused experience.",
+    note: "90 sqm",
+    typeLabel: "Retail",
+    sizeLabel: "90 sqm",
+    completionLabel: "n/a",
     size: "wide",
     gallery: [images.interior, images.moriDetail, images.duskDetail],
     floorPlan: "/manus-storage/field-notes-floor-plan_f62b0fb1.svg",
@@ -2425,8 +2428,9 @@ export function ProjectDetailPage() {
   const isChj = project.slug === "chj-jewellry-cb1";
   const isLaomiao = project.slug === "lao-miao-naga-2";
   const isRyukou = project.slug === "seascape-house";
+  const isCombi = project.slug === "field-notes";
   const isReferenceProject =
-    isVisa || isGolden || isLucky || isChj || isLaomiao || isRyukou;
+    isVisa || isGolden || isLucky || isChj || isLaomiao || isRyukou || isCombi;
   const isShHotel = project.slug === "the-hynd-hotel";
   const projectIndex = Math.max(
     0,
@@ -2503,7 +2507,7 @@ export function ProjectDetailPage() {
           <p className="eyebrow">Hospitality</p>
         ) : isLucky ? (
           <p className="eyebrow">FnB</p>
-        ) : isChj || isLaomiao ? (
+        ) : isChj || isLaomiao || isCombi ? (
           <p className="eyebrow">Retail</p>
         ) : null}
         <h1>
@@ -2517,7 +2521,9 @@ export function ProjectDetailPage() {
                   ? "CHJ JEWELLERY-AEON1"
                   : isLaomiao
                     ? "LAOMIAO- NAGAWORLD 1"
-                    : project.title}
+                    : isCombi
+                      ? "COMBI"
+                      : project.title}
         </h1>
         <div className="project-detail-reference-grid">
           <div>
@@ -2656,6 +2662,25 @@ export function ProjectDetailPage() {
                     <p>Jan 2026</p>
                   </div>
                 </>
+              ) : isCombi ? (
+                <>
+                  <div>
+                    <span>Client:</span>
+                    <p>-</p>
+                  </div>
+                  <div>
+                    <span>Type:</span>
+                    <p>Retail</p>
+                  </div>
+                  <div>
+                    <span>Size:</span>
+                    <p>90 sqm</p>
+                  </div>
+                  <div>
+                    <span>Completion:</span>
+                    <p>n/a</p>
+                  </div>
+                </>
               ) : (
                 <>
                   <div>
@@ -2786,6 +2811,33 @@ export function ProjectDetailPage() {
                   control, the boutique was completed in accordance with the
                   brand’s design intent, technical requirements and operational
                   standards.
+                </p>
+              </div>
+            ) : isCombi ? (
+              <div className="project-detail-visa-story">
+                <h2>
+                  A Family-Focused Retail Experience Designed for Discovery
+                </h2>
+                <p>
+                  The Combi showroom is conceived as a warm, intuitive retail
+                  environment where parents can explore, compare and experience
+                  products with ease. Natural oak finishes create a calm and
+                  welcoming atmosphere, while clean white surfaces and Combi’s
+                  signature orange accents reinforce the brand’s Japanese
+                  identity.
+                </p>
+                <p>
+                  Products are organized into clearly defined zones, including
+                  dedicated stroller displays, child-seat testing areas and
+                  central accessory showcases. Integrated lighting highlights
+                  each collection without overwhelming the space, while wide
+                  circulation paths improve visibility and allow customers to
+                  move comfortably with children and strollers.
+                </p>
+                <p>
+                  The result is a functional, brand-led showroom that balances
+                  product presentation, customer interaction and an approachable
+                  family-focused experience.
                 </p>
               </div>
             ) : (
