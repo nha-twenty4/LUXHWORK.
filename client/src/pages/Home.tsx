@@ -408,13 +408,22 @@ const companyProjectDetails: Record<
     note: "Hospitality · 12 floors · 750 SQM",
   },
   "chj-jewellry-cb1": {
-    title: "CHJ JEWELLRY CB1 AEON MALL 1",
+    title: "CHJ JEWELLERY-AEON1",
     category: "Interior",
     location: "Phnom Penh, Cambodia",
-    client: "CHJ Jewellery",
+    client: "Goldman Jewellery Co., LTD",
     description:
-      "To propose fit-out works for the CHJ Jewellery store at AEON Mall 1.",
-    note: "Retail jewellery · 58 SQM",
+      "Fit-out works and project management for the CHJ Jewellery boutique at AEON Mall Phnom Penh.",
+    note: "Retail · 58 SQM · Completed June 2025",
+  },
+  "lao-miao-naga-2": {
+    title: "LAOMIAO- NAGAWORLD 1",
+    category: "Interior",
+    location: "Phnom Penh, Cambodia",
+    client: "n/a",
+    description:
+      "Complete fit-out works and project execution for the LAOMIAO jewellery boutique at NagaWorld 1.",
+    note: "Retail · 145 SQM · Completed January 2026",
   },
 };
 
@@ -670,15 +679,15 @@ const projects: Project[] = [
   },
   {
     slug: "chj-jewellry-cb1",
-    title: "CHJ JEWELLRY CB1 AEON MALL 1",
+    title: "CHJ JEWELLERY-AEON1",
     category: "Interior",
     image: companyImages.retailPanels,
-    year: "2026",
+    year: "2025",
     location: "Phnom Penh, Cambodia",
-    client: "CHJ Jewellery",
+    client: "Goldman Jewellery Co., LTD",
     description:
-      "To propose fit-out works for the CHJ Jewellery store at AEON Mall 1.",
-    note: "Retail jewellery · 58 SQM",
+      "Fit-out works and project management for the CHJ Jewellery boutique at AEON Mall Phnom Penh.",
+    note: "Retail · 58 SQM · Completed June 2025",
     size: "standard",
     gallery: [
       companyImages.retailPanels,
@@ -792,15 +801,15 @@ const projects: Project[] = [
   },
   {
     slug: "lao-miao-naga-2",
-    title: "LAO MIAO CBF-NAGA 2",
+    title: "LAOMIAO- NAGAWORLD 1",
     category: "Interior",
     image: companyProjectImageSets["lao-miao-naga-2"][0],
-    year: "Not listed",
+    year: "2026",
     location: "Phnom Penh, Cambodia",
-    client: "Lao Miao",
+    client: "n/a",
     description:
-      "Fit-out works for the Lao Miao Jewellery store at CBF-Naga 2.",
-    note: "Retail jewellery · 43 SQM",
+      "Complete fit-out works and project execution for the LAOMIAO jewellery boutique at NagaWorld 1.",
+    note: "Retail · 145 SQM · Completed January 2026",
     size: "standard",
     gallery: companyProjectImageSets["lao-miao-naga-2"],
     floorPlan: "",
@@ -2401,7 +2410,9 @@ export function ProjectDetailPage() {
   const isVisa = project.slug === "house-14";
   const isGolden = project.slug === "northpoint";
   const isLucky = project.slug === "frame-house";
-  const isReferenceProject = isVisa || isGolden || isLucky;
+  const isChj = project.slug === "chj-jewellry-cb1";
+  const isLaomiao = project.slug === "lao-miao-naga-2";
+  const isReferenceProject = isVisa || isGolden || isLucky || isChj || isLaomiao;
   const isShHotel = project.slug === "the-hynd-hotel";
   const projectIndex = Math.max(
     0,
@@ -2478,6 +2489,8 @@ export function ProjectDetailPage() {
           <p className="eyebrow">Hospitality</p>
         ) : isLucky ? (
           <p className="eyebrow">FnB</p>
+        ) : isChj || isLaomiao ? (
+          <p className="eyebrow">Retail</p>
         ) : null}
         <h1>
           {isVisa
@@ -2486,7 +2499,11 @@ export function ProjectDetailPage() {
               ? "GOLDEN TOWER VIP LOUNGE"
               : isLucky
                 ? "LUCKY BURGER"
-              : project.title}
+                : isChj
+                  ? "CHJ JEWELLERY-AEON1"
+                  : isLaomiao
+                    ? "LAOMIAO- NAGAWORLD 1"
+                : project.title}
         </h1>
         <div className="project-detail-reference-grid">
           <div>
@@ -2558,6 +2575,52 @@ export function ProjectDetailPage() {
                   <div>
                     <span>Completion:</span>
                     <p>September 2023</p>
+                  </div>
+                </>
+              ) : isChj ? (
+                <>
+                  <div>
+                    <span>Client:</span>
+                    <p>Goldman Jewellery Co., LTD</p>
+                  </div>
+                  <div>
+                    <span>Type:</span>
+                    <p>Retail</p>
+                  </div>
+                  <div>
+                    <span>Size:</span>
+                    <p>58 sqm</p>
+                  </div>
+                  <div>
+                    <span>Completion:</span>
+                    <p>June 2025</p>
+                  </div>
+                  <div>
+                    <span>Duration:</span>
+                    <p>8 weeks</p>
+                  </div>
+                </>
+              ) : isLaomiao ? (
+                <>
+                  <div>
+                    <span>Client:</span>
+                    <p>n/a</p>
+                  </div>
+                  <div>
+                    <span>Type:</span>
+                    <p>Retail</p>
+                  </div>
+                  <div>
+                    <span>Size:</span>
+                    <p>145 sqm</p>
+                  </div>
+                  <div>
+                    <span>Completion:</span>
+                    <p>Jan 2026</p>
+                  </div>
+                  <div>
+                    <span>Duration:</span>
+                    <p>7 weeks</p>
                   </div>
                 </>
               ) : (
@@ -2642,6 +2705,49 @@ export function ProjectDetailPage() {
                   and complete fit-out of the existing building, including its
                   façade, dining areas, service zones and integrated brand
                   elements.
+                </p>
+              </div>
+            ) : isChj ? (
+              <div className="project-detail-visa-story">
+                <h2>Fit-Out Works Within a Compact Retail Space</h2>
+                <p>
+                  Located at AEON Mall Phnom Penh in Cambodia, this 58 sqm CHJ
+                  Jewellery boutique delivers a bright and highly detailed
+                  retail environment within a compact footprint.
+                </p>
+                <p>
+                  LUXHWORK was appointed to undertake the fit-out works and
+                  project management, coordinating specialist contractors,
+                  suppliers, building services, and on-site execution to
+                  translate the approved design into a completed retail space.
+                </p>
+                <p>
+                  The project involved custom jewellery showcases, illuminated
+                  display shelving, decorative metal screens, integrated
+                  lighting, branded storefront elements, architectural finishes
+                  and associated MEP services. Careful coordination maintained
+                  clear circulation and a comfortable customer experience.
+                </p>
+              </div>
+            ) : isLaomiao ? (
+              <div className="project-detail-visa-story">
+                <h2>Meticulous Execution, Lasting Impression</h2>
+                <p>
+                  Located at NagaWorld 1 in Phnom Penh, Cambodia, this 44 sqm
+                  LAOMIAO jewellery boutique delivers a luxurious retail
+                  environment within a compact footprint.
+                </p>
+                <p>
+                  LUXHWORK managed the complete fit-out works and project
+                  execution, coordinating specialist contractors, suppliers,
+                  MEP services, custom showcases, illuminated displays, detailed
+                  joinery, decorative finishes and branded storefront elements.
+                </p>
+                <p>
+                  Through precise coordination, site supervision and quality
+                  control, the boutique was completed in accordance with the
+                  brand’s design intent, technical requirements and operational
+                  standards.
                 </p>
               </div>
             ) : (
