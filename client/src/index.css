@@ -7497,14 +7497,17 @@ html.dark .about-visual-card .about-visual-stats {
 .project-detail-hero-visa > h1 {
   max-width: none;
   margin: 0;
-  font-size: clamp(34px, 4vw, 58px);
-  line-height: 1;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(38px, 4.6vw, 64px);
+  font-weight: 400;
+  line-height: 0.88;
   letter-spacing: -0.055em;
   white-space: nowrap;
 }
 
 .project-detail-hero-visa {
-  padding-top: 78px;
+  padding-top: 86px;
+  position: relative;
 }
 
 .project-detail-hero-visa > .back-link,
@@ -7515,8 +7518,12 @@ html.dark .about-visual-card .about-visual-stats {
 .project-detail-hero-visa .project-detail-reference-grid {
   grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
   gap: clamp(48px, 9vw, 140px);
-  margin-top: -12px;
+  margin-top: 0;
   align-items: start;
+}
+
+.project-detail-hero-visa .project-detail-meta {
+  transform: translateY(clamp(74px, 8vw, 112px));
 }
 
 .project-detail-hero-visa .project-detail-meta {
@@ -7546,6 +7553,7 @@ html.dark .about-visual-card .about-visual-stats {
 .project-detail-hero-visa .project-detail-reference-copy {
   max-width: 720px;
   padding: 0;
+  transform: translateY(clamp(-42px, -3vw, -26px));
 }
 
 .project-detail-hero-visa .project-detail-visa-story h2 {
@@ -7584,7 +7592,6 @@ html.dark .about-visual-card .about-visual-stats {
   }
 
   .project-detail-hero-visa > h1 {
-    margin-bottom: 42px;
     font-size: clamp(34px, 9vw, 54px);
     line-height: 1.02;
     white-space: normal;
@@ -7600,5 +7607,10 @@ html.dark .about-visual-card .about-visual-stats {
 
   .project-detail-hero-visa > h1 {
     white-space: normal;
+  }
+
+  .project-detail-hero-visa .project-detail-meta,
+  .project-detail-hero-visa .project-detail-reference-copy {
+    transform: none;
   }
 }
