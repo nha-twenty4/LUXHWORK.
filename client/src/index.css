@@ -7553,7 +7553,7 @@ html.dark .about-visual-card .about-visual-stats {
 .project-detail-hero-visa .project-detail-reference-copy {
   max-width: 720px;
   padding: 0;
-  transform: translateY(clamp(-42px, -3vw, -26px));
+  transform: translateY(clamp(18px, 3vw, 40px));
 }
 
 .project-detail-hero-visa .project-detail-visa-story h2 {
