@@ -2479,27 +2479,27 @@ export function ProjectDetailPage() {
               {isVisa ? (
                 <>
                   <div>
-                    <span>Client</span>
+                    <span>Client:</span>
                     <p>VISA Worldwide</p>
                   </div>
                   <div>
-                    <span>Type</span>
+                    <span>Type:</span>
                     <p>Corporate Offices</p>
                   </div>
                   <div>
-                    <span>Size</span>
-                    <p>136 sqm</p>
+                    <span>Size:</span>
+                    <p>136sqm</p>
                   </div>
                   <div>
-                    <span>First Completion</span>
+                    <span>First Completion:</span>
                     <p>April 2022</p>
                   </div>
                   <div>
-                    <span>Second Completion (Expansion)</span>
+                    <span>Second Completion (Expansion):</span>
                     <p>Feb 2025</p>
                   </div>
                   <div>
-                    <span>Program duration</span>
+                    <span>Program duration:</span>
                     <p>9 weeks</p>
                   </div>
                 </>
