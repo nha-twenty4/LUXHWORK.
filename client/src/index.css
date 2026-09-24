@@ -7669,15 +7669,16 @@ html.dark .about-visual-card .about-visual-stats {
 .project-detail-hero-visa .project-detail-meta span {
   color: var(--muted);
   font-family: "DM Mono", monospace;
-  font-size: 9px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .project-detail-hero-visa .project-detail-meta p {
   margin: 6px 0 0;
-  font-size: 12px;
-  line-height: 1.45;
+  font-size: 20px;
+  line-height: 1.3;
 }
 
 .project-detail-hero-visa .project-detail-reference-copy {
