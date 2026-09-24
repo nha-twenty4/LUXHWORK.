@@ -7523,7 +7523,7 @@ html.dark .about-visual-card .about-visual-stats {
 }
 
 .project-detail-hero-visa .project-detail-meta {
-  transform: translateY(clamp(74px, 8vw, 112px));
+  transform: none;
 }
 
 .project-detail-hero-visa .project-detail-meta {
@@ -7553,7 +7553,7 @@ html.dark .about-visual-card .about-visual-stats {
 .project-detail-hero-visa .project-detail-reference-copy {
   max-width: 720px;
   padding: 0;
-  transform: translateY(clamp(18px, 3vw, 40px));
+  transform: none;
 }
 
 .project-detail-hero-visa .project-detail-visa-story h2 {
