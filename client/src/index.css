@@ -7654,9 +7654,10 @@ html.dark .about-visual-card .about-visual-stats {
 }
 
 .project-detail-hero-visa .project-detail-meta {
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 750px;
-  gap: 0;
+  grid-template-columns: 1fr;
+  max-width: 190px;
+  gap: 18px;
+  padding-top: 16px;
   border-top: 1px solid var(--line);
   transform: none;
 }
