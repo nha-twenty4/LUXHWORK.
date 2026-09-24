@@ -7504,7 +7504,7 @@ html.dark .about-visual-card .about-visual-stats {
 }
 
 .project-detail-hero-visa {
-  padding-top: 96px;
+  padding-top: 78px;
 }
 
 .project-detail-hero-visa > .back-link,
@@ -7515,7 +7515,7 @@ html.dark .about-visual-card .about-visual-stats {
 .project-detail-hero-visa .project-detail-reference-grid {
   grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
   gap: clamp(48px, 9vw, 140px);
-  margin-top: 0;
+  margin-top: -12px;
   align-items: start;
 }
 
