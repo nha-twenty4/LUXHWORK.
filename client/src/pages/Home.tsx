@@ -336,13 +336,13 @@ const companyProjectDetails: Record<
     note: "Security office · Interior design concept",
   },
   northpoint: {
-    title: "GOLDEN GROUP (PHNOM PENH)",
+    title: "GOLDEN TOWER VIP LOUNGE",
     category: "Interior",
     location: "Phnom Penh, Cambodia",
     client: "Golden Group",
     description:
-      "To propose corporate interior design and fit-out works for the Golden Group private lounge.",
-    note: "Corporate private lounge · 170 SQM",
+      "Hospitality interior design and fit-out works for the Golden Tower VIP Lounge in Phnom Penh.",
+    note: "Hospitality · 170 SQM · Completed July 2022",
   },
   "seascape-house": {
     title: "RYUKO OMAKASE (PHNOM PENH)",
@@ -2399,6 +2399,8 @@ export function ProjectDetailPage() {
   const project =
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
   const isVisa = project.slug === "house-14";
+  const isGolden = project.slug === "northpoint";
+  const isReferenceProject = isVisa || isGolden;
   const isShHotel = project.slug === "the-hynd-hotel";
   const projectIndex = Math.max(
     0,
@@ -2462,18 +2464,24 @@ export function ProjectDetailPage() {
   return (
     <PageShell>
       <section
-        className={`project-detail-hero${isVisa ? " project-detail-hero-visa" : ""}`}
+        className={`project-detail-hero${isReferenceProject ? " project-detail-hero-visa" : ""}`}
       >
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
-        {!isVisa && (
+        {!isReferenceProject ? (
           <p className="eyebrow">
             {project.category} / {project.year}
           </p>
-        )}
+        ) : isGolden ? (
+          <p className="eyebrow">Hospitality</p>
+        ) : null}
         <h1>
-          {isVisa ? "VISA WORLD WIDE CORPORATE OFFICE" : project.title}
+          {isVisa
+            ? "VISA WORLD WIDE CORPORATE OFFICE"
+            : isGolden
+              ? "GOLDEN TOWER VIP LOUNGE"
+              : project.title}
         </h1>
         <div className="project-detail-reference-grid">
           <div>
@@ -2503,6 +2511,29 @@ export function ProjectDetailPage() {
                   <div>
                     <span>Program duration:</span>
                     <p>9 weeks</p>
+                  </div>
+                </>
+              ) : isGolden ? (
+                <>
+                  <div>
+                    <span>Client:</span>
+                    <p>Golden Group</p>
+                  </div>
+                  <div>
+                    <span>Type:</span>
+                    <p>Hospitality</p>
+                  </div>
+                  <div>
+                    <span>Size:</span>
+                    <p>170 sqm</p>
+                  </div>
+                  <div>
+                    <span>Completion:</span>
+                    <p>JULY 2022</p>
+                  </div>
+                  <div>
+                    <span>Program duration:</span>
+                    <p>6 weeks</p>
                   </div>
                 </>
               ) : (
@@ -2548,6 +2579,25 @@ export function ProjectDetailPage() {
                   concept into a cohesive workplace, carefully coordinating
                   finishes, details, and construction to deliver a refined and
                   professional environment.
+                </p>
+              </div>
+            ) : isGolden ? (
+              <div className="project-detail-visa-story">
+                <h2>A Refined VIP Lounge for Private Dining and Entertainment</h2>
+                <p>
+                  Careful material selection, colour coordination and technical
+                  craftsmanship ensured the completed space remained faithful to
+                  the approved visual concept.
+                </p>
+                <p>
+                  Completed in July 2022, the 170 sqm Golden Tower VIP Lounge in
+                  Phnom Penh was designed for VIP entertainment, private dining
+                  and special events.
+                </p>
+                <p>
+                  The contemporary luxury interior combines intimate seating,
+                  custom joinery, geometric wall panels and a statement bar,
+                  enriched by teal accents and layered lighting.
                 </p>
               </div>
             ) : (
