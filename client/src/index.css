@@ -7520,9 +7520,9 @@ html.dark .about-visual-card .about-visual-stats {
 }
 
 .project-detail-hero-visa .project-detail-reference-grid {
-  max-width: 1020px;
-  grid-template-columns: 200px minmax(0, 680px);
-  gap: clamp(56px, 7vw, 84px);
+  max-width: none;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: clamp(56px, 6vw, 90px);
   margin-top: 0;
   align-items: start;
 }
@@ -7556,13 +7556,13 @@ html.dark .about-visual-card .about-visual-stats {
 }
 
 .project-detail-hero-visa .project-detail-reference-copy {
-  max-width: 680px;
+  max-width: 860px;
   padding: 0;
   transform: none;
 }
 
 .project-detail-hero-visa .project-detail-visa-story h2 {
-  max-width: 560px;
+  max-width: 720px;
   margin-bottom: 10px;
   font-family: inherit;
   font-size: clamp(24px, 2.3vw, 32px);
@@ -7571,7 +7571,7 @@ html.dark .about-visual-card .about-visual-stats {
 }
 
 .project-detail-hero-visa .project-detail-reference-copy .project-detail-visa-story p {
-  max-width: 680px;
+  max-width: 860px;
   margin-bottom: 10px;
   color: var(--ink);
   font-size: 15px;
