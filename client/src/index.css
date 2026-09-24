@@ -7510,9 +7510,13 @@ html.dark .about-visual-card .about-visual-stats {
   position: relative;
 }
 
-.project-detail-hero-visa > .back-link,
 .project-detail-hero-visa .project-navigation-hint {
   display: none;
+}
+
+.project-detail-hero-visa > .back-link {
+  display: inline-flex;
+  margin-bottom: 28px;
 }
 
 .project-detail-hero-visa .project-detail-reference-grid {
