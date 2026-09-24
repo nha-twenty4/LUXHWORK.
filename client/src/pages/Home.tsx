@@ -2467,9 +2467,11 @@ export function ProjectDetailPage() {
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
-        <p className="eyebrow">
-          {project.category} / {project.year}
-        </p>
+        {!isVisa && (
+          <p className="eyebrow">
+            {project.category} / {project.year}
+          </p>
+        )}
         <h1>
           {isVisa ? "VISA WORLD WIDE CORPORATE OFFICE" : project.title}
         </h1>
@@ -2530,7 +2532,7 @@ export function ProjectDetailPage() {
               <div className="project-detail-visa-story">
                 <h2>A Purposely Designed Workplace Designed For Modern Collaboration</h2>
                 <p>
-                  Located within Vattanac Capital Tower in Phnom Penh, the VISA
+                  Located within VattanacCapital Tower in Phnom Penh, the VISA
                   Worldwide office was designed as a modern corporate workplace
                   that reflects the company’s global identity while producing a
                   comfortable and efficient environment for their team.
