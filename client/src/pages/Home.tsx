@@ -2424,16 +2424,70 @@ export function ProjectDetailPage() {
   const [preset, setPreset] = useColorPreset();
   const project =
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
-  const isVisa = project.slug === "house-14";
-  const isGolden = project.slug === "northpoint";
-  const isLucky = project.slug === "frame-house";
-  const isChj = project.slug === "chj-jewellry-cb1";
-  const isLaomiao = project.slug === "lao-miao-naga-2";
-  const isRyukou = project.slug === "seascape-house";
-  const isCombi = project.slug === "field-notes";
-  const isReferenceProject =
-    isVisa || isGolden || isLucky || isChj || isLaomiao || isRyukou || isCombi;
   const isShHotel = project.slug === "the-hynd-hotel";
+  const detailTitle: Record<string, string> = {
+    "house-14": "VISA WORLD WIDE CORPORATE OFFICE",
+    "northpoint": "GOLDEN TOWER VIP LOUNGE",
+    "frame-house": "LUCKY BURGER",
+    "chj-jewellry-cb1": "CHJ JEWELLERY-AEON1",
+    "lao-miao-naga-2": "LAOMIAO- NAGAWORLD 1",
+    "field-notes": "COMBI",
+  };
+  const detailHeadline: Record<string, string> = {
+    "house-14":
+      "A Purposely Designed Workplace Designed For Modern Collaboration",
+    "northpoint": "A Refined VIP Lounge for Private Dining and Entertainment",
+    "frame-house": "A Bold and Energetic Fast-Food Experience",
+    "chj-jewellry-cb1": "Fit-Out Works Within a Compact Retail Space",
+    "lao-miao-naga-2": "Meticulous Execution, Lasting Impression",
+    "field-notes": "A Family-Focused Retail Experience Designed for Discovery",
+  };
+  const typeLabel =
+    project.typeLabel ??
+    (project.note.toLowerCase().includes("retail") ? "Retail" :
+      project.note.toLowerCase().includes("hospitality") ||
+        project.note.toLowerCase().includes("restaurant") ||
+        project.note.toLowerCase().includes("f&b")
+        ? "Hospitality"
+        : project.category);
+  const sizeLabel =
+    project.sizeLabel ?? project.note.match(/[\d,]+\s*SQM/i)?.[0] ?? "—";
+  const completionLabel = project.completionLabel ?? project.year;
+  const durationLabel = project.note.match(/\d+\s*weeks?/i)?.[0] ?? "—";
+  const paragraphs = project.description
+    .split(/\n\n+/)
+    .map(paragraph => paragraph.trim())
+    .filter(Boolean);
+  const detailParagraphs = [
+    ...paragraphs,
+    ...(paragraphs.length < 2
+      ? [
+          `The ${typeLabel.toLowerCase()} brief was developed around the needs of ${project.client === "-" || project.client === "n/a" ? "the project and its users" : project.client}, balancing clarity, comfort and a considered visual identity in ${project.location}.`,
+        ]
+      : []),
+    ...(paragraphs.length < 3
+      ? [
+          "Through interior design, fit-out and careful coordination, LUXHWORK brought the approved direction into a cohesive environment with attention to materials, details and the experience of the people who use it.",
+        ]
+      : []),
+  ].slice(0, 3);
+  const metaRows =
+    project.slug === "house-14"
+      ? [
+          ["Client:", "VISA Worldwide"],
+          ["Type:", "Corporate Offices"],
+          ["Size:", "136sqm"],
+          ["First Completion:", "April 2022"],
+          ["Second Completion (Expansion):", "Feb 2025"],
+          ["Program duration:", "9 weeks"],
+        ]
+      : [
+          ["Client:", project.client],
+          ["Type:", typeLabel],
+          ["Size:", sizeLabel],
+          ["Completion:", completionLabel],
+          ["Program duration:", durationLabel],
+        ];
   const projectIndex = Math.max(
     0,
     portfolioProjects.findIndex(item => item.slug === project.slug)
@@ -2495,356 +2549,33 @@ export function ProjectDetailPage() {
   }, [nextProject.slug, previousProject.slug]);
   return (
     <PageShell>
-      <section
-        className={`project-detail-hero${isReferenceProject ? " project-detail-hero-visa" : ""}`}
-      >
+      <section className="project-detail-hero project-detail-hero-visa">
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
-        {!isReferenceProject ? (
-          <p className="eyebrow">
-            {project.category} / {project.year}
-          </p>
-        ) : isGolden ? (
-          <p className="eyebrow">Hospitality</p>
-        ) : isLucky ? (
-          <p className="eyebrow">FnB</p>
-        ) : isChj || isLaomiao || isCombi ? (
-          <p className="eyebrow">Retail</p>
-        ) : null}
-        <h1>
-          {isVisa
-            ? "VISA WORLD WIDE CORPORATE OFFICE"
-            : isGolden
-              ? "GOLDEN TOWER VIP LOUNGE"
-              : isLucky
-                ? "LUCKY BURGER"
-                : isChj
-                  ? "CHJ JEWELLERY-AEON1"
-                  : isLaomiao
-                    ? "LAOMIAO- NAGAWORLD 1"
-                    : isCombi
-                      ? "COMBI"
-                      : project.title}
-        </h1>
+        <p className="eyebrow">{typeLabel}</p>
+        <h1>{detailTitle[project.slug] ?? project.title}</h1>
         <div className="project-detail-reference-grid">
           <div>
             <div className="project-detail-meta">
-              {isVisa ? (
-                <>
-                  <div>
-                    <span>Client:</span>
-                    <p>VISA Worldwide</p>
-                  </div>
-                  <div>
-                    <span>Type:</span>
-                    <p>Corporate Offices</p>
-                  </div>
-                  <div>
-                    <span>Size:</span>
-                    <p>136sqm</p>
-                  </div>
-                  <div>
-                    <span>First Completion:</span>
-                    <p>April 2022</p>
-                  </div>
-                  <div>
-                    <span>Second Completion (Expansion):</span>
-                    <p>Feb 2025</p>
-                  </div>
-                  <div>
-                    <span>Program duration:</span>
-                    <p>9 weeks</p>
-                  </div>
-                </>
-              ) : isGolden ? (
-                <>
-                  <div>
-                    <span>Client:</span>
-                    <p>Golden Group</p>
-                  </div>
-                  <div>
-                    <span>Type:</span>
-                    <p>Hospitality</p>
-                  </div>
-                  <div>
-                    <span>Size:</span>
-                    <p>170 sqm</p>
-                  </div>
-                  <div>
-                    <span>Completion:</span>
-                    <p>JULY 2022</p>
-                  </div>
-                  <div>
-                    <span>Program duration:</span>
-                    <p>6 weeks</p>
-                  </div>
-                </>
-              ) : isLucky ? (
-                <>
-                  <div>
-                    <span>Client:</span>
-                    <p>REAL FOOD AND BEVERAGE Co., LTD</p>
-                  </div>
-                  <div>
-                    <span>Type:</span>
-                    <p>Hospitality</p>
-                  </div>
-                  <div>
-                    <span>Size:</span>
-                    <p>377 sqm</p>
-                  </div>
-                  <div>
-                    <span>Completion:</span>
-                    <p>September 2023</p>
-                  </div>
-                </>
-              ) : isChj ? (
-                <>
-                  <div>
-                    <span>Client:</span>
-                    <p>Goldman Jewellery Co., LTD</p>
-                  </div>
-                  <div>
-                    <span>Type:</span>
-                    <p>Retail</p>
-                  </div>
-                  <div>
-                    <span>Size:</span>
-                    <p>58 sqm</p>
-                  </div>
-                  <div>
-                    <span>Completion:</span>
-                    <p>June 2025</p>
-                  </div>
-                  <div>
-                    <span>Duration:</span>
-                    <p>8 weeks</p>
-                  </div>
-                </>
-              ) : isLaomiao ? (
-                <>
-                  <div>
-                    <span>Client:</span>
-                    <p>n/a</p>
-                  </div>
-                  <div>
-                    <span>Type:</span>
-                    <p>Retail</p>
-                  </div>
-                  <div>
-                    <span>Size:</span>
-                    <p>145 sqm</p>
-                  </div>
-                  <div>
-                    <span>Completion:</span>
-                    <p>Jan 2026</p>
-                  </div>
-                  <div>
-                    <span>Duration:</span>
-                    <p>7 weeks</p>
-                  </div>
-                </>
-              ) : isRyukou ? (
-                <>
-                  <div>
-                    <span>Client:</span>
-                    <p>-</p>
-                  </div>
-                  <div>
-                    <span>Type:</span>
-                    <p>FnB</p>
-                  </div>
-                  <div>
-                    <span>Size:</span>
-                    <p>330 sqm</p>
-                  </div>
-                  <div>
-                    <span>Completion:</span>
-                    <p>Jan 2026</p>
-                  </div>
-                </>
-              ) : isCombi ? (
-                <>
-                  <div>
-                    <span>Client:</span>
-                    <p>-</p>
-                  </div>
-                  <div>
-                    <span>Type:</span>
-                    <p>Retail</p>
-                  </div>
-                  <div>
-                    <span>Size:</span>
-                    <p>90 sqm</p>
-                  </div>
-                  <div>
-                    <span>Completion:</span>
-                    <p>n/a</p>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div>
-                    <span>Location</span>
-                    <p>{project.location}</p>
-                  </div>
-                  <div>
-                    <span>Client</span>
-                    <p>{project.client}</p>
-                  </div>
-                  <div>
-                    <span>Scope</span>
-                    <p>{project.note}</p>
-                  </div>
-                  <div>
-                    <span>Year</span>
-                    <p>{project.year}</p>
-                  </div>
-                </>
-              )}
+              {metaRows.map(([label, value]) => (
+                <div key={label}>
+                  <span>{label}</span>
+                  <p>{value}</p>
+                </div>
+              ))}
             </div>
           </div>
           <div className="project-detail-reference-copy">
-            {isVisa ? (
-              <div className="project-detail-visa-story">
-                <h2>
-                  A Purposely Designed Workplace Designed For Modern
-                  Collaboration
-                </h2>
-                <p>
-                  Located within VattanacCapital Tower in Phnom Penh, the VISA
-                  Worldwide office was designed as a modern corporate workplace
-                  that reflects the company’s global identity while producing a
-                  comfortable and efficient environment for their team.
-                </p>
-                <p>
-                  Spanning approximately 136 sqm, the office features a clean,
-                  open layout with a contemporary corporate aesthetic. The
-                  design maximises the compact footprint, creating a workplace
-                  that feels bright, connected, and functional.
-                </p>
-                <p>
-                  Through interior design and fit-out, LUXHWORK translated the
-                  concept into a cohesive workplace, carefully coordinating
-                  finishes, details, and construction to deliver a refined and
-                  professional environment.
-                </p>
-              </div>
-            ) : isGolden ? (
-              <div className="project-detail-visa-story">
-                <h2>
-                  A Refined VIP Lounge for Private Dining and Entertainment
-                </h2>
-                <p>
-                  Careful material selection, colour coordination and technical
-                  craftsmanship ensured the completed space remained faithful to
-                  the approved visual concept.
-                </p>
-                <p>
-                  Completed in July 2022, the 170 sqm Golden Tower VIP Lounge in
-                  Phnom Penh was designed for VIP entertainment, private dining
-                  and special events.
-                </p>
-                <p>
-                  The contemporary luxury interior combines intimate seating,
-                  custom joinery, geometric wall panels and a statement bar,
-                  enriched by teal accents and layered lighting.
-                </p>
-              </div>
-            ) : isLucky ? (
-              <div className="project-detail-visa-story">
-                <h2>A Bold and Energetic Fast-Food Experience</h2>
-                <p>
-                  Located in Krong Ta Khmao, the 377 sqm Lucky Burger restaurant
-                  expands the presence of one of Cambodia’s established
-                  fast-food chains within a standalone building.
-                </p>
-                <p>
-                  The restaurant brings together indoor and outdoor dining, an
-                  efficient service counter and clear customer circulation
-                  within a highly visible branded environment.
-                </p>
-                <p>
-                  Completed in September 2023, the project involved the design
-                  and complete fit-out of the existing building, including its
-                  façade, dining areas, service zones and integrated brand
-                  elements.
-                </p>
-              </div>
-            ) : isChj ? (
-              <div className="project-detail-visa-story">
-                <h2>Fit-Out Works Within a Compact Retail Space</h2>
-                <p>
-                  Located at AEON Mall Phnom Penh in Cambodia, this 58 sqm CHJ
-                  Jewellery boutique delivers a bright and highly detailed
-                  retail environment within a compact footprint.
-                </p>
-                <p>
-                  LUXHWORK was appointed to undertake the fit-out works and
-                  project management, coordinating specialist contractors,
-                  suppliers, building services, and on-site execution to
-                  translate the approved design into a completed retail space.
-                </p>
-                <p>
-                  The project involved custom jewellery showcases, illuminated
-                  display shelving, decorative metal screens, integrated
-                  lighting, branded storefront elements, architectural finishes
-                  and associated MEP services. Careful coordination maintained
-                  clear circulation and a comfortable customer experience.
-                </p>
-              </div>
-            ) : isLaomiao ? (
-              <div className="project-detail-visa-story">
-                <h2>Meticulous Execution, Lasting Impression</h2>
-                <p>
-                  Located at NagaWorld 1 in Phnom Penh, Cambodia, this 145 sqm
-                  LAOMIAO jewellery boutique delivers a luxurious retail
-                  environment within a compact footprint.
-                </p>
-                <p>
-                  LUXHWORK managed the complete fit-out works and project
-                  execution, coordinating specialist contractors, suppliers, MEP
-                  services, custom showcases, illuminated displays, detailed
-                  joinery, decorative finishes and branded storefront elements.
-                </p>
-                <p>
-                  Through precise coordination, site supervision and quality
-                  control, the boutique was completed in accordance with the
-                  brand’s design intent, technical requirements and operational
-                  standards.
-                </p>
-              </div>
-            ) : isCombi ? (
-              <div className="project-detail-visa-story">
-                <h2>
-                  A Family-Focused Retail Experience Designed for Discovery
-                </h2>
-                <p>
-                  The Combi showroom is conceived as a warm, intuitive retail
-                  environment where parents can explore, compare and experience
-                  products with ease. Natural oak finishes create a calm and
-                  welcoming atmosphere, while clean white surfaces and Combi’s
-                  signature orange accents reinforce the brand’s Japanese
-                  identity.
-                </p>
-                <p>
-                  Products are organized into clearly defined zones, including
-                  dedicated stroller displays, child-seat testing areas and
-                  central accessory showcases. Integrated lighting highlights
-                  each collection without overwhelming the space, while wide
-                  circulation paths improve visibility and allow customers to
-                  move comfortably with children and strollers.
-                </p>
-                <p>
-                  The result is a functional, brand-led showroom that balances
-                  product presentation, customer interaction and an approachable
-                  family-focused experience.
-                </p>
-              </div>
-            ) : (
-              <p>{project.description}</p>
-            )}
+            <div className="project-detail-visa-story">
+              <h2>
+                {detailHeadline[project.slug] ??
+                  "A considered space shaped around its purpose"}
+              </h2>
+              {detailParagraphs.map((paragraph, index) => (
+                <p key={`${project.slug}-paragraph-${index}`}>{paragraph}</p>
+              ))}
+            </div>
             <Link href="/contact" className="button button-dark">
               Enquire now <ArrowUpRight size={16} />
             </Link>
