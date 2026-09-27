@@ -1,32 +1,29 @@
-import {
-  FormEvent,
-  ImgHTMLAttributes,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import { Link, useLocation, useParams } from "wouter";
+import { useTheme } from "@/contexts/ThemeContext";
+import { trpc } from "@/lib/trpc";
+import { profileProjectMedia } from "@/projectMedia";
 import {
   ArrowDownRight,
   ArrowUpRight,
   Building2,
   ChevronLeft,
-  ChevronRight,
   Menu,
-  MoveRight,
   Moon,
+  MoveRight,
   Palette,
-  Plus,
   ScanLine,
   Sparkles,
   Sun,
   X,
 } from "lucide-react";
+import {
+  FormEvent,
+  ImgHTMLAttributes,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { toast } from "sonner";
-import { trpc } from "@/lib/trpc";
-import { useTheme } from "@/contexts/ThemeContext";
-import { profileProjectMedia } from "@/projectMedia";
+import { Link, useLocation, useParams } from "wouter";
 
 const storageBaseUrl = (import.meta.env.VITE_STORAGE_BASE_URL || "").replace(
   /\/$/,
@@ -1077,11 +1074,15 @@ const services = [
 
 const serviceReferenceFallback = companyImages.jewelleryWide;
 const serviceReferenceImages: Record<string, string> = {
-  "interior-design-and-consultancy": companyImages.jewelleryWide,
+  "interior-design-and-consultancy": "/service-images/interior-new.jpg",
+
   "fit-out-works": companyImages.retailPanels,
+
   "project-management": companyImages.visaOffice,
-  "mep-coordination": companyImages.warmInterior,
-  "feasibility-studies": companyImages.restaurant,
+
+  "mep-coordination": "/service-images/mep-new.jpg",
+
+  "feasibility-studies": "/service-images/feasibility-new.jpg",
 };
 const serviceDetailCopy: Record<
   string,
@@ -2420,7 +2421,7 @@ export function ProjectDetailPage() {
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
   const detailTitle: Record<string, string> = {
     "house-14": "VISA WORLD WIDE CORPORATE OFFICE",
-    "northpoint": "GOLDEN TOWER VIP LOUNGE",
+    northpoint: "GOLDEN TOWER VIP LOUNGE",
     "frame-house": "LUCKY BURGER",
     "chj-jewellry-cb1": "CHJ JEWELLERY-AEON1",
     "lao-miao-naga-2": "LAOMIAO- NAGAWORLD 1",
@@ -2429,7 +2430,7 @@ export function ProjectDetailPage() {
   const detailHeadline: Record<string, string> = {
     "house-14":
       "A Purposely Designed Workplace Designed For Modern Collaboration",
-    "northpoint": "A Refined VIP Lounge for Private Dining and Entertainment",
+    northpoint: "A Refined VIP Lounge for Private Dining and Entertainment",
     "frame-house": "A Bold and Energetic Fast-Food Experience",
     "chj-jewellry-cb1": "Fit-Out Works Within a Compact Retail Space",
     "lao-miao-naga-2": "Meticulous Execution, Lasting Impression",
@@ -2437,10 +2438,11 @@ export function ProjectDetailPage() {
   };
   const typeLabel =
     project.typeLabel ??
-    (project.note.toLowerCase().includes("retail") ? "Retail" :
-      project.note.toLowerCase().includes("hospitality") ||
-        project.note.toLowerCase().includes("restaurant") ||
-        project.note.toLowerCase().includes("f&b")
+    (project.note.toLowerCase().includes("retail")
+      ? "Retail"
+      : project.note.toLowerCase().includes("hospitality") ||
+          project.note.toLowerCase().includes("restaurant") ||
+          project.note.toLowerCase().includes("f&b")
         ? "Hospitality"
         : project.category);
   const sizeLabel =
