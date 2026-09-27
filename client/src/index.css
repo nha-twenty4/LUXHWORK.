@@ -1911,7 +1911,7 @@ h2 em {
 }
 .footer-brand-block p {
   color: rgba(248, 246, 240, 0.58);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.65;
   margin: 26px 0 0;
   max-width: 300px;
@@ -1931,7 +1931,7 @@ h2 em {
   margin-bottom: 8px;
   color: rgba(248, 246, 240, 0.42);
   font-family: "DM Mono", monospace;
-  font-size: 9px;
+  font-size: 15px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1948,7 +1948,7 @@ h2 em {
 }
 .footer-links .footer-contact {
   color: rgba(248, 246, 240, 0.9);
-  font-size: 11px;
+  font-size: 13px;
   transition:
     color 0.2s,
     transform 0.2s;
