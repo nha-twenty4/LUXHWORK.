@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "LUXHWORK: Install dependencies",
+      "type": "shell",
+      "command": "pnpm install",
+      "problemMatcher": []
+    },
+    {
+      "label": "LUXHWORK: Dev server",
+      "type": "shell",
+      "command": "pnpm dev",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "vite",
+        "pattern": {
+          "regexp": ".*"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Local:|ready in"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "LUXHWORK: Typecheck",
+      "type": "shell",
+      "command": "pnpm check",
+      "problemMatcher": "$tsc"
+    },
+    {
+      "label": "LUXHWORK: Test",
+      "type": "shell",
+      "command": "pnpm test",
+      "problemMatcher": []
+    },
+    {
+      "label": "LUXHWORK: Production build",
+      "type": "shell",
+      "command": "pnpm build",
+      "problemMatcher": []
+    }
+  ]
+}
