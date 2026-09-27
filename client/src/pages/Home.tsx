@@ -1078,9 +1078,11 @@ const services = [
 const serviceReferenceFallback = companyImages.jewelleryWide;
 const serviceReferenceImages: Record<string, string> = {
   "interior-design-and-consultancy":
-    "/service-media/spaces-shaped-with-clarity.png",
-  "fit-out-works": "/service-media/technical-systems-support-experience.png",
-  "project-management": "/service-media/make-right-commitment-early.png",
+    "/service-media/spaces-shaped-with-clarity-pdf.png",
+  "fit-out-works":
+    "/service-media/technical-systems-support-experience-pdf.png",
+  "project-management":
+    "/service-media/make-right-commitment-early-pdf.png",
   "mep-coordination": companyImages.warmInterior,
   "feasibility-studies": companyImages.restaurant,
 };
