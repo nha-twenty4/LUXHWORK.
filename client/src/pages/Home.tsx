@@ -2565,7 +2565,7 @@ export function ProjectDetailPage() {
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
-        <p className="eyebrow">{typeLabel}</p>
+        
         <h1>{detailTitle[project.slug] ?? project.title}</h1>
         <div className="project-detail-reference-grid">
           <div>
