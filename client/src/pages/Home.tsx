@@ -1,6 +1,7 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
 import { profileProjectMedia } from "@/projectMedia";
+import { uploadedProjectMedia } from "@/uploadedProjectMedia";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -24,7 +25,6 @@ import {
 } from "react";
 import { toast } from "sonner";
 import { Link, useLocation, useParams } from "wouter";
-import { uploadedProjectMedia } from "@/uploadedProjectMedia";
 
 const storageBaseUrl = (import.meta.env.VITE_STORAGE_BASE_URL || "").replace(
   /\/$/,
@@ -177,12 +177,15 @@ const companyProjectImageSets: Record<string, string[]> = {
     "/project-media/ryuko/ryuko-13.png",
   ],
   "frame-house": [
-    "image11.png",
-    "image66.jpeg",
-    "image67.jpeg",
-    "image68.jpeg",
-    "image69.jpeg",
-  ].map(profileImage),
+  profileImage("image11.png"),
+  profileImage("image66.jpeg"),
+  profileImage("image67.jpeg"),
+  profileImage("image68.jpeg"),
+  profileImage("image69.jpeg"),
+
+  "/project-images/lucky-burger-takmao/courtyard.png",
+  "/project-images/lucky-burger-takmao/interior.png",
+],
   "field-notes": [
     "/project-media/combi/combi-01.png",
     "/project-media/combi/combi-02.png",
@@ -237,7 +240,6 @@ const companyProjectImageSets: Record<string, string[]> = {
     "image102.png",
     "image103.png",
     "image104.png",
-    
   ].map(profileImage),
   "chj-jewellry-cb1": [
     "image106.png",
