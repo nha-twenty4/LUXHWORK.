@@ -7756,3 +7756,127 @@ html.dark .about-visual-card .about-visual-stats {
     padding-bottom: 0;
   }
 }
+
+/* Premium UI polish: restrained motion, clearer hierarchy and better touch states. */
+.desktop-nav a {
+  padding: 7px 0;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.desktop-nav a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  margin-top: 5px;
+  background: currentColor;
+  transition: width 0.24s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a.nav-active::after {
+  width: 100%;
+}
+
+.selected-work-image-link,
+.project-image-wrap {
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(30, 32, 30, 0.03);
+  transition:
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.selected-work-card:hover .selected-work-image-link,
+.project-card:hover .project-image-wrap {
+  box-shadow: 0 18px 38px rgba(30, 32, 30, 0.14);
+  transform: translateY(-3px);
+}
+
+.selected-work-meta h3,
+.project-meta h3 {
+  transition: color 0.24s ease;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  box-shadow: 0 2px 0 var(--brick);
+}
+
+.contact-form input:focus::placeholder,
+.contact-form textarea:focus::placeholder {
+  color: transparent;
+}
+
+.contact-enquiry-form {
+  border-radius: 2px;
+  box-shadow: 0 16px 40px rgba(30, 32, 30, 0.045);
+}
+
+.button,
+.nav-whatsapp,
+.theme-toggle,
+.menu-toggle {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle {
+  min-width: 44px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 760px) {
+  .hero-actions {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .hero-actions .button {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .selected-work-grid,
+  .featured-grid-three {
+    gap: 34px;
+  }
+
+  .selected-work-meta {
+    padding-top: 12px;
+  }
+
+  .contact-enquiry-form {
+    margin-top: 72px;
+    padding: 30px 20px 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
