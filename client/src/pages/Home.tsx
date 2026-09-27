@@ -323,7 +323,7 @@ const companyProjectDetails: Record<
     location: "Phnom Penh, Cambodia",
     client: "Visa Worldwide",
     description:
-      "To propose corporate interior design and fit-out works for the Visa Phnom Penh office relocation.",
+      "Corporate interior design and fit-out works for the Visa Phnom Penh office relocation, creating an efficient workplace that supports focused work, collaboration and a clear professional identity.",
     note: "Corporate office space · 135 SQM",
   },
   "mori-residence": {
@@ -332,8 +332,8 @@ const companyProjectDetails: Record<
     location: "Phnom Penh, Cambodia",
     client: "PP Link Security",
     description:
-      "To propose an interior design concept for the PP Link Security office and broadcast station.",
-    note: "Security office · Interior design concept",
+      "Interior planning and design development for a security office and broadcast station, balancing controlled operations, clear sightlines and a calm professional workplace environment.",
+    note: "Security office & broadcast station · Interior design concept",
   },
   northpoint: {
     title: "GOLDEN TOWER VIP LOUNGE",
@@ -377,8 +377,8 @@ const companyProjectDetails: Record<
     location: "Phnom Penh, Cambodia",
     client: "LUK FOOK Jewellery",
     description:
-      "To propose fit-out works for the LUK FOOK Jewellery store at AEON 3. LUXHWORK exclusive.",
-    note: "Retail jewellery · Fit-out works",
+      "Fit-out works for the LUK FOOK Jewellery store at AEON 3, with detailed coordination of display showcases, lighting, finishes and branded retail elements.",
+    note: "Retail jewellery · Fit-out works · AEON Mall 3",
   },
   "courtyard-study": {
     title: "ONE OASIS WELLNESS SPA (PHNOM PENH)",
@@ -386,8 +386,8 @@ const companyProjectDetails: Record<
     location: "Phnom Penh, Cambodia",
     client: "One Oasis Wellness Spa",
     description:
-      "To propose interior design and fit-out works for One Oasis Wellness Spa.",
-    note: "Hospitality / leisure · 150 SQM",
+      "Interior design and fit-out works for One Oasis Wellness Spa, shaping a calm wellness environment through considered room planning, warm materials, layered lighting and a comfortable guest journey.",
+    note: "Wellness spa · 150 SQM · Interior & fit-out",
   },
   davidoff: {
     title: "DAVIDOFF OF GENEVA (PHNOM PENH)",
@@ -395,8 +395,8 @@ const companyProjectDetails: Record<
     location: "Phnom Penh, Cambodia",
     client: "Davidoff of Geneva",
     description:
-      "Interior design and fit-out work for the Davidoff of Geneva project in Phnom Penh.",
-    note: "Retail / hospitality interior",
+      "A premium retail interior for Davidoff of Geneva in Phnom Penh, bringing together refined product presentation, hospitality-led circulation and carefully coordinated lighting and finishes.",
+    note: "Premium retail · Interior design & fit-out",
   },
   "the-hynd-hotel": {
     title: "SH HOTEL (PHNOM PENH)",
@@ -404,7 +404,7 @@ const companyProjectDetails: Record<
     location: "Phnom Penh, Cambodia",
     client: "SH Hotel",
     description:
-      "Hospitality interiors shaped around a calm, practical guest experience in Phnom Penh.",
+      "Interior design for SH Hotel in Phnom Penh, coordinating guest-facing spaces and supporting areas into a calm, practical hospitality experience across a multi-storey programme.",
     note: "Hospitality · 12 floors · 750 SQM",
   },
   "chj-jewellry-cb1": {
@@ -521,7 +521,7 @@ const projects: Project[] = [
     location: "Phnom Penh, Cambodia",
     client: "Visa Worldwide",
     description:
-      "To propose corporate interior design and fit-out works for the Visa Phnom Penh office relocation.",
+      "Corporate interior design and fit-out works for the Visa Phnom Penh office relocation, creating an efficient workplace that supports focused work, collaboration and a clear professional identity.",
     note: "Corporate office space · 135 SQM",
     size: "wide",
     gallery: companyProjectImageSets["house-14"],
@@ -537,7 +537,7 @@ const projects: Project[] = [
     location: "Phnom Penh, Cambodia",
     client: "PP Link Security",
     description:
-      "To propose an interior design concept for the PP Link Security office and broadcast station.",
+      "Interior planning and design development for a security office and broadcast station, balancing controlled operations, clear sightlines and a calm professional workplace environment.",
     note: "Security office · Interior design concept",
     size: "tall",
     gallery: [images.interior, images.moriDetail, images.warmDetail],
@@ -553,7 +553,7 @@ const projects: Project[] = [
     location: "Phnom Penh, Cambodia",
     client: "Golden Group",
     description:
-      "To propose corporate interior design and fit-out works for the Golden Group private lounge.",
+      "Hospitality interior design and fit-out works for the Golden Tower VIP Lounge, combining private dining, guest comfort and a refined entertainment setting.",
     note: "Corporate private lounge · 170 SQM",
     size: "standard",
     gallery: companyProjectImageSets.northpoint,
@@ -623,7 +623,7 @@ const projects: Project[] = [
     location: "Phnom Penh, Cambodia",
     client: "LUK FOOK Jewellery",
     description:
-      "To propose fit-out works for the LUK FOOK Jewellery store at AEON 3. LUXHWORK exclusive.",
+      "Fit-out works for the LUK FOOK Jewellery store at AEON 3, with detailed coordination of display showcases, lighting, finishes and branded retail elements.",
     note: "Retail jewellery · Fit-out works",
     size: "standard",
     gallery: [images.duskDetail, images.warmDetail, images.interior],
@@ -639,7 +639,7 @@ const projects: Project[] = [
     location: "Phnom Penh, Cambodia",
     client: "One Oasis Wellness Spa",
     description:
-      "To propose interior design and fit-out works for One Oasis Wellness Spa.",
+      "Interior design and fit-out works for One Oasis Wellness Spa, shaping a calm wellness environment through considered room planning, warm materials, layered lighting and a comfortable guest journey.",
     note: "Hospitality / leisure · 150 SQM",
     size: "wide",
     gallery: [images.warmDetail, images.interior, images.villa],
@@ -711,12 +711,12 @@ const projects: Project[] = [
     title: "VISA WORLDWIDE BRANCH OFFICE (PHNOM PENH)",
     category: "Interior",
     image: profileImage("image40.jpeg"),
-    year: "Not listed",
+    year: "n/a",
     location: "Phnom Penh, Cambodia",
     client: "Visa Worldwide",
     description:
-      "Corporate interior design and fit-out works for the Visa Phnom Penh branch office.",
-    note: "Corporate office space",
+      "Corporate interior design and fit-out works for the Visa Phnom Penh branch office, translating a global workplace identity into an efficient and welcoming local environment.",
+    note: "Corporate office · Interior & fit-out",
     size: "wide",
     gallery: [
       "image40.jpeg",
@@ -734,12 +734,12 @@ const projects: Project[] = [
     title: "PP LINK SECURITY BROADCAST STATION (PHNOM PENH)",
     category: "Interior",
     image: companyProjectImageSets["pp-link-broadcast"][0],
-    year: "Not listed",
+    year: "n/a",
     location: "Phnom Penh, Cambodia",
     client: "PP Link Security",
     description:
-      "Interior design concept for the PP Link Security broadcast station.",
-    note: "Broadcast station · Interior design concept",
+      "Interior design concept for the PP Link Security broadcast station, with planning focused on operational clarity, technical coordination and a composed working environment.",
+    note: "Security & broadcast · Interior design concept",
     size: "standard",
     gallery: companyProjectImageSets["pp-link-broadcast"],
     floorPlan: "",
@@ -750,12 +750,12 @@ const projects: Project[] = [
     title: "LUK FOOK JEWELLERY PREAH SIHANOUK BLVD",
     category: "Interior",
     image: companyProjectImageSets["lukfook-sihanouk"][0],
-    year: "Not listed",
+    year: "n/a",
     location: "Phnom Penh, Cambodia",
     client: "LUK FOOK Jewellery",
     description:
-      "Fit-out works for the LUK FOOK Jewellery store at Preah Sihanouk Boulevard.",
-    note: "Retail jewellery · LUXHWORK exclusive",
+      "Fit-out works for the LUK FOOK Jewellery store at Preah Sihanouk Boulevard, coordinating branded frontage, display showcases, lighting and detailed interior finishes.",
+    note: "Retail jewellery · Fit-out works",
     size: "wide",
     gallery: companyProjectImageSets["lukfook-sihanouk"],
     floorPlan: "",
@@ -766,12 +766,12 @@ const projects: Project[] = [
     title: "LUK FOOK JEWELLERY FUNMALL TK",
     category: "Interior",
     image: companyProjectImageSets["lukfook-funmall"][0],
-    year: "Not listed",
+    year: "n/a",
     location: "Phnom Penh, Cambodia",
     client: "LUK FOOK Jewellery",
     description:
-      "Fit-out works for the LUK FOOK Jewellery store at Funmall TK.",
-    note: "Retail jewellery · LUXHWORK exclusive",
+      "Fit-out works for the LUK FOOK Jewellery store at Funmall TK, delivering a precise retail environment for jewellery presentation and customer circulation.",
+    note: "Retail jewellery · Fit-out works",
     size: "standard",
     gallery: companyProjectImageSets["lukfook-funmall"],
     floorPlan: "",
@@ -779,14 +779,15 @@ const projects: Project[] = [
   },
   {
     slug: "chj-jewellry-cb3",
-    title: "CHJ JEWELLRY CB3 AEON MALL 2",
+    title: "CHJ JEWELLERY CB3 AEON MALL 2",
     category: "Interior",
     image: companyProjectImageSets["chj-jewellry-cb3"][0],
-    year: "Not listed",
+    year: "n/a",
     location: "Phnom Penh, Cambodia",
     client: "CHJ Jewellery",
-    description: "Fit-out works for the CHJ Jewellery store at AEON Mall 2.",
-    note: "Retail jewellery · 110 SQM",
+    description:
+      "Fit-out works for the CHJ Jewellery store at AEON Mall 2, coordinating illuminated showcases, branded frontage, joinery, finishes and associated services within the mall setting.",
+    note: "Retail jewellery · 110 SQM · Fit-out works",
     size: "tall",
     gallery: companyProjectImageSets["chj-jewellry-cb3"],
     floorPlan: "",
@@ -797,12 +798,12 @@ const projects: Project[] = [
     title: "LUK FOOK JEWELLERY CHIPMONG MEGA MALL 271",
     category: "Interior",
     image: companyProjectImageSets["lukfook-chipmong"][0],
-    year: "Not listed",
+    year: "n/a",
     location: "Phnom Penh, Cambodia",
     client: "LUK FOOK Jewellery",
     description:
-      "Fit-out works for the LUK FOOK Jewellery store at Chipmong Mega Mall 271.",
-    note: "Retail jewellery · LUXHWORK exclusive",
+      "Fit-out works for the LUK FOOK Jewellery store at Chip Mong Mega Mall 271, delivering a detailed retail environment for jewellery display, customer circulation and brand presentation.",
+    note: "Retail jewellery · Chip Mong 271 · Fit-out works",
     size: "wide",
     gallery: companyProjectImageSets["lukfook-chipmong"],
     floorPlan: "",
@@ -826,14 +827,15 @@ const projects: Project[] = [
   },
   {
     slug: "chj-jewellry-cb4",
-    title: "CHJ JEWELLRY CB4 AEON MALL 3",
+    title: "CHJ JEWELLERY CB4 AEON MALL 3",
     category: "Interior",
     image: companyProjectImageSets["chj-jewellry-cb4"][0],
-    year: "Not listed",
+    year: "n/a",
     location: "Phnom Penh, Cambodia",
     client: "CHJ Jewellery",
-    description: "Fit-out works for the CHJ Jewellery store at AEON Mall 3.",
-    note: "Retail jewellery · 150 SQM",
+    description:
+      "Fit-out works for the CHJ Jewellery store at AEON Mall 3, with coordinated display systems, lighting, architectural finishes and branded retail detailing.",
+    note: "Retail jewellery · 150 SQM · Fit-out works",
     size: "tall",
     gallery: companyProjectImageSets["chj-jewellry-cb4"],
     floorPlan: "",
@@ -844,12 +846,12 @@ const projects: Project[] = [
     title: "LUKFOOK JEWELRY (BANGKOK) @ CENTRAL-RAMA9",
     category: "Interior",
     image: companyProjectImageSets["thailand-lukfook-rama9"][0],
-    year: "Not listed",
+    year: "n/a",
     location: "Bangkok, Thailand",
     client: "LUKFOOK Jewelry",
     description:
-      "Fit-out works for the LUKFOOK Jewellery store at Central-Rama9.",
-    note: "Thailand project · Retail jewellery",
+      "Fit-out works for the LUKFOOK Jewellery store at Central Rama 9 in Bangkok, delivering a consistent branded retail environment within the shopping centre context.",
+    note: "Bangkok, Thailand · Retail jewellery · Fit-out works",
     size: "wide",
     gallery: companyProjectImageSets["thailand-lukfook-rama9"],
     floorPlan: "",
@@ -860,12 +862,12 @@ const projects: Project[] = [
     title: "ZHOU LIUFU JEWELRY (BANGKOK) @ CENTRAL RAMA 9",
     category: "Interior",
     image: companyProjectImageSets["thailand-zhou-liufu"][0],
-    year: "Not listed",
+    year: "n/a",
     location: "Bangkok, Thailand",
     client: "Zhou Liufu Jewelry",
     description:
-      "Fit-out works for the Zhou Liufu Jewelry store at Central Rama 9.",
-    note: "Thailand project · Retail jewellery",
+      "Fit-out works for the Zhou Liufu Jewelry store at Central Rama 9 in Bangkok, coordinating the retail layout, display elements, finishes and site execution.",
+    note: "Bangkok, Thailand · Retail jewellery · Fit-out works",
     size: "standard",
     gallery: companyProjectImageSets["thailand-zhou-liufu"],
     floorPlan: "",
@@ -876,12 +878,12 @@ const projects: Project[] = [
     title: "LUKFOOK JEWELRY (BANGKOK) @ CENTRAL-PINKLAO",
     category: "Interior",
     image: companyProjectImageSets["thailand-lukfook-pinklao"][0],
-    year: "Not listed",
+    year: "n/a",
     location: "Bangkok, Thailand",
     client: "LUKFOOK Jewelry",
     description:
-      "Fit-out works for the LUKFOOK Jewellery store at Central-Pinklao.",
-    note: "Thailand project · Retail jewellery",
+      "Fit-out works for the LUKFOOK Jewellery store at Central Pinklao in Bangkok, shaping a precise and welcoming environment for jewellery presentation and customer movement.",
+    note: "Bangkok, Thailand · Retail jewellery · Fit-out works",
     size: "tall",
     gallery: companyProjectImageSets["thailand-lukfook-pinklao"],
     floorPlan: "",
@@ -892,12 +894,12 @@ const projects: Project[] = [
     title: "RATANAC MEALEA PHNOM PENH & SIHANOUKVILLE",
     category: "Interior",
     image: companyProjectImageSets["ratanac-mealea"][0],
-    year: "Not listed",
+    year: "n/a",
     location: "Phnom Penh & Sihanoukville, Cambodia",
     client: "Ratanac Mealea",
     description:
-      "Interior design and fit-out works for the Ratanac Mealea jewellery retail stores.",
-    note: "Jewellery retail store · Outlets 1 & 2 · 35–50 SQM · LUXHWORK exclusive",
+      "Interior design and fit-out works for Ratanac Mealea jewellery retail outlets in Phnom Penh and Sihanoukville, adapting a consistent brand language to two compact store formats.",
+    note: "Jewellery retail · Outlets 1 & 2 · 35–50 SQM",
     size: "wide",
     gallery: companyProjectImageSets["ratanac-mealea"],
     floorPlan: "",
@@ -908,12 +910,12 @@ const projects: Project[] = [
     title: "FABRIC FACTORY (PHNOM PENH)",
     category: "Interior",
     image: companyImages.warmLounge,
-    year: "Not listed",
+    year: "n/a",
     location: "Phnom Penh, Cambodia",
     client: "Fabric Factory",
     description:
-      "Commercial interior design for the Fabric Factory project in Phnom Penh.",
-    note: "Commercial interior · 330 SQM",
+      "Commercial interior design for Fabric Factory in Phnom Penh, developing a practical environment with clear zoning, durable finishes and a coherent customer and staff experience.",
+    note: "Commercial interior · 330 SQM · Interior design",
     size: "wide",
     gallery: companyProjectImageSets["fabric-factory"],
     floorPlan: "",
@@ -2754,7 +2756,7 @@ export function ProjectDetailPage() {
               <div className="project-detail-visa-story">
                 <h2>A Bold and Energetic Fast-Food Experience</h2>
                 <p>
-                  Located in Krong Ta Khmao, the 376 sqm Lucky Burger restaurant
+                  Located in Krong Ta Khmao, the 377 sqm Lucky Burger restaurant
                   expands the presence of one of Cambodia’s established
                   fast-food chains within a standalone building.
                 </p>
@@ -2796,7 +2798,7 @@ export function ProjectDetailPage() {
               <div className="project-detail-visa-story">
                 <h2>Meticulous Execution, Lasting Impression</h2>
                 <p>
-                  Located at NagaWorld 1 in Phnom Penh, Cambodia, this 44 sqm
+                  Located at NagaWorld 1 in Phnom Penh, Cambodia, this 145 sqm
                   LAOMIAO jewellery boutique delivers a luxurious retail
                   environment within a compact footprint.
                 </p>
