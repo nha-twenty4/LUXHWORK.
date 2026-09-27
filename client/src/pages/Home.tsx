@@ -303,6 +303,9 @@ const companyProjectImageSets: Record<string, string[]> = {
   ].map(profileImage),
 };
 const aeon3ProjectMedia = uploadedProjectMedia["atelier-common"] ?? [];
+const projectCoverImageOverrides: Record<string, string> = {
+  "courtyard-study": companyProjectImageSets["courtyard-study"][1],
+};
 
 const companyProjectDetails: Record<
   string,
@@ -949,7 +952,10 @@ function mapPersistedProject(item: PersistedProject): Project {
     item.gallery
       .filter(asset => asset.kind === "gallery")
       .map(asset => asset.url);
-  const coverImage = companyGallery?.[0] ?? storageUrl(item.imageUrl);
+  const coverImage =
+    projectCoverImageOverrides[item.slug] ??
+    companyGallery?.[0] ??
+    storageUrl(item.imageUrl);
   return {
     slug: item.slug,
     title: details?.title ?? item.title,
@@ -1013,7 +1019,11 @@ function usePortfolioProjects() {
   const correctedStaticProjects = projects.map(project => {
     const companyGallery = companyProjectImageSets[project.slug];
     return companyGallery
-      ? { ...project, image: companyGallery[0], gallery: companyGallery }
+      ? {
+          ...project,
+          image: projectCoverImageOverrides[project.slug] ?? companyGallery[0],
+          gallery: companyGallery,
+        }
       : project;
   });
   const mergedProjects = persistedProjects.length
