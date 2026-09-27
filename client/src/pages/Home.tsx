@@ -2424,7 +2424,6 @@ export function ProjectDetailPage() {
   const [preset, setPreset] = useColorPreset();
   const project =
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
-  const isShHotel = project.slug === "the-hynd-hotel";
   const detailTitle: Record<string, string> = {
     "house-14": "VISA WORLD WIDE CORPORATE OFFICE",
     "northpoint": "GOLDEN TOWER VIP LOUNGE",
@@ -2610,7 +2609,6 @@ export function ProjectDetailPage() {
           </figure>
         ))}
       </section>
-      {isShHotel && <ProjectInquiryForm projectTitle={project.title} />}
       <nav className="project-pagination" aria-label="Project navigation">
         <Link
           href={`/projects/${previousProject.slug}`}
