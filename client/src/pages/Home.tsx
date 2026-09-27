@@ -24,6 +24,7 @@ import {
 } from "react";
 import { toast } from "sonner";
 import { Link, useLocation, useParams } from "wouter";
+import { uploadedProjectMedia } from "@/uploadedProjectMedia";
 
 const storageBaseUrl = (import.meta.env.VITE_STORAGE_BASE_URL || "").replace(
   /\/$/,
@@ -301,6 +302,7 @@ const companyProjectImageSets: Record<string, string[]> = {
     "image157.png",
   ].map(profileImage),
 };
+const aeon3ProjectMedia = uploadedProjectMedia["atelier-common"] ?? [];
 
 const companyProjectDetails: Record<
   string,
@@ -615,7 +617,7 @@ const projects: Project[] = [
     slug: "atelier-common",
     title: "LUK FOOK JEWELLERY AEON 3",
     category: "Interior",
-    image: images.duskDetail,
+    image: aeon3ProjectMedia[0] ?? images.duskDetail,
     year: "2024",
     location: "Phnom Penh, Cambodia",
     client: "LUK FOOK Jewellery",
@@ -623,7 +625,10 @@ const projects: Project[] = [
       "Fit-out works for the LUK FOOK Jewellery store at AEON 3, with detailed coordination of display showcases, lighting, finishes and branded retail elements.",
     note: "Retail jewellery · Fit-out works",
     size: "standard",
-    gallery: [images.duskDetail, images.warmDetail, images.interior],
+    gallery:
+      aeon3ProjectMedia.length > 0
+        ? aeon3ProjectMedia
+        : [images.duskDetail, images.warmDetail, images.interior],
     floorPlan: "",
     pdf: "",
   },
