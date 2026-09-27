@@ -1675,12 +1675,6 @@ function Footer() {
           >
             WhatsApp <ArrowUpRight size={13} />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
-            Instagram <ArrowUpRight size={13} />
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-            LinkedIn <ArrowUpRight size={13} />
-          </a>
         </div>
       </div>
       <div className="footer-nap">
@@ -2939,14 +2933,8 @@ function ContactContent() {
           <div className="contact-detail-block">
             <span>Elsewhere</span>
             <div className="social-row">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                Instagram <ArrowUpRight size={13} />
-              </a>
               <a href="https://facebook.com" target="_blank" rel="noreferrer">
                 Facebook <ArrowUpRight size={13} />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-                LinkedIn <ArrowUpRight size={13} />
               </a>
             </div>
           </div>
