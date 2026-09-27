@@ -7639,7 +7639,7 @@ html.dark .about-visual-card .about-visual-stats {
 }
 
 .project-detail-hero-visa > h1 {
-  max-width: 760px;
+  max-width: 7600px;
   margin: 24px 0 75px;
   font-family: inherit;
   font-size: clamp(62px, 9vw, 142px);
