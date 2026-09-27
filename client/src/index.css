@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Manrope:wght@600&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -7879,4 +7880,52 @@ html.dark .about-visual-card .about-visual-stats {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Typography system: Manrope headings, DM Sans body and controls. */
+:root {
+  --font-heading: "Manrope", Arial, sans-serif;
+  --font-body: "DM Sans", Arial, sans-serif;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h1 em,
+h2 em,
+h3 em,
+h4 em,
+h5 em,
+h6 em,
+.project-detail-visa-story h2,
+.service-detail-copy h1 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+button,
+.button,
+label,
+.desktop-nav a,
+.eyebrow,
+.section-label,
+.project-label-tag,
+.project-detail-meta span,
+.projects-filter-label,
+.contact-form label,
+.admin-form label {
+  font-family: var(--font-body);
+  font-weight: 500;
 }
