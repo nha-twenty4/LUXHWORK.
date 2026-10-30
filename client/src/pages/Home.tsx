@@ -177,15 +177,15 @@ const companyProjectImageSets: Record<string, string[]> = {
     "/project-media/ryuko/ryuko-13.png",
   ],
   "frame-house": [
-  profileImage("image11.png"),
-  profileImage("image66.jpeg"),
-  profileImage("image67.jpeg"),
-  profileImage("image68.jpeg"),
-  profileImage("image69.jpeg"),
+    profileImage("image11.png"),
+    profileImage("image66.jpeg"),
+    profileImage("image67.jpeg"),
+    profileImage("image68.jpeg"),
+    profileImage("image69.jpeg"),
 
-  "/project-images/lucky-burger-takmao/courtyard.png",
-  "/project-images/lucky-burger-takmao/interior.png",
-],
+    "/project-images/lucky-burger-takmao/courtyard.png",
+    "/project-images/lucky-burger-takmao/interior.png",
+  ],
   "field-notes": [
     "/project-media/combi/combi-01.png",
     "/project-media/combi/combi-02.png",
@@ -1203,7 +1203,7 @@ function FAQSection() {
         <h2>
           Questions worth answering
           <br />
-          <em>before building.</em>
+          before building.
         </h2>
       </div>
       <div className="faq-list">
@@ -1550,7 +1550,7 @@ function Header() {
         >
           <span
             className="brand-wordmark"
-            style={{ fontFamily: "MOMCAKE", fontSize: "40px" }}
+            style={{ fontFamily: "MOMCAKE", fontSize: "60px" }}
           >
             LUXHWORK
           </span>
@@ -2023,9 +2023,7 @@ export function Home() {
               <span>Commercial spaces</span>
             </span>
             <span className="hero-title-line">
-              <span>
-                designed to perform
-              </span>
+              <span>designed to perform</span>
             </span>
           </h1>
           <div className="hero-bottom">

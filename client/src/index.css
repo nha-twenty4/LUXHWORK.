@@ -145,9 +145,9 @@ select:focus-visible {
 }
 .brand-wordmark {
   display: block;
-  font-family: "DM Sans", Arial, sans-serif;
+  font-family: "Momcake", sans-serif;
   font-size: clamp(18px, 2vw, 25px);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
   line-height: 1;
   white-space: nowrap;
@@ -155,6 +155,7 @@ select:focus-visible {
     opacity 0.22s ease,
     transform 0.22s ease;
 }
+
 .brand-wordmark i {
   font-style: normal;
   font-weight: 400;
@@ -353,7 +354,7 @@ h2 {
 }
 h1 em,
 h2 em {
-  font-family: "DM Serif Display", Georgia, serif;
+  font-family: var(--font-heading);
   font-weight: 400;
   letter-spacing: -0.06em;
 }
@@ -1030,7 +1031,7 @@ h2 em {
 }
 .service-row > span,
 .service-row p {
-  font-family: "DM Mono", monospace;
+  font-family: var(--font-heading);
   font-size: 10px;
   color: var(--muted);
   margin: 0;
@@ -1902,10 +1903,11 @@ h2 em {
   max-width: 360px;
 }
 .footer-wordmark {
+  font-family: "Momcake", serif;
   display: inline-block;
   color: #f8f6f0;
   font-size: clamp(28px, 3vw, 42px);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.11em;
   line-height: 1;
 }
@@ -3295,7 +3297,7 @@ html.dark .project-narrative > div:last-child > p:not(.large-copy) {
 }
 .contact-detail-block > a {
   display: inline-block;
-  font-family: "DM Serif Display", Georgia, serif;
+  font-family: var(--font-body);
   font-size: 30px;
   letter-spacing: -0.04em;
   transition:
@@ -7903,16 +7905,11 @@ h3,
 h4,
 h5,
 h6,
-h1 em,
-h2 em,
-h3 em,
-h4 em,
-h5 em,
-h6 em,
-.project-detail-visa-story h2,
-.service-detail-copy h1 {
+.logo,
+.site-logo,
+.brand-logo {
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 button,
@@ -7928,4 +7925,11 @@ label,
 .admin-form label {
   font-family: var(--font-body);
   font-weight: 500;
+}
+@font-face {
+  font-family: "Momcake";
+  src: url("/fonts/Momcake-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
