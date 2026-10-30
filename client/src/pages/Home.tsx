@@ -1860,7 +1860,7 @@ function GallerySection() {
           <h2>
             Spaces shaped around
             <br />
-            <em>business purpose.</em>
+            business purpose.
           </h2>
         </div>
         <p className="selected-work-intro">
@@ -2024,7 +2024,7 @@ export function Home() {
             </span>
             <span className="hero-title-line">
               <span>
-                <em>designed to perform.</em>
+                designed to perform
               </span>
             </span>
           </h1>
@@ -2104,7 +2104,7 @@ export function Home() {
           <h2>
             From business need to
             <br />
-            <em>operational space.</em>
+            operational space.
           </h2>
           <p className="manifesto-copy">
             Each stage closes a different risk before it reaches your budget.
@@ -2565,7 +2565,7 @@ export function ProjectDetailPage() {
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
-        
+
         <h1>{detailTitle[project.slug] ?? project.title}</h1>
         <div className="project-detail-reference-grid">
           <div>
