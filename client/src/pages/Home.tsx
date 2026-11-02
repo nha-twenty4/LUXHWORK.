@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   Building2,
   ChevronLeft,
+  ChevronRight,
   Menu,
   Moon,
   MoveRight,
@@ -177,15 +178,12 @@ const companyProjectImageSets: Record<string, string[]> = {
     "/project-media/ryuko/ryuko-13.png",
   ],
   "frame-house": [
-    profileImage("image11.png"),
-    profileImage("image66.jpeg"),
-    profileImage("image67.jpeg"),
-    profileImage("image68.jpeg"),
-    profileImage("image69.jpeg"),
-
-    "/project-images/lucky-burger-takmao/courtyard.png",
-    "/project-images/lucky-burger-takmao/interior.png",
-  ],
+    "image11.png",
+    "image66.jpeg",
+    "image67.jpeg",
+    "image68.jpeg",
+    "image69.jpeg",
+  ].map(profileImage),
   "field-notes": [
     "/project-media/combi/combi-01.png",
     "/project-media/combi/combi-02.png",
@@ -240,6 +238,7 @@ const companyProjectImageSets: Record<string, string[]> = {
     "image102.png",
     "image103.png",
     "image104.png",
+    "image105.png",
   ].map(profileImage),
   "chj-jewellry-cb1": [
     "image106.png",
@@ -1550,7 +1549,7 @@ function Header() {
         >
           <span
             className="brand-wordmark"
-            style={{ fontFamily: "MOMCAKE", fontSize: "60px" }}
+            style={{ fontFamily: "MOMCAKE", fontSize: "40px" }}
           >
             LUXHWORK
           </span>
@@ -2023,7 +2022,9 @@ export function Home() {
               <span>Commercial spaces</span>
             </span>
             <span className="hero-title-line">
-              <span>designed to perform</span>
+              <span>
+                designed to perform.
+              </span>
             </span>
           </h1>
           <div className="hero-bottom">
@@ -2432,6 +2433,9 @@ export function ProjectDetailPage() {
   const [, navigate] = useLocation();
   const { projects: portfolioProjects } = usePortfolioProjects();
   const [preset, setPreset] = useColorPreset();
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+    null
+  );
   const project =
     portfolioProjects.find(item => item.slug === slug) ?? portfolioProjects[0];
   const detailTitle: Record<string, string> = {
@@ -2508,12 +2512,31 @@ export function ProjectDetailPage() {
     ];
   const nextProject =
     portfolioProjects[(projectIndex + 1) % portfolioProjects.length];
+  const lightboxImages = [project.image, ...project.gallery];
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const navigateToProject = (targetSlug: string) => {
     navigate(`/projects/${targetSlug}`);
   };
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && selectedImageIndex !== null) {
+        setSelectedImageIndex(null);
+        return;
+      }
+      if (selectedImageIndex !== null && event.key === "ArrowLeft") {
+        event.preventDefault();
+        setSelectedImageIndex(
+          (selectedImageIndex - 1 + lightboxImages.length) % lightboxImages.length
+        );
+        return;
+      }
+      if (selectedImageIndex !== null && event.key === "ArrowRight") {
+        event.preventDefault();
+        setSelectedImageIndex(
+          (selectedImageIndex + 1) % lightboxImages.length
+        );
+        return;
+      }
       if (
         event.target instanceof HTMLInputElement ||
         event.target instanceof HTMLTextAreaElement ||
@@ -2556,14 +2579,14 @@ export function ProjectDetailPage() {
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchend", onTouchEnd);
     };
-  }, [nextProject.slug, previousProject.slug]);
+  }, [nextProject.slug, previousProject.slug, selectedImageIndex]);
   return (
     <PageShell>
       <section className="project-detail-hero project-detail-hero-visa">
         <a href="/#projects" className="back-link">
           <ChevronLeft size={17} /> Projects / Portfolio
         </a>
-
+        <p className="eyebrow">{typeLabel}</p>
         <h1>{detailTitle[project.slug] ?? project.title}</h1>
         <div className="project-detail-reference-grid">
           <div>
@@ -2600,11 +2623,18 @@ export function ProjectDetailPage() {
       </section>
       <section className="project-detail-image project-main-image">
         <ColorPresetControls preset={preset} onChange={setPreset} />
-        <SafeImage
-          src={project.image}
-          alt={project.title}
-          className={`theme-image ${imagePresetClass(project.category, preset)}`}
-        />
+        <button
+          type="button"
+          className="project-image-view-button"
+          onClick={() => setSelectedImageIndex(0)}
+          aria-label={`View ${project.title} image`}
+        >
+          <SafeImage
+            src={project.image}
+            alt={project.title}
+            className={`theme-image ${imagePresetClass(project.category, preset)}`}
+          />
+        </button>
       </section>
       <section className="project-detail-gallery">
         {project.gallery.map((image, index) => (
@@ -2612,14 +2642,71 @@ export function ProjectDetailPage() {
             key={`${image}-${index}`}
             className={index === 0 ? "project-detail-gallery-featured" : ""}
           >
-            <SafeImage
-              src={image}
-              alt={`${project.title} detail ${index + 1}`}
-              className={`theme-image ${imagePresetClass(project.category, preset)}`}
-            />
+            <button
+              type="button"
+              className="project-image-view-button"
+              onClick={() => setSelectedImageIndex(index + 1)}
+              aria-label={`View ${project.title} detail image ${index + 1}`}
+            >
+              <SafeImage
+                src={image}
+                alt={`${project.title} detail ${index + 1}`}
+                className={`theme-image ${imagePresetClass(project.category, preset)}`}
+              />
+            </button>
           </figure>
         ))}
       </section>
+      {selectedImageIndex !== null && (
+        <div
+          className="project-image-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Project image preview"
+          onClick={() => setSelectedImageIndex(null)}
+        >
+          <button
+            type="button"
+            className="project-image-lightbox-arrow project-image-lightbox-prev"
+            onClick={event => {
+              event.stopPropagation();
+              setSelectedImageIndex(
+                (selectedImageIndex - 1 + lightboxImages.length) %
+                  lightboxImages.length
+              );
+            }}
+            aria-label="View previous project image"
+          >
+            <ChevronLeft size={28} />
+          </button>
+          <button
+            type="button"
+            className="project-image-lightbox-close"
+            onClick={() => setSelectedImageIndex(null)}
+            aria-label="Close image preview"
+          >
+            <X size={24} />
+          </button>
+          <img
+            src={lightboxImages[selectedImageIndex]}
+            alt={`${project.title} enlarged preview`}
+            onClick={event => event.stopPropagation()}
+          />
+          <button
+            type="button"
+            className="project-image-lightbox-arrow project-image-lightbox-next"
+            onClick={event => {
+              event.stopPropagation();
+              setSelectedImageIndex(
+                (selectedImageIndex + 1) % lightboxImages.length
+              );
+            }}
+            aria-label="View next project image"
+          >
+              <ChevronRight size={28} />
+          </button>
+        </div>
+      )}
       <nav className="project-pagination" aria-label="Project navigation">
         <Link
           href={`/projects/${previousProject.slug}`}
