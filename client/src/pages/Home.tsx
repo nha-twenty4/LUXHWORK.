@@ -2614,12 +2614,7 @@ export function ProjectDetailPage() {
             </Link>
           </div>
         </div>
-        <p
-          className="project-navigation-hint"
-          aria-label="Project navigation instructions"
-        >
-          ← → Use arrow keys · Swipe to browse
-        </p>
+
       </section>
       <section className="project-detail-image project-main-image">
         <ColorPresetControls preset={preset} onChange={setPreset} />
