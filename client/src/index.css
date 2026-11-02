@@ -2,6 +2,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Momcake";
+  src: url("/fonts/Momcake-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 html {
@@ -145,9 +153,9 @@ select:focus-visible {
 }
 .brand-wordmark {
   display: block;
-  font-family: "Momcake", sans-serif;
+  font-family: "DM Sans", Arial, sans-serif;
   font-size: clamp(18px, 2vw, 25px);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.12em;
   line-height: 1;
   white-space: nowrap;
@@ -155,7 +163,6 @@ select:focus-visible {
     opacity 0.22s ease,
     transform 0.22s ease;
 }
-
 .brand-wordmark i {
   font-style: normal;
   font-weight: 400;
@@ -354,7 +361,7 @@ h2 {
 }
 h1 em,
 h2 em {
-  font-family: var(--font-heading);
+  font-family: "DM Serif Display", Georgia, serif;
   font-weight: 400;
   letter-spacing: -0.06em;
 }
@@ -1031,7 +1038,7 @@ h2 em {
 }
 .service-row > span,
 .service-row p {
-  font-family: var(--font-heading);
+  font-family: var(--font-body), Arial, sans-serif;
   font-size: 10px;
   color: var(--muted);
   margin: 0;
@@ -1903,17 +1910,16 @@ h2 em {
   max-width: 360px;
 }
 .footer-wordmark {
-  font-family: "Momcake", serif;
   display: inline-block;
   color: #f8f6f0;
   font-size: clamp(28px, 3vw, 42px);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.11em;
   line-height: 1;
 }
 .footer-brand-block p {
   color: rgba(248, 246, 240, 0.58);
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.65;
   margin: 26px 0 0;
   max-width: 300px;
@@ -1933,7 +1939,7 @@ h2 em {
   margin-bottom: 8px;
   color: rgba(248, 246, 240, 0.42);
   font-family: "DM Mono", monospace;
-  font-size: 15px;
+  font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1950,11 +1956,12 @@ h2 em {
 }
 .footer-links .footer-contact {
   color: rgba(248, 246, 240, 0.9);
+  font-family: "DM Sans", Arial, sans-serif;
   font-size: 13px;
-  transition:
-    color 0.2s,
-    transform 0.2s;
+  font-weight: 500;
+  letter-spacing: 0;
 }
+
 .footer-links .footer-contact:hover {
   color: #dcab9e;
   transform: translateX(5px);
@@ -2881,6 +2888,19 @@ h2 em {
   height: min(72vw, 830px);
   object-fit: cover;
 }
+.project-image-view-button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  cursor: zoom-in;
+}
+.project-image-view-button:focus-visible {
+  outline: 2px solid var(--brick);
+  outline-offset: -4px;
+}
 .project-narrative {
   padding: 125px 13vw;
   display: grid;
@@ -2945,6 +2965,73 @@ html.dark .project-narrative > div:last-child > p:not(.large-copy) {
 }
 .project-detail-gallery figure:hover img {
   transform: scale(1.035);
+}
+.project-image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 2vw;
+  background: rgba(12, 15, 13, 0.92);
+  cursor: zoom-out;
+}
+.project-image-lightbox img {
+  display: block;
+  width: 92vw;
+  height: 90vh;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  cursor: default;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.project-image-lightbox-close {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.project-image-lightbox-close:hover {
+  background: var(--brick);
+  border-color: var(--brick);
+}
+.project-image-lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.project-image-lightbox-arrow:hover {
+  background: var(--brick);
+  border-color: var(--brick);
+}
+.project-image-lightbox-prev {
+  left: 24px;
+}
+.project-image-lightbox-next {
+  right: 24px;
 }
 .project-detail-gallery figcaption {
   position: absolute;
@@ -3247,9 +3334,10 @@ html.dark .project-narrative > div:last-child > p:not(.large-copy) {
   margin: 0 auto;
 }
 .contact-details-centered .contact-detail-block > a {
-  transition:
-    color 0.2s,
-    transform 0.2s;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 .contact-details-centered .contact-detail-block > a:hover {
   transform: translateY(-2px);
@@ -3297,7 +3385,7 @@ html.dark .project-narrative > div:last-child > p:not(.large-copy) {
 }
 .contact-detail-block > a {
   display: inline-block;
-  font-family: var(--font-body);
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: 30px;
   letter-spacing: -0.04em;
   transition:
@@ -3307,6 +3395,13 @@ html.dark .project-narrative > div:last-child > p:not(.large-copy) {
 .contact-detail-block > a:hover {
   color: var(--brick);
   transform: translateX(7px);
+}
+.contact-details-centered .contact-detail-block > a,
+.contact-details-centered .contact-detail-block > p {
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.55;
 }
 .contact-detail-block > p {
   color: #414440;
@@ -7905,11 +8000,16 @@ h3,
 h4,
 h5,
 h6,
-.logo,
-.site-logo,
-.brand-logo {
+h1 em,
+h2 em,
+h3 em,
+h4 em,
+h5 em,
+h6 em,
+.project-detail-visa-story h2,
+.service-detail-copy h1 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 button,
@@ -7926,10 +8026,16 @@ label,
   font-family: var(--font-body);
   font-weight: 500;
 }
-@font-face {
-  font-family: "Momcake";
-  src: url("/fonts/Momcake-Bold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+.footer-nap > div:nth-child(2) a {
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 13px !important;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.footer-nap > div:nth-child(3) p {
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 12px !important;
+  font-weight: 500;
+  letter-spacing: 0;
 }
